@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Jean Carlos Oviedo López</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+      $(function () {
+        var pull = $("#pull");
+        menu = $("nav ul");
+        menuHeight = menu.height();
+
+        $(pull).on("click", function (e) {
+          e.preventDefault();
+          menu.slideToggle();
+        });
+      });
+
+      $(window).resize(function () {
+        var w = $(window).width();
+        if (w > 800 && menu.is(":hidden")) {
+          menu.removeAttr("style");
+        }
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        if (window.location.hash) {
+          // The URL contains the hash sent when clicked on button
+          $(".correo-enviado").show();
+        }
+      });
+    </script>
+
+    <style type="text/css">
+      .hidden {
+        display: none;
+      }
+      .visible {
+        display: block;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <nav class="navbar" id="navbar">
+          <div class="brand">
+            <img src="./img/logo.png" class="logo" alt="logo" />
+          </div>
+          <ul class="menu">
+            <li><a href="#" class="active">Inicio</a></li>
+            <li><a href="#sobre-mi">Sobre mi</a></li>
+            <li><a href="#portafolio">Proyectos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+          <a id="pull" href="#"></a>
+        </nav>
+      </header>
+
+      <main class="main" id="main">
+        <div class="info-content">
+          <h1>¡ Hola <span>Mundo </span>!</h1>
+          <br />
+
+          <p>
+            Hola me llamo Jean Carlos y me considero una persona con gran
+            sentido de pertenencia, estoy apto para desempeñar con eficiencia y
+            eficacia él cumplimiento de las tareas asignadas. <br /><br />Mis
+            habilidades son: Desarrollo de software, Manejo de sistemas, me
+            desenvuelvo en la tecnología y buena comunicación con las personas..
+          </p>
+          <!-- <div class="hoja-de-vida" id="hoja-de-vida">
+            <a download href="JeanOviedo.pdf"
+              ><button class="download-cv">
+                Descargar Hoja de vida con Soportes
+              </button></a
+            >
+          </div> -->
+        </div>
+        <img
+          src="img/pexels-photo-1516680-removebg-preview.png"
+          alt="Jean Oviedo"
+          id="jean"
+          class="jean"
+        />
+      </main>
+    </div>
+    <div class="about" id="sobre-mi">
+      <img src="img/about.png" alt="hola" id="jean2" />
+
+      <div class="about-info">
+        <h2>Sobre Mi</h2>
+        <div class="divider"></div>
+        <p>
+          Soy estudiante de Ingeniería de Software en la Universidad de
+          Cartagena, soy apasionado por la programación web y todo sobre de la
+          tecnología en general. Así mismo, amo la escritura y me fascina
+          escribir, ya sea código o poemas.
+        </p>
+        <p>
+          Tengo experiencia en el desarrollo de sitios web y aplicaciones web,
+          en las que he implementado diversas tecnologías que aprendí y
+          actualmente hago un Bootcamp de Desarrollo Web Full Stack con la
+          academia de programación Henry. Algunas de las tecnologías que aprendí
+          e implementé en dichas aplicaciones que he creado, se enuncian a
+          continuación:
+        </p>
+        <p>
+          1) Frontend: JavaScript React, Redux, Html, Css.<br />
+          2) Backend: NodeJS, Web Server, Express.
+          <!-- Bootstrap. 2) Backend: NodeJS, Express, PostgreSQL, Sequalize,
+          MongoDB.(En ) -->
+        </p>
+
+        <!-- <a download href="#"><button class="download-cv">Leer más</button></a> -->
+      </div>
+    </div>
+
+    <div class="porfolio" id="portafolio">
+      <div class="porfolio-head">
+        <h2>Mi Portafolio</h2>
+        <div class="divider"></div>
+      </div>
+
+<!--contenedor 4 proyectos-->
+<div class="container">
+  <!--primer PROYECTO-->
+  <div class="card">
+    <div class="card-image-pokex"></div>
+    <div class="card-title">
+      <h2>Pokex</h2>
+      <p>
+        App de pokemon, utilicé en Front-end: React, Redux, HTML, CSS y
+        Back-end: NodeJS, Express Database: PostgreSQL, Sequelize con la
+        POKEAPI.
+      </p>
+    </div>
+    <div class="card-proyect-links">
+      <a href="https://github.com/JeanOviedo/Pokex"
+        ><i class="fab fa-github"></i
+      ></a>
+      <a href="https://github.com/JeanOviedo/Pokex"
+        ><i class="fas fa-globe-americas"></i
+      ></a>
+      <a target="_blank" href="https://github.com/JeanOviedo/Pokex"
+        ><i class="fas fa-code"></i
+      ></a>
+    </div>
+    <div class="proyecto-conten-detalles">
+      <button
+        class="royect-details proyecto-boton"
+        onclick=" window.open('https://github.com/JeanOviedo/Pokex','_blank')"
+      >
+        Detalles del Proyecto
+      </button>
+    </div>
+  </div>
+  <!--SEGUNDO PROYECTO-->
+  <div class="card">
+    <div class="card-image-ahorked"></div>
+    <div class="card-title">
+      <h2>Ahorked</h2>
+      <p>
+        Proyecto que nos permite jugar el famoso juego del ahorcado, donde
+        tienes que adivinar una palabra, realizado con JAVASCRIPT, HTML Y
+        CSS.
+      </p>
+    </div>
+    <div class="card-proyect-links">
+      <a href="https://github.com/JeanOviedo/Ahorked"
+        ><i class="fab fa-github"></i
+      ></a>
+      <a href="https://jeanoviedo.github.io/Ahorked/"
+        ><i class="fas fa-globe-americas"></i
+      ></a>
+      <a target="_blank" href="https://github.com/JeanOviedo/Ahorked"
+        ><i class="fas fa-code"></i
+      ></a>
+    </div>
+    <div class="proyecto-conten-detalles">
+      <button class="proyect-details proyecto-boton">
+        <a target="_blank" href="https://github.com/JeanOviedo/Ahorked"
+          >Detalles del Proyecto</a
+        >
+      </button>
+    </div>
+  </div>
+  <!-- FIN SEGUNDO PROYECTO-->
+
+  <!--TERCER PROYECTO-->
+  <div class="card">
+    <div class="card-image-progresuss"></div>
+    <div class="card-title">
+      <h2>Progresuss</h2>
+      <p>
+        Sitio web corporativo enfocado en servicios legales, este está
+        desarrollado con HTML, CSS y Javascrip.<br /><br /><br />
+      </p>
+    </div>
+    <div class="card-proyect-links">
+      <a target="_blank" href="https://www.legalprogresuss.com.co//"
+        ><i class="fas fa-globe-americas"></i
+      ></a>
+    </div>
+    <div class="proyecto-conten-detalles">
+      <button class="proyect-details proyecto-boton">
+        <a target="_blank" href="https://www.legalprogresuss.com.co/"
+          >Detalles del Proyecto</a
+        >
+      </button>
+    </div>
+  </div>
+  <!-- FIN TERCER PROYECTO-->
+  <!--CUARTO PROYECTO-->
+  <div class="card">
+    <div class="card-image-encriptex"></div>
+    <div class="card-title">
+      <h2>Encriptex
+      </h2>
+      <p>
+        Proyecto realizado para el challeger de oracle y alura latam, que
+        nos permite encriptar de forma sencilla textos de acuerdo a
+        ciertos requerimientos establecidos. .
+      </p>
+    </div>
+    <div class="card-proyect-links">
+      <a
+        href="https://github.com/JeanOviedo/Encriptex"
+        target="_blank"
+        ><i class="fab fa-github"></i
+      ></a>
+      <a target="_blank" href="https://jeanoviedo.github.io/Encriptex/"><i class="fas fa-globe-americas"></i></a>
+      <a
+        target="_blank"
+        href="https://jeanoviedo.github.io/Encriptex/"
+        ><i class="fas fa-code"></i
+      ></a>
+    </div>
+    <div class="proyecto-conten-detalles">
+      <button class="proyect-details proyecto-boton">
+        <a
+          target="_blank"
+          href="https://github.com/JeanOviedo/Encriptex"
+          >Detalles del Proyecto</a
+        >
+      </button>
+    </div>
+  </div>
+  <!-- FIN cuarto  PROYECTO-->
+</div>
+ <!-- fin contenedor 4 proyectos-->
+
+
+
+ <!--contenedor 4 proyectos-->
+      <div class="container">
+        <!--primer PROYECTO-->
+        <div class="card">
+          <div class="card-image-pokex"></div>
+          <div class="card-title">
+            <h2>Pokex</h2>
+            <p>
+              App de pokemon, utilicé en Front-end: React, Redux, HTML, CSS y
+              Back-end: NodeJS, Express Database: PostgreSQL, Sequelize con la
+              POKEAPI.
+            </p>
+          </div>
+          <div class="card-proyect-links">
+            <a href="https://github.com/JeanOviedo/Pokex"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a href="https://github.com/JeanOviedo/Pokex"
+              ><i class="fas fa-globe-americas"></i
+            ></a>
+            <a target="_blank" href="https://github.com/JeanOviedo/Pokex"
+              ><i class="fas fa-code"></i
+            ></a>
+          </div>
+          <div class="proyecto-conten-detalles">
+            <button
+              class="royect-details proyecto-boton"
+              onclick=" window.open('https://github.com/JeanOviedo/Pokex','_blank')"
+            >
+              Detalles del Proyecto
+            </button>
+          </div>
+        </div>
+        <!--SEGUNDO PROYECTO-->
+        <div class="card">
+          <div class="card-image-ahorked"></div>
+          <div class="card-title">
+            <h2>Ahorked</h2>
+            <p>
+              Proyecto que nos permite jugar el famoso juego del ahorcado, donde
+              tienes que adivinar una palabra, realizado con JAVASCRIPT, HTML Y
+              CSS.
+            </p>
+          </div>
+          <div class="card-proyect-links">
+            <a href="https://github.com/JeanOviedo/Ahorked"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a href="https://jeanoviedo.github.io/Ahorked/"
+              ><i class="fas fa-globe-americas"></i
+            ></a>
+            <a target="_blank" href="https://github.com/JeanOviedo/Ahorked"
+              ><i class="fas fa-code"></i
+            ></a>
+          </div>
+          <div class="proyecto-conten-detalles">
+            <button class="proyect-details proyecto-boton">
+              <a target="_blank" href="https://github.com/JeanOviedo/Ahorked"
+                >Detalles del Proyecto</a
+              >
+            </button>
+          </div>
+        </div>
+        <!-- FIN SEGUNDO PROYECTO-->
+
+        <!--TERCER PROYECTO-->
+        <div class="card">
+          <div class="card-image-progresuss"></div>
+          <div class="card-title">
+            <h2>Progresuss</h2>
+            <p>
+              Sitio web corporativo enfocado en servicios legales, este está
+              desarrollado con HTML, CSS y Javascrip.<br /><br /><br />
+            </p>
+          </div>
+          <div class="card-proyect-links">
+            <a target="_blank" href="https://www.legalprogresuss.com.co//"
+              ><i class="fas fa-globe-americas"></i
+            ></a>
+          </div>
+          <div class="proyecto-conten-detalles">
+            <button class="proyect-details proyecto-boton">
+              <a target="_blank" href="https://www.legalprogresuss.com.co/"
+                >Detalles del Proyecto</a
+              >
+            </button>
+          </div>
+        </div>
+        <!-- FIN TERCER PROYECTO-->
+        <!--CUARTO PROYECTO-->
+        <div class="card">
+          <div class="card-image-encriptex"></div>
+          <div class="card-title">
+            <h2>Encriptex
+            </h2>
+            <p>
+              Proyecto realizado para el challeger de oracle y alura latam, que
+              nos permite encriptar de forma sencilla textos de acuerdo a
+              ciertos requerimientos establecidos. .
+            </p>
+          </div>
+          <div class="card-proyect-links">
+            <a
+              href="https://github.com/JeanOviedo/Encriptex"
+              target="_blank"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a target="_blank" href="https://jeanoviedo.github.io/Encriptex/"><i class="fas fa-globe-americas"></i></a>
+            <a
+              target="_blank"
+              href="https://jeanoviedo.github.io/Encriptex/"
+              ><i class="fas fa-code"></i
+            ></a>
+          </div>
+          <div class="proyecto-conten-detalles">
+            <button class="proyect-details proyecto-boton">
+              <a
+                target="_blank"
+                href="https://github.com/JeanOviedo/Encriptex"
+                >Detalles del Proyecto</a
+              >
+            </button>
+          </div>
+        </div>
+        <!-- FIN cuarto  PROYECTO-->
+      </div>
+       <!-- fin contenedor 4 proyectos-->
+
+      <!-- division...................-->
+
+      <div class="container">
+        <!--primer PROYECTO-->
+        <div class="card">
+          <div class="card-image-cinex"></div>
+          <div class="card-title">
+            <h2>Cinex</h2>
+            <p>
+              App de películas y series utilizando JavaScript, CSS, React,
+              Redux.
+            </p>
+          </div>
+          <div class="card-proyect-links">
+            <a href="https://github.com/JeanOviedo/Cinex"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a href="https://jeanoviedo.github.io/Cinex/"
+              ><i class="fas fa-globe-americas"></i
+            ></a>
+            <a target="_blank" href="https://github.com/JeanOviedo/Cinex"
+              ><i class="fas fa-code"></i
+            ></a>
+          </div>
+          <div class="proyecto-conten-detalles">
+            <button
+              class="royect-details proyecto-boton"
+              onclick=" window.open('hhttps://github.com/JeanOviedo/Cinex','_blank')"
+            >
+              Detalles del Proyecto
+            </button>
+          </div>
+        </div>
+        <!--SEGUNDO PROYECTO-->
+        <div class="card">
+          <div class="card-image-azul"></div>
+          <div class="card-title">
+            <h2>Azul Urbano</h2>
+            <p>Sitio web corporativo diseñado con HTML,CSS y Javascript.</p>
+          </div>
+          <div class="card-proyect-links">
+            <a target="_blank" href="http://azulurbano.com/"
+              ><i class="fas fa-globe-americas"></i
+            ></a>
+          </div>
+          <div class="proyecto-conten-detalles">
+            <button class="proyect-details proyecto-boton">
+              <a target="_blank" href="http://azulurbano.com/"
+                >Detalles del Proyecto</a
+              >
+            </button>
+          </div>
+        </div>
+        <!-- FIN SEGUNDO PROYECTO-->
+
+        <!--TERCER PROYECTO-->
+        <div class="card">
+          <div class="card-image-zinu"></div>
+          <div class="card-title">
+            <h2>ZinuPlay</h2>
+            <p>Sitio web corporativo diseñado con HTML,CSS y Javascript</p>
+          </div>
+          <div class="card-proyect-links">
+            <a target="_blank" href="https://zinuplay.com/"
+              ><i class="fas fa-globe-americas"></i
+            ></a>
+          </div>
+          <div class="proyecto-conten-detalles">
+            <button class="proyect-details proyecto-boton">
+              <a target="_blank" href="https://zinuplay.com"
+                >Detalles del Proyecto</a
+              >
+            </button>
+          </div>
+        </div>
+        <!-- FIN TERCER PROYECTO-->
+        <!--CUARTO PROYECTO-->
+        <div class="card">
+          <div class="card-image-mistareas"></div>
+          <div class="card-title">
+            <h2>Mis Tareas</h2>
+            <p>
+              App realizada en React, el cual permite guardar y eliminar tareas
+              .
+            </p>
+          </div>
+          <div class="card-proyect-links">
+            <a
+              href="https://github.com/JeanOviedo/MisTareasReact"
+              target="_blank"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a target="_blank" href=""><i class="fas fa-globe-americas"></i></a>
+            <a
+              target="_blank"
+              href="https://github.com/JeanOviedo/MisTareasReact"
+              ><i class="fas fa-code"></i
+            ></a>
+          </div>
+          <div class="proyecto-conten-detalles">
+            <button class="proyect-details proyecto-boton">
+              <a
+                target="_blank"
+                href="https://github.com/JeanOviedo/MisTareasReact"
+                >Detalles del Proyecto</a
+              >
+            </button>
+          </div>
+        </div>
+        <!-- FIN octavo PROYECTO-->
+      </div>
+    </div>
+
+    <!-- Inicio contacto-->
+    <div class="contacto" id="contacto">
+      <div class="contacto-head">
+        <h2>Contacto</h2>
+        <div class="divider"></div>
+        <div class="contacto-contenedor">
+          <img src="./img/img-opacity50.png" alt="imagen" />
+          <div class="contacto-formulario">
+            <form
+              action="https://formsubmit.co/jeanoviedolopez@gmail.com"
+              method="post"
+              class="form"
+            >
+              <input
+                type="hidden"
+                name="_next"
+                value="https://jeanoviedo.com/#correo-enviado"
+              />
+              <input name="name" type="text" placeholder="Nombre" />
+              <input name="email" type="email" placeholder="E-mail" />
+              <textarea
+                name="message"
+                placeholder="   Escriba su mensaje"
+              ></textarea>
+              <button type="submit" class="proyect-details proyecto-boton">
+                Enviar mensaje
+              </button>
+              <div class="correo-enviado" id="correo-enviado">
+                <br />
+                <h3>¡Muchas gracias el mensaje fue enviado!</h3>
+                <br />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FIN contacto-->
+
+    <footer class="footer">
+      <div class="footer-contenido">
+        <h2>Jean C. Oviedo</h2>
+        <h5>Estudiante Full Stack Developer</h5>
+      </div>
+      <div class="redes">
+        <a href="https://github.com/JeanOviedo" target="_blank"
+          ><i class="fab fa-github fa-lg"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/jean-oviedo/" target="_blank"
+          ><i class="fas fa-globe-americas fa-lg"></i>
+        </a>
+        <a href="" target="_blank"
+          ><i class="fab fa-facebook-square fa-lg"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/jean-oviedo/" target="_blank"
+          ><i class="fab fa-linkedin fa-lg"></i>
+        </a>
+        <a href="#" target="_blank"><i class="fab fa-youtube fa-lg"></i></a>
+      </div>
+      <br />
+      <p>
+        © Todos los derechos reservados 2022 | Sitio Web Creado por Jean Oviedo
+        .
+      </p>
+    </footer>
+  </body>
+</html>
