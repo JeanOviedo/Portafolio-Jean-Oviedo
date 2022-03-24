@@ -296,6 +296,21 @@ span {
 .card-image-encriptex:hover {
   transform: scale(1.1);
 }
+
+.card-image-rescue:hover {
+  transform: scale(1.1);
+}
+
+.card-image-maq:hover {
+  transform: scale(1.1);
+}
+.card-image-fifa:hover {
+  transform: scale(1.1);
+}
+
+.card-image-rece:hover {
+  transform: scale(1.1);
+}
 .card-image {
   width: 100%;
   height: 45%;
@@ -315,12 +330,62 @@ span {
   align-content: center;
   background-position: 25% 25%;
 }
+
+
+.card-image-rece {
+  transition: transform 0.2s;
+
+  width: 100%;
+  height: 45%;
+  background-image: url(../img/rece.jpg);
+  background-size: cover;
+  align-items: center;
+  align-content: center;
+  background-position: 25% 25%;
+}
+
+.card-image-maq{
+  transition: transform 0.2s;
+
+  width: 100%;
+  height: 45%;
+  background-image: url(../img/maq.jpg);
+  background-size: cover;
+  align-items: center;
+  align-content: center;
+  background-position: 25% 25%;
+}
+
+
+.card-image-fifa{
+  transition: transform 0.2s;
+
+  width: 100%;
+  height: 45%;
+  background-image: url(../img/fifa.jpg);
+  background-size: cover;
+  align-items: center;
+  align-content: center;
+  background-position: 25% 25%;
+}
 .card-image-progresuss {
   transition: transform 0.2s;
 
   width: 100%;
   height: 45%;
   background-image: url(../img/capturaprogresuss.jpg);
+  background-size: cover;
+  align-items: center;
+  align-content: center;
+  background-position: 25% 25%;
+}
+
+.card-image-rescue {
+  transition: transform 0.2s;
+
+  width: 100%;
+  height: 45%;
+  background-image: url(../img/rescupets.jpg);
   background-size: cover;
   align-items: center;
   align-content: center;
