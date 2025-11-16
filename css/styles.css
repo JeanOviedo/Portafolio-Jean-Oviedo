@@ -83,12 +83,11 @@ body {
 }
 
 .jean {
-  width: 70% !important;
-  position: relative;
-  left: 128px;
-  top: 110px;
+    width: 103% !important;
+    position: relative;
+    left: 76px;
+    top: -22px;
 }
-
 .navbar {
   display: flex;
   justify-content: space-between;
