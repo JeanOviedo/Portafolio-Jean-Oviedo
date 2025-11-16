@@ -142,7 +142,7 @@ body {
   top: 550px !important;
   margin: 0 auto;
   width: 80%;
-  height: 90%;
+  height: 106%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
