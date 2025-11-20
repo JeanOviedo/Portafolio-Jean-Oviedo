@@ -1,137 +1,613 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio - Jean Carlos Oviedo López</title>
 
   <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
   <style>
-    :root{
-      --bg:#0f0b16;
-      --card:#1c1326;
-      --muted:#bdb4c8;
-      --accent1:#8a2be2;
-      --accent2:#6a1cb9;
-      --glass: rgba(255,255,255,0.04);
-      --glass-2: rgba(255,255,255,0.06);
-      --accent-cta: linear-gradient(90deg,var(--accent1),var(--accent2));
-      --success:#32cd32;
-      --radius:12px;
+    :root {
+      --bg: #0f0b16;
+      --card: #1c1326;
+      --muted: #bdb4c8;
+      --accent1: #8a2be2;
+      --accent2: #6a1cb9;
+      --glass: rgba(255, 255, 255, 0.04);
+      --glass-2: rgba(255, 255, 255, 0.06);
+      --accent-cta: linear-gradient(90deg, var(--accent1), var(--accent2));
+      --success: #32cd32;
+      --radius: 12px;
       --transition: 0.25s;
     }
 
     /* Reset */
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; background:linear-gradient(180deg,#06040a 0%, #0b0610 100%);color:#efe9ff; -webkit-font-smoothing:antialiased;}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html,
+    body {
+      height: 100%;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, #06040a 0%, #0b0610 100%);
+      color: #efe9ff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    img {
+      max-width: 100%;
+      display: block
+    }
 
     /* NAVBAR */
-    .navbar{position:fixed;left:0;right:0;top:0;display:flex;align-items:center;justify-content:space-between;padding:12px 4%;z-index:120;background:linear-gradient(90deg, rgba(138,43,226,0.10), rgba(106,28,185,0.04));backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.03)}
-    .brand img{height:42px}
-    .menu{display:flex;gap:18px;list-style:none}
-    .menu a{padding:8px 10px;border-radius:8px;font-weight:600;color:var(--muted)}
-    .menu a:hover,.menu a.active{background:var(--glass);color:#fff}
-    .nav-toggle{display:none;font-size:20px;color:#fff}
+    .navbar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 4%;
+      z-index: 120;
+      background: linear-gradient(90deg, rgba(138, 43, 226, 0.10), rgba(106, 28, 185, 0.04));
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03)
+    }
 
-    main.wrapper{padding-top:84px ; background-color: #371e50;}
+    .brand img {
+      height: 42px
+    }
+
+    .menu {
+      display: flex;
+      gap: 18px;
+      list-style: none
+    }
+
+    .menu a {
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-weight: 600;
+      color: var(--muted)
+    }
+
+    .menu a:hover,
+    .menu a.active {
+      background: var(--glass);
+      color: #fff
+    }
+
+    .nav-toggle {
+      display: none;
+      font-size: 20px;
+      color: #fff
+    }
+
+    main.wrapper {
+      padding-top: 84px;
+      background-color: #371e50;
+    }
 
     /* ABOUT */
-    .about-wrap{margin:40px auto;padding:28px;display:grid;grid-template-columns: 360px 1fr;gap:28px;padding-left:5%;padding-right:5%}
-    .card-photo{background:linear-gradient(180deg,var(--card), rgba(106,28,185,0.05));border-radius:var(--radius);padding:18px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 12px 40px rgba(0,0,0,0.6);display:flex;flex-direction:column;align-items:center;gap:14px}
-    .card-photo img{width:100%;height:360px;object-fit:cover;border-radius:10px;box-shadow:0 8px 30px rgba(106,28,185,0.12);transition:transform .5s}
-    .card-photo img:hover{transform:translateY(-8px) scale(1.02)}
-    .socials{display:flex;gap:10px}
-    .socials a{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;background:var(--glass);color:#fff;font-weight:600;border:1px solid rgba(255,255,255,0.03)}
-    .socials a i{width:16px;text-align:center}
+    .about-wrap {
+      margin: 40px auto;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 28px;
+      padding-left: 5%;
+      padding-right: 5%
+    }
 
-    .card-info{background:linear-gradient(180deg, rgba(138,43,226,0.06), rgba(106,28,185,0.02));padding:26px;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.04);box-shadow:0 12px 40px rgba(0,0,0,0.55)}
-    .card-info h2{font-size:28px;margin-bottom:6px;color:#fff}
-    .subtitle{color:var(--muted);margin-bottom:14px}
-    .bio{color:#e9e1f8;line-height:1.7;margin-bottom:16px}
-    .skills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
-    .skill{background:linear-gradient(90deg,var(--glass), var(--glass-2));padding:8px 12px;border-radius:999px;font-weight:600;color:#fff;border:1px solid rgba(255,255,255,0.03);font-size:14px}
+    .card-photo {
+      background: linear-gradient(180deg, var(--card), rgba(106, 28, 185, 0.05));
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px
+    }
 
-    .timeline-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:6px}
-    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
-    .panel h3{margin-bottom:10px;color:#fff}
-    .timeline-item{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
-    .dot{width:12px;height:12px;border-radius:50%;background:linear-gradient(90deg,var(--accent1),var(--accent2));box-shadow:0 6px 18px rgba(138,43,226,0.15);flex:0 0 12px;margin-top:6px}
-    .timeline-item h4{font-size:15px;margin-bottom:4px;color:#f6f0ff}
-    .timeline-item p{color:var(--muted);font-size:14px;line-height:1.5}
+    .card-photo img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 8px 30px rgba(106, 28, 185, 0.12);
+      transition: transform .5s
+    }
 
-    .highlight{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:9px;background:linear-gradient(90deg, rgba(138,43,226,0.12), rgba(106,28,185,0.06));border:1px solid rgba(255,255,255,0.03);color:#fff;font-weight:600}
+    .card-photo img:hover {
+      transform: translateY(-8px) scale(1.02)
+    }
+
+    .socials {
+      display: flex;
+      gap: 10px
+    }
+
+    .socials a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: var(--glass);
+      color: #fff;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.03)
+    }
+
+    .socials a i {
+      width: 16px;
+      text-align: center
+    }
+
+    .card-info {
+      background: linear-gradient(180deg, rgba(138, 43, 226, 0.06), rgba(106, 28, 185, 0.02));
+      padding: 26px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55)
+    }
+
+    .card-info h2 {
+      font-size: 28px;
+      margin-bottom: 6px;
+      color: #fff
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin-bottom: 14px
+    }
+
+    .bio {
+      color: #e9e1f8;
+      line-height: 1.7;
+      margin-bottom: 16px
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px
+    }
+
+    .skill {
+      background: linear-gradient(90deg, var(--glass), var(--glass-2));
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      font-size: 14px
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 6px
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.03)
+    }
+
+    .panel h3 {
+      margin-bottom: 10px;
+      color: #fff
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 12px
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      box-shadow: 0 6px 18px rgba(138, 43, 226, 0.15);
+      flex: 0 0 12px;
+      margin-top: 6px
+    }
+
+    .timeline-item h4 {
+      font-size: 15px;
+      margin-bottom: 4px;
+      color: #f6f0ff
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5
+    }
+
+    .highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 9px;
+      background: linear-gradient(90deg, rgba(138, 43, 226, 0.12), rgba(106, 28, 185, 0.06));
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      color: #fff;
+      font-weight: 600
+    }
 
     /* PORTFOLIO */
-    .portfolio-section{margin:28px auto;padding:28px 5%}
-    .portfolio-head{display:flex;align-items:center;gap:12px;margin-bottom:18px}
-    .portfolio-head h2{color:#fff;font-size:26px}
-    .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .portfolio-section {
+      margin: 28px auto;
+      padding: 28px 5%
+    }
 
-    .project-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.03);box-shadow:0 8px 30px rgba(0,0,0,0.55);display:flex;flex-direction:column;min-height:280px}
-    .project-media{height:160px;background-size:cover;background-position:center;flex:0 0 160px}
-    .project-body{padding:16px;display:flex;flex-direction:column;gap:10px;flex:1}
-    .project-body h3{color:#fff;font-size:18px}
-    .project-body p{color:var(--muted);font-size:14px;line-height:1.4}
-    .project-links{display:flex;gap:10px;margin-top:auto;align-items:center}
-    .icon-link{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px;background:var(--glass);border:1px solid rgba(255,255,255,0.03);text-decoration:none;color:#fff}
-    .project-cta{padding:10px 12px;border-radius:10px;border:none;background:var(--accent-cta);color:#fff;font-weight:700;cursor:pointer;transition:transform var(--transition)}
-    .project-cta:hover{transform:translateY(-3px)}
+    .portfolio-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px
+    }
+
+    .portfolio-head h2 {
+      color: #fff;
+      font-size: 26px
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px
+    }
+
+    .project-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+      display: flex;
+      flex-direction: column;
+      min-height: 280px
+    }
+
+    .project-media {
+      height: 160px;
+      background-size: cover;
+      background-position: center;
+      flex: 0 0 160px
+    }
+
+    .project-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1
+    }
+
+    .project-body h3 {
+      color: #fff;
+      font-size: 18px
+    }
+
+    .project-body p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.4
+    }
+
+    .project-links {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+      align-items: center
+    }
+
+    .icon-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: var(--glass);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      text-decoration: none;
+      color: #fff
+    }
+
+    .project-cta {
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: none;
+      background: var(--accent-cta);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform var(--transition)
+    }
+
+    .project-cta:hover {
+      transform: translateY(-3px)
+    }
 
     /* Modal */
-    .modal{display:none;position:fixed;inset:0;background:linear-gradient(180deg, rgba(3,3,6,0.8), rgba(11,7,16,0.85));align-items:center;justify-content:center;z-index:200;padding:24px}
-    .modal-content{background:linear-gradient(180deg,#0f0b16,#130a1d);border-radius:12px;max-width:1000px;width:100%;max-height:90vh;overflow:auto;border:1px solid rgba(138,43,226,0.18);box-shadow:0 30px 120px rgba(10,6,12,0.8)}
-    .modal-header{padding:18px;border-bottom:1px solid rgba(255,255,255,0.03);background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff;border-radius:12px 12px 0 0}
-    .modal-body{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:18px;color:#eae6f8}
-    .modal-body img{width:100%;height:auto;border-radius:8px;box-shadow:0 10px 40px rgba(106,28,185,0.12)}
-    .modal-desc p{color:#e6e0f8;line-height:1.6}
-    .modal-tech{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;margin-bottom:10px;color:#fff}
-    .modal-features{list-style:disc;margin-left:18px;color:var(--muted)}
-    .modal-footer{display:flex;justify-content:space-between;gap:12px;padding:12px;border-top:1px solid rgba(255,255,255,0.02);align-items:center}
-    .modal-links a{margin-right:8px}
-    .modal-action{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff;padding:10px 14px;border-radius:10px;border:none;font-weight:700}
-    .modal-close{background:transparent;color:#d9d4ea;padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);cursor:pointer}
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(3, 3, 6, 0.8), rgba(11, 7, 16, 0.85));
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 24px
+    }
+
+    .modal-content {
+      background: linear-gradient(180deg, #0f0b16, #130a1d);
+      border-radius: 12px;
+      max-width: 1000px;
+      width: 100%;
+      max-height: 90vh;
+      overflow: auto;
+      border: 1px solid rgba(138, 43, 226, 0.18);
+      box-shadow: 0 30px 120px rgba(10, 6, 12, 0.8)
+    }
+
+    .modal-header {
+      padding: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color: #fff;
+      border-radius: 12px 12px 0 0
+    }
+
+    .modal-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      padding: 18px;
+      color: #eae6f8
+    }
+
+    .modal-body img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(106, 28, 185, 0.12)
+    }
+
+    .modal-desc p {
+      color: #e6e0f8;
+      line-height: 1.6
+    }
+
+    .modal-tech {
+      background: rgba(255, 255, 255, 0.02);
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      color: #fff
+    }
+
+    .modal-features {
+      list-style: disc;
+      margin-left: 18px;
+      color: var(--muted)
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.02);
+      align-items: center
+    }
+
+    .modal-links a {
+      margin-right: 8px
+    }
+
+    .modal-action {
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 700
+    }
+
+    .modal-close {
+      background: transparent;
+      color: #d9d4ea;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      cursor: pointer
+    }
 
     /* CONTACT FORM */
-    .contact-section{margin:48px auto;padding:28px 5%; background-color: #371e50;}
-    .contact-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:28px;border-radius:16px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 20px 60px rgba(0,0,0,0.6)}
-    .contact-card h2{color:#fff;margin-bottom:8px}
-    .contact-card p.lead{color:var(--muted);margin-bottom:18px}
-    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
-    .field{display:flex;flex-direction:column;gap:8px}
-    .input, textarea{padding:12px;border-radius:10px;background:#0d0d16;border:1px solid rgba(255,255,255,0.04);color:#fff;resize:vertical;transition:box-shadow var(--transition), border var(--transition)}
-    .input:focus, textarea:focus{outline:none;box-shadow:0 6px 32px rgba(138,43,226,0.12);border:1px solid rgba(138,43,226,0.6)}
-    .btn-submit{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff;padding:12px 16px;border-radius:10px;border:none;font-weight:700;cursor:pointer;transition:transform var(--transition), box-shadow var(--transition)}
-    .btn-submit:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(106,28,185,0.18)}
-    .btn-submit:active{transform:translateY(-1px)}
-    .form-success{display:none;background:rgba(50,205,50,0.08);color:var(--success);padding:12px;border-radius:8px;margin-top:12px;border:1px solid rgba(50,205,50,0.12)}
+    .contact-section {
+      margin: 48px auto;
+      padding: 28px 5%;
+      background-color: #371e50;
+    }
+
+    .contact-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6)
+    }
+
+    .contact-card h2 {
+      color: #fff;
+      margin-bottom: 8px
+    }
+
+    .contact-card p.lead {
+      color: var(--muted);
+      margin-bottom: 18px
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+
+    .input,
+    textarea {
+      padding: 12px;
+      border-radius: 10px;
+      background: #0d0d16;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      color: #fff;
+      resize: vertical;
+      transition: box-shadow var(--transition), border var(--transition)
+    }
+
+    .input:focus,
+    textarea:focus {
+      outline: none;
+      box-shadow: 0 6px 32px rgba(138, 43, 226, 0.12);
+      border: 1px solid rgba(138, 43, 226, 0.6)
+    }
+
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition)
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(106, 28, 185, 0.18)
+    }
+
+    .btn-submit:active {
+      transform: translateY(-1px)
+    }
+
+    .form-success {
+      display: none;
+      background: rgba(50, 205, 50, 0.08);
+      color: var(--success);
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 12px;
+      border: 1px solid rgba(50, 205, 50, 0.12)
+    }
 
     /* FOOTER */
-    footer{background:#08070c;color:var(--muted);padding:28px 5%;text-align:center;border-top:1px solid rgba(255,255,255,0.02)}
-    .footer-links{margin:12px 0;display:flex;justify-content:center;gap:16px}
-    .footer-links a{color:var(--muted);border-radius:8px;padding:8px 10px;background:transparent;border:1px solid rgba(255,255,255,0.02)}
-    .footer-small{font-size:13px;color:#9b94a9;margin-top:8px}
+    footer {
+      background: #08070c;
+      color: var(--muted);
+      padding: 28px 5%;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.02)
+    }
+
+    .footer-links {
+      margin: 12px 0;
+      display: flex;
+      justify-content: center;
+      gap: 16px
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      border-radius: 8px;
+      padding: 8px 10px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.02)
+    }
+
+    .footer-small {
+      font-size: 13px;
+      color: #9b94a9;
+      margin-top: 8px
+    }
 
     /* Responsive */
-    @media (max-width:980px){
-      .about-wrap{grid-template-columns:1fr;gap:18px;padding:20px}
-      .project-media{height:180px}
-      .timeline-grid{grid-template-columns:1fr}
-      .form-row{grid-template-columns:1fr}
-      .menu{display:none}
-      .nav-toggle{display:block}
+    @media (max-width:980px) {
+      .about-wrap {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 20px
+      }
+
+      .project-media {
+        height: 180px
+      }
+
+      .timeline-grid {
+        grid-template-columns: 1fr
+      }
+
+      .form-row {
+        grid-template-columns: 1fr
+      }
+
+      .menu {
+        display: none
+      }
+
+      .nav-toggle {
+        display: block
+      }
     }
   </style>
 </head>
+
 <body>
   <!-- NAV -->
   <nav class="navbar" role="navigation">
-    <div class="brand"><img src="./img/logo.png" alt="logo"/></div>
+    <div class="brand"><img src="./img/logo.png" alt="logo" /></div>
     <ul class="menu" role="menubar">
       <li><a href="#" class="active">Inicio</a></li>
       <li><a href="#sobre-mi">Sobre mí</a></li>
@@ -145,14 +621,17 @@
     <!-- ABOUT -->
     <section class="about-wrap" id="sobre-mi" aria-label="Sobre mí">
       <aside class="card-photo" aria-hidden="false">
-        <img src="img/about.png" alt="Foto Jean Carlos Oviedo"/>
+        <img src="img/about.png" alt="Foto Jean Carlos Oviedo" />
         <div style="text-align:center">
           <div class="highlight">Ingeniero de Sistemas · Full Stack</div>
-          <div style="margin-top:8px;color:var(--muted);font-size:13px">Montería, Colombia · Disponible para trabajo remoto</div>
+          <div style="margin-top:8px;color:var(--muted);font-size:13px">Montería, Colombia · Disponible para trabajo
+            remoto</div>
         </div>
         <div class="socials" aria-label="Redes sociales">
-          <a href="https://github.com/JeanOviedo" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
-          <a href="https://www.linkedin.com/in/jean-oviedo/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="https://github.com/JeanOviedo" target="_blank" rel="noopener"><i class="fab fa-github"></i>
+            GitHub</a>
+          <a href="https://www.linkedin.com/in/jean-oviedo/" target="_blank" rel="noopener"><i
+              class="fab fa-linkedin"></i> LinkedIn</a>
           <a href="https://jeanoviedo.com" target="_blank" rel="noopener"><i class="fas fa-globe-americas"></i> Web</a>
         </div>
       </aside>
@@ -160,7 +639,9 @@
       <div class="card-info">
         <h2>Hola, soy Jean Carlos Oviedo</h2>
         <div class="subtitle">Construyo productos digitales que combinan diseño, rendimiento y automatización.</div>
-        <p class="bio">Soy un apasionado de la programación web y la tecnología. Me motiva transformar ideas en soluciones digitales útiles, eficientes y visualmente sólidas. He liderado proyectos desde prototipo hasta producción, aplicando buenas prácticas, automatizaciones y enfoque en la experiencia de usuario.</p>
+        <p class="bio">Soy un apasionado de la programación web y la tecnología. Me motiva transformar ideas en
+          soluciones digitales útiles, eficientes y visualmente sólidas. He liderado proyectos desde prototipo hasta
+          producción, aplicando buenas prácticas, automatizaciones y enfoque en la experiencia de usuario.</p>
 
         <div class="skills" aria-label="Tecnologías">
           <span class="skill">JavaScript</span>
@@ -176,15 +657,60 @@
         <div class="timeline-grid" aria-hidden="false">
           <div class="panel">
             <h3>Formación Académica</h3>
-            <div class="timeline-item"><div class="dot"></div><div class="content"><h4>Especialización en Gestión y Seguridad de Bases de Datos · 2020</h4><p>Administración y seguridad de datos.</p></div></div>
-            <div class="timeline-item"><div class="dot"></div><div class="content"><h4>Ingeniero de Sistemas · 2024</h4><p>Desarrollo, arquitectura y gestión TI.</p></div></div>
-            <div class="timeline-item"><div class="dot"></div><div class="content"><h4>Tecnólogo en Análisis y Desarrollo de Sistemas</h4><p>Bases en programación y análisis.</p></div></div>
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <div class="content">
+                <h4>Especialización en Gestión y Seguridad de Bases de Datos · 2020</h4>
+                <p>Administración y seguridad de datos.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <div class="content">
+                <h4>Ingeniero de Sistemas · 2024</h4>
+                <p>Desarrollo, arquitectura y gestión TI.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <div class="content">
+                <h4>Tecnólogo en Análisis y Desarrollo de Sistemas · 2019</h4>
+                <p>Bases en programación y análisis.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <div class="content">
+                <h4>Técnico en Informática y Redes · 2017</h4>
+                <p>
+                  Formación técnica en mantenimiento de equipos de cómputo, instalación de redes y soporte a usuarios.
+                  Desarrollo de habilidades prácticas en infraestructura tecnológica y resolución de incidencias.
+                </p>
+              </div>
+            </div>
+            
           </div>
 
           <div class="panel">
             <h3>Experiencia Laboral</h3>
-            <div class="timeline-item"><div class="dot"></div><div class="content"><h4>AZULURBANO — Desarrollador Web (2020 - 2021)</h4><p>Construcción de soluciones software enfocadas en usabilidad y rendimiento.</p></div></div>
-            <div class="timeline-item"><div class="dot"></div><div class="content"><h4>KONECTA — Analista de Desarrollo (2022 - 2025)</h4><p>Desarrollo a medida y maquetación frontend con HTML5/CSS3/JS; configuración de dominios y hosting.</p></div></div>
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <div class="content">
+                <h4>KONECTA — Analista de Desarrollo (2022 - 2025)</h4>
+
+                <p>Construcción de aplicaciones y componentes, aseguramiento de calidad mediante pruebas y validaciones, 
+                  y soporte técnico para garantizar la disponibilidad y correcto funcionamiento de los sistemas.</p>
+
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <div class="content">
+                <h4>AZULURBANO — Desarrollador Web (2020 - 2021)</h4>
+                <p>Construcción de soluciones software enfocadas en usabilidad y rendimiento, enfocada en la inmobiliaria y sus necesidades.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -201,9 +727,11 @@
     <!-- MODAL -->
     <div id="projectModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
       <div class="modal-content" role="document" aria-labelledby="modalTitle">
-        <div class="modal-header"><h2 id="modalTitle">Título</h2></div>
+        <div class="modal-header">
+          <h2 id="modalTitle">Título</h2>
+        </div>
         <div class="modal-body">
-          <div><img id="modalImage" src="" alt="Imagen del proyecto"/></div>
+          <div><img id="modalImage" src="" alt="Imagen del proyecto" /></div>
           <div>
             <p id="modalDesc" class="modal-desc"></p>
             <div class="modal-tech"><strong>Tecnologías:</strong> <span id="modalTech"></span></div>
@@ -220,72 +748,70 @@
       </div>
     </div>
 
-  
 
-  <!-- CONTACT -->
-  <section id="contacto" class="contact-section" aria-label="Contacto">
-    <div class="contact-card">
-      <h2>Contacto</h2>
-      <p class="lead">¿Tienes un proyecto en mente? Escríbeme y lo construimos juntos.</p>
-  
-      <!-- FormSubmit -->
-      <form id="contactForm" 
-            action="https://formsubmit.co/jeanoviedolopez@gmail.com" 
-            method="POST" 
-            novalidate="">
-  
-        <!-- Configuración opcional -->
-        <input type="hidden" name="_subject" value="Nuevo mensaje desde portfolio - Jean Oviedo">
-        <input type="hidden" name="_next" value="https://jeanoviedo.com/#correo-enviado">
-        <input type="hidden" name="_captcha" value="false">
-  
-        <div class="form-row">
-          <div class="field">
-            <label for="name">Nombre</label>
-            <input id="name" name="name" class="input" type="text" required placeholder="Tu nombre">
-          </div>
-  
-          <div class="field">
-            <label for="email">Correo</label>
-            <input id="email" name="email" class="input" type="email" required placeholder="tunombre@mail.com">
-          </div>
-        </div>
-  
-        <div class="field" style="margin-bottom:12px">
-          <label for="message">Mensaje</label>
-          <textarea id="message" name="message" class="input" rows="6" required placeholder="Cuéntame sobre tu proyecto"></textarea>
-        </div>
-  
-        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-          <button type="submit" class="btn-submit">
-            Enviar mensaje <i class="fas fa-paper-plane" style="opacity:0.9"></i>
-          </button>
-  
-          <div id="formFeedback" 
-               class="form-success" 
-               role="status" 
-               aria-live="polite">
-            ¡Gracias! Tu mensaje fue enviado.
-          </div>
-        </div>
-      </form>
-    </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-links" role="navigation" aria-label="Redes sociales">
-        <a href="https://github.com/JeanOviedo" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://www.linkedin.com/in/jean-oviedo/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://jeanoviedo.com" target="_blank" rel="noopener"><i class="fas fa-globe-americas"></i> Web</a>
+    <!-- CONTACT -->
+    <section id="contacto" class="contact-section" aria-label="Contacto">
+      <div class="contact-card">
+        <h2>Contacto</h2>
+        <p class="lead">¿Tienes un proyecto en mente? Escríbeme y lo construimos juntos.</p>
+
+        <!-- FormSubmit -->
+        <form id="contactForm" action="https://formsubmit.co/jeanoviedolopez@gmail.com" method="POST" novalidate="">
+
+          <!-- Configuración opcional -->
+          <input type="hidden" name="_subject" value="Nuevo mensaje desde portfolio - Jean Oviedo">
+          <input type="hidden" name="_next" value="https://jeanoviedo.com/#correo-enviado">
+          <input type="hidden" name="_captcha" value="false">
+
+          <div class="form-row">
+            <div class="field">
+              <label for="name">Nombre</label>
+              <input id="name" name="name" class="input" type="text" required placeholder="Tu nombre">
+            </div>
+
+            <div class="field">
+              <label for="email">Correo</label>
+              <input id="email" name="email" class="input" type="email" required placeholder="tunombre@mail.com">
+            </div>
+          </div>
+
+          <div class="field" style="margin-bottom:12px">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" class="input" rows="6" required
+              placeholder="Cuéntame sobre tu proyecto"></textarea>
+          </div>
+
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+            <button type="submit" class="btn-submit">
+              Enviar mensaje <i class="fas fa-paper-plane" style="opacity:0.9"></i>
+            </button>
+
+            <div id="formFeedback" class="form-success" role="status" aria-live="polite">
+              ¡Gracias! Tu mensaje fue enviado.
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="footer-small">© 2025 Jean Carlos Oviedo — Todos los derechos reservados. Desarrollado con pasión, café y líneas de código.</div>
-    </div>
-  </footer>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-links" role="navigation" aria-label="Redes sociales">
+          <a href="https://github.com/JeanOviedo" target="_blank" rel="noopener"><i class="fab fa-github"></i>
+            GitHub</a>
+          <a href="https://www.linkedin.com/in/jean-oviedo/" target="_blank" rel="noopener"><i
+              class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="https://jeanoviedo.com" target="_blank" rel="noopener"><i class="fas fa-globe-americas"></i> Web</a>
+        </div>
+        <div class="footer-small">© 2025 Jean Carlos Oviedo — Todos los derechos reservados. Desarrollado con pasión,
+          café y líneas de código.</div>
+      </div>
+    </footer>
 
 
-</main>
+  </main>
   <!-- SCRIPTS -->
   <script>
     /* ============== Project Data (como proporcionaste) ============== */
@@ -548,18 +1074,18 @@
           { url: 'https://github.com/JeanOviedo/MisTareasReact', icon: 'fab fa-github', text: 'GitHub' }
         ]
       },
-      
+
     };
 
     /* ============== Render projects dynamically ============== */
-    function createProjectCard(key, project){
+    function createProjectCard(key, project) {
       const card = document.createElement('article');
       card.className = 'project-card';
 
       const media = document.createElement('div');
       media.className = 'project-media';
       media.style.backgroundImage = `url('${project.image}')`;
-      media.setAttribute('aria-hidden','true');
+      media.setAttribute('aria-hidden', 'true');
 
       const body = document.createElement('div');
       body.className = 'project-body';
@@ -571,7 +1097,7 @@
 
       // external links icons
       (project.links || []).forEach(l => {
-        const a = document.createElement('a'); a.className = 'icon-link'; a.href = l.url; a.target = '_blank'; a.rel='noopener';
+        const a = document.createElement('a'); a.className = 'icon-link'; a.href = l.url; a.target = '_blank'; a.rel = 'noopener';
         a.innerHTML = `<i class='${l.icon}'></i>`;
         linksDiv.appendChild(a);
       });
@@ -587,7 +1113,7 @@
       return card;
     }
 
-    function renderProjects(){
+    function renderProjects() {
       const grid = document.getElementById('projectsGrid');
       grid.innerHTML = '';
       Object.keys(projectData).forEach(key => {
@@ -598,65 +1124,65 @@
     }
 
     /* ============== Modal controllers ============== */
-    function openProjectModalFromKey(key){
+    function openProjectModalFromKey(key) {
       const project = projectData[key];
-      if(!project) return;
+      if (!project) return;
       document.getElementById('modalTitle').textContent = project.title;
       document.getElementById('modalImage').src = project.image;
       document.getElementById('modalDesc').textContent = project.description;
       document.getElementById('modalTech').textContent = project.technologies;
 
-      const features = document.getElementById('modalFeatures'); features.innerHTML='';
+      const features = document.getElementById('modalFeatures'); features.innerHTML = '';
       (project.features || []).forEach(f => { const li = document.createElement('li'); li.textContent = f; features.appendChild(li); });
 
-      const linksContainer = document.getElementById('modalLinks'); linksContainer.innerHTML='';
+      const linksContainer = document.getElementById('modalLinks'); linksContainer.innerHTML = '';
       (project.links || []).forEach(l => {
-        const a = document.createElement('a'); a.href = l.url; a.target = '_blank'; a.rel='noopener';
+        const a = document.createElement('a'); a.href = l.url; a.target = '_blank'; a.rel = 'noopener';
         a.innerHTML = `<button class='modal-action' style='margin-right:8px'><i class='${l.icon}' style='margin-right:8px'></i> ${l.text}</button>`;
         linksContainer.appendChild(a);
       });
 
-      if((project.links || []).length === 0){
+      if ((project.links || []).length === 0) {
         linksContainer.innerHTML = `<span style='color:var(--muted)'>Sin enlaces públicos disponibles</span>`;
       }
 
       const modal = document.getElementById('projectModal');
-      modal.style.display = 'flex'; modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
+      modal.style.display = 'flex'; modal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
       // trap focus (simple)
       document.getElementById('modalTitle').focus();
     }
 
-    function closeProjectModal(){ const modal = document.getElementById('projectModal'); modal.style.display='none'; modal.setAttribute('aria-hidden','true'); document.body.style.overflow='auto'; }
-    document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ closeProjectModal(); } });
+    function closeProjectModal() { const modal = document.getElementById('projectModal'); modal.style.display = 'none'; modal.setAttribute('aria-hidden', 'true'); document.body.style.overflow = 'auto'; }
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeProjectModal(); } });
 
     /* ============== Contact form: validation + feedback ============== */
     const contactForm = document.getElementById('contactForm');
     const formFeedback = document.getElementById('formFeedback');
 
     // Prevent double submission and show inline feedback
-    contactForm.addEventListener('submit', function(e){
+    contactForm.addEventListener('submit', function (e) {
       // basic client validation
       const name = document.getElementById('name');
       const email = document.getElementById('email');
       const message = document.getElementById('message');
 
       let valid = true;
-      [name,email,message].forEach(f => {
-        if(!f.value || f.value.trim() === '') { valid = false; f.style.borderColor = 'rgba(255,50,50,0.8)'; }
+      [name, email, message].forEach(f => {
+        if (!f.value || f.value.trim() === '') { valid = false; f.style.borderColor = 'rgba(255,50,50,0.8)'; }
         else { f.style.borderColor = 'rgba(138,43,226,0.2)'; }
       });
 
       // simple email format check
       const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
-      if(!emailPattern.test(email.value)){ valid = false; email.style.borderColor = 'rgba(255,50,50,0.8)'; }
+      if (!emailPattern.test(email.value)) { valid = false; email.style.borderColor = 'rgba(255,50,50,0.8)'; }
 
-      if(!valid){
+      if (!valid) {
         e.preventDefault();
         formFeedback.style.display = 'block';
         formFeedback.style.background = 'rgba(255,100,100,0.06)';
         formFeedback.style.color = '#ff6b6b';
         formFeedback.textContent = 'Por favor completa todos los campos correctamente.';
-        setTimeout(()=>{ formFeedback.style.display = 'none'; }, 4500);
+        setTimeout(() => { formFeedback.style.display = 'none'; }, 4500);
         return;
       }
 
@@ -670,30 +1196,31 @@
 
     /* ============== Mobile nav toggle ============== */
     const navToggle = document.getElementById('navToggle');
-    navToggle.addEventListener('click', ()=> {
+    navToggle.addEventListener('click', () => {
       const menu = document.querySelector('.menu');
-      if(menu.style.display === 'flex'){ menu.style.display = 'none'; }
-      else { menu.style.display = 'flex'; menu.style.flexDirection = 'column'; menu.style.background = 'rgba(255,255,255,0.02)'; menu.style.padding = '12px'; menu.style.position='absolute'; menu.style.right='16px'; menu.style.top='64px'; menu.style.borderRadius='8px'; }
+      if (menu.style.display === 'flex') { menu.style.display = 'none'; }
+      else { menu.style.display = 'flex'; menu.style.flexDirection = 'column'; menu.style.background = 'rgba(255,255,255,0.02)'; menu.style.padding = '12px'; menu.style.position = 'absolute'; menu.style.right = '16px'; menu.style.top = '64px'; menu.style.borderRadius = '8px'; }
     });
 
     /* ============== Init ============== */
-    document.addEventListener('DOMContentLoaded', function(){
+    document.addEventListener('DOMContentLoaded', function () {
       renderProjects();
 
       // close modal when clicking overlay
-      document.getElementById('projectModal').addEventListener('click', function(e){
-        if(e.target === this) closeProjectModal();
+      document.getElementById('projectModal').addEventListener('click', function (e) {
+        if (e.target === this) closeProjectModal();
       });
 
       // If redirected after formsubmit with #correo-enviado show success
-      if(window.location.hash && window.location.hash.includes('correo-enviado')){
+      if (window.location.hash && window.location.hash.includes('correo-enviado')) {
         formFeedback.style.display = 'block';
         formFeedback.style.background = 'rgba(50,205,50,0.08)';
         formFeedback.style.color = 'var(--success)';
         formFeedback.textContent = '¡Gracias! Tu mensaje fue enviado.';
-        setTimeout(()=>{ formFeedback.style.display='none'; }, 6000);
+        setTimeout(() => { formFeedback.style.display = 'none'; }, 6000);
       }
     });
   </script>
 </body>
+
 </html>
