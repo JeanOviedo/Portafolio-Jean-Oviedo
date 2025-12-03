@@ -11,6 +11,29 @@
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
+  <script>
+    document.addEventListener("contextmenu", e => e.preventDefault());
+
+    document.addEventListener("selectstart", e => e.preventDefault());
+    document.addEventListener("dragstart", e => e.preventDefault());
+
+    document.addEventListener("keydown", e => {
+      if (
+        e.ctrlKey && (e.key === "u" || e.key === "s" || e.key === "c" || e.key === "p" || e.key === "a") ||
+        e.key === "F12" ||
+        e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")
+      ) {
+        e.preventDefault();
+      }
+    });
+
+    // Intento extra: evitar copiar desde el portapapeles
+    document.addEventListener("copy", e => {
+      e.preventDefault();
+      alert("⚠️ Función de copiado bloqueada");
+    });
+  </script>
+
   <style>
     :root {
       --bg: #0f0b16;
@@ -30,7 +53,10 @@
     * {
       box-sizing: border-box;
       margin: 0;
-      padding: 0
+      padding: 0;
+      user-select: none !important;
+      -webkit-user-select: none !important;
+      -ms-user-select: none !important;
     }
 
     html,
@@ -688,7 +714,7 @@
                 </p>
               </div>
             </div>
-            
+
           </div>
 
           <div class="panel">
@@ -698,7 +724,7 @@
               <div class="content">
                 <h4>KONECTA — Analista de Desarrollo (2022 - 2025)</h4>
 
-                <p>Construcción de aplicaciones y componentes, aseguramiento de calidad mediante pruebas y validaciones, 
+                <p>Construcción de aplicaciones y componentes, aseguramiento de calidad mediante pruebas y validaciones,
                   y soporte técnico para garantizar la disponibilidad y correcto funcionamiento de los sistemas.</p>
 
               </div>
@@ -708,7 +734,8 @@
               <div class="dot"></div>
               <div class="content">
                 <h4>AZULURBANO — Desarrollador Web (2020 - 2021)</h4>
-                <p>Construcción de soluciones software enfocadas en usabilidad y rendimiento, enfocada en la inmobiliaria y sus necesidades.</p>
+                <p>Construcción de soluciones software enfocadas en usabilidad y rendimiento, enfocada en la
+                  inmobiliaria y sus necesidades.</p>
               </div>
             </div>
           </div>
@@ -816,24 +843,46 @@
   <script>
     /* ============== Project Data (como proporcionaste) ============== */
     const projectData = {
-   "transaudion8n": {
-    "title": "Automatización de Transcripción de Audios",
-    "image": "img/transaudion8n.jpg",
-    "description": "Sistema de automatización que procesa audios, convirtiéndolos en texto mediante la API Assembly, filtrando la información relevante y guardando los datos en plataformas como AirTable y bases de datos. El flujo incluye análisis de emociones, menciones de empresas, y más.",
-    "technologies": "n8n, Assembly API, JavaScript, PostgreSQL, AirTable, SharePoint",
-    "features": [
-        "Conversión automática de audios a texto",
-        "Filtrado de datos relevantes (emociones, menciones de empresas)",
-        "Almacenamiento automático en AirTable, PostgreSQL o SharePoint",
-        "Generación de informes de ejecución y errores",
-        "Optimización de recursos y rendimiento (procesamiento por lotes)",
-        "Automatización de flujos de trabajo sin intervención manual"
-    ],
-    "links": [
-        { "url": "https://youtu.be/33WwGrzKPxc", "icon": "fas fa-globe-americas", "text": "Ver Demo" }
-    ]
-}
-,
+
+      "autoprocessn8n": {
+        "title": "Automatización Integral Post-Consultoría y Gestión de Aplicantes",
+        "image": "img/autoprocessn8n.jpg",
+        "description": "Sistema unificado que automatiza todo el ciclo post-consultoría y el proceso completo de gestión de aplicantes. Incluye envíos multicanal, nutrición programada, seguimiento inteligente, evaluación automática de candidatos con IA, análisis de CVs, notificaciones internas y reportería semanal.",
+        "technologies": "n8n, Airtable, Tally, Clientify, SendGrid, Twilio SMS, WhatsApp Cloud API, IA (Claude/OpenAI), JavaScript, S3",
+        "features": [
+          "Seguimiento post-consultoría con envíos multicanal (Email, SMS, WhatsApp)",
+          "Secuencias de nutrición programadas según el tipo de cliente",
+          "Gestión completa de aplicantes con extracción de CV y análisis por IA",
+          "Evaluación técnica automática con puntajes y comentarios detallados",
+          "Flujos con ramificaciones inteligentes (reintentos, abandonos, recontactos)",
+          "Notificaciones internas en Slack y sincronización con CRM",
+          "Generación semanal de reportes automáticos con métricas clave",
+          "Arquitectura centralizada en Airtable como base de datos operativa"
+        ],
+        "links": [
+          { "url": "proyectos/post-consultoria-reclutamiento-automation/index.html", "icon": "fas fa-sitemap", "text": "Ver Arquitectura" }
+        ]
+      }
+      ,
+
+      "transaudion8n": {
+        "title": "Automatización de Transcripción de Audios",
+        "image": "img/transaudion8n.jpg",
+        "description": "Sistema de automatización que procesa audios, convirtiéndolos en texto mediante la API Assembly, filtrando la información relevante y guardando los datos en plataformas como AirTable y bases de datos. El flujo incluye análisis de emociones, menciones de empresas, y más.",
+        "technologies": "n8n, Assembly API, JavaScript, PostgreSQL, AirTable, SharePoint",
+        "features": [
+          "Conversión automática de audios a texto",
+          "Filtrado de datos relevantes (emociones, menciones de empresas)",
+          "Almacenamiento automático en AirTable, PostgreSQL o SharePoint",
+          "Generación de informes de ejecución y errores",
+          "Optimización de recursos y rendimiento (procesamiento por lotes)",
+          "Automatización de flujos de trabajo sin intervención manual"
+        ],
+        "links": [
+          { "url": "https://youtu.be/33WwGrzKPxc", "icon": "fas fa-globe-americas", "text": "Ver Demo" }
+        ]
+      }
+      ,
 
       'restaurante': {
         title: 'Automatizado Restaurante',
@@ -865,7 +914,7 @@
           'Workflows personalizados',
           'Reporting automático'
         ],
-        links: [ { url: 'https://www.youtube.com/watch?v=61YLHIVcA7I', icon: 'fas fa-globe-americas', text: 'Ver Demo' }]
+        links: [{ url: 'https://www.youtube.com/watch?v=61YLHIVcA7I', icon: 'fas fa-globe-americas', text: 'Ver Demo' }]
       },
       'onescript': {
         title: 'Componentes React para Konecta',
@@ -1095,41 +1144,41 @@
       },
 
       'sinu': {
-  title: 'Sinu Android',
-  image: 'img/sinu.png',
-  description: 'Videojuego inspirado en el río Sinú en Montería, donde Sinu debe completar misiones para cerrar un portal dimensional y derrotar criaturas de otra dimensión.',
-  technologies: 'JavaScript, HTML5, Canvas, CSS3, Construct 3',
-  features: [
-    'Historia basada en elementos culturales del Sinú',
-    'Misiones progresivas con zonas ancestrales',
-    'Sistema de combate usando cocos como arma principal',
-    'Enemigos, criaturas gigantes y amenazas dinámicas',
-    'Puntuación por derrotar criaturas',
-    'Nuevas misiones mediante actualizaciones'
-  ],
-  links: [
-    { url: 'https://www.amazon.co.uk/jeankee-Sinu-From-Colombia/dp/B00JE2TCS6', icon: 'fab fa-amazon', text: 'Amazon' }
-  ]
-},
-'destrozavirus': {
-  title: 'Destroza Virus USB (Descontinuado)',
-  image: 'img/destroza.webp',
-  description: 'Antivirus portable desarrollado en Lua con ejecución automática (autoplay). Diseñado para proteger dispositivos USB contra troyanos, malware y modificaciones no autorizadas.',
-  technologies: 'Lua, Autoplay, Windows Shell',
-  features: [
-    'Protección automática al conectar dispositivos USB',
-    'Modo protector residente en bandeja del sistema',
-    'Análisis rápido del dispositivo y acciones sugeridas',
-    'Vacunación y desvacunación de unidades USB',
-    'Exploración de archivos y envío al baúl seguro',
-    'Buscador de virus y troyanos en fase beta',
-    'Envío de muestras para análisis remoto',
-    'Versión instalable y versión portable en el propio USB'
-  ],
-  links: [
-    { url: 'https://destrozavirususb.uptodown.com/windows', icon: 'fas fa-globe-americas', text: 'Ver Proyecto' }
-  ]
-},
+        title: 'Sinu Android',
+        image: 'img/sinu.png',
+        description: 'Videojuego inspirado en el río Sinú en Montería, donde Sinu debe completar misiones para cerrar un portal dimensional y derrotar criaturas de otra dimensión.',
+        technologies: 'JavaScript, HTML5, Canvas, CSS3, Construct 3',
+        features: [
+          'Historia basada en elementos culturales del Sinú',
+          'Misiones progresivas con zonas ancestrales',
+          'Sistema de combate usando cocos como arma principal',
+          'Enemigos, criaturas gigantes y amenazas dinámicas',
+          'Puntuación por derrotar criaturas',
+          'Nuevas misiones mediante actualizaciones'
+        ],
+        links: [
+          { url: 'https://www.amazon.co.uk/jeankee-Sinu-From-Colombia/dp/B00JE2TCS6', icon: 'fab fa-amazon', text: 'Amazon' }
+        ]
+      },
+      'destrozavirus': {
+        title: 'Destroza Virus USB (Descontinuado)',
+        image: 'img/destroza.webp',
+        description: 'Antivirus portable desarrollado en Lua con ejecución automática (autoplay). Diseñado para proteger dispositivos USB contra troyanos, malware y modificaciones no autorizadas.',
+        technologies: 'Lua, Autoplay, Windows Shell',
+        features: [
+          'Protección automática al conectar dispositivos USB',
+          'Modo protector residente en bandeja del sistema',
+          'Análisis rápido del dispositivo y acciones sugeridas',
+          'Vacunación y desvacunación de unidades USB',
+          'Exploración de archivos y envío al baúl seguro',
+          'Buscador de virus y troyanos en fase beta',
+          'Envío de muestras para análisis remoto',
+          'Versión instalable y versión portable en el propio USB'
+        ],
+        links: [
+          { url: 'https://destrozavirususb.uptodown.com/windows', icon: 'fas fa-globe-americas', text: 'Ver Proyecto' }
+        ]
+      },
 
 
     };

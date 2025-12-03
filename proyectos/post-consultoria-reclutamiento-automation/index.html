@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AustraliaPRO | Solución Completa de Automatización</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #0A2540;
+      --secondary: #1E4A89;
+      --accent: #00B4D8;
+      --accent-light: #00C8E0;
+      --success: #06D6A0;
+      --light: #F8FAFC;
+      --gray: #64748b;
+      --dark-gray: #334155;
+      --code-bg: #1e293b;
+      --border-radius: 16px;
+      --shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      user-select: none !important;
+      -webkit-user-select: none !important;
+      -ms-user-select: none !important;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F1F5F9;
+      color: var(--dark-gray);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2,h4, h5 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+     h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      color: var(--light);
+    }
+
+
+    code, pre {
+      font-family: 'Fira Code', monospace;
+      background: var(--code-bg);
+      color: #e2e8f0;
+      border-radius: 8px;
+      padding: 0.25rem 0.5rem;
+    }
+
+    pre {
+      padding: 1.2rem;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo i {
+      font-size: 1.8rem;
+      color: var(--accent-light);
+    }
+
+    .logo h1 {
+      font-size: 1.6rem;
+      color: white;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-light);
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 6rem 0 4rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      margin-bottom: 1rem;
+      color: white;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .badge {
+      background: var(--accent);
+      color: var(--primary);
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    /* Section Styles */
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* Index */
+    .index {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 3rem;
+    }
+
+    .index h3 {
+      margin-bottom: 1.2rem;
+      color: var(--secondary);
+    }
+
+    .index ol {
+      padding-left: 1.8rem;
+      font-size: 1.05rem;
+    }
+
+    .index li {
+      margin-bottom: 0.6rem;
+    }
+
+    /* Tools Table */
+    .tools-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin: 2rem 0;
+    }
+
+    .tools-table th {
+      background: var(--primary);
+      color: white;
+      text-align: left;
+      padding: 1.2rem 1.5rem;
+      font-weight: 600;
+    }
+
+    .tools-table td {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: top;
+    }
+
+    .tools-table tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    .tools-table ul {
+      padding-left: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .tools-table li {
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+
+    /* Airtable Schema */
+    .airtable-schema {
+      overflow-x: auto;
+    }
+
+    .schema-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin: 1.5rem 0;
+    }
+
+    .schema-table th {
+      background: var(--secondary);
+      color: white;
+      text-align: left;
+      padding: 1rem 1.2rem;
+      font-weight: 600;
+    }
+
+    .schema-table td {
+      padding: 0.9rem 1.2rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .schema-table tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    .base-title {
+      background: var(--primary);
+      color: white;
+      padding: 1rem 1.5rem;
+      margin: 2.5rem 0 1rem;
+      border-radius: var(--border-radius);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .table-subtitle {
+      margin: 1.5rem 0 0.8rem;
+      font-size: 1.3rem;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Flows */
+    .flow-diagram {
+      background: #f8fafc;
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      margin: 2rem 0;
+      font-family: 'Fira Code', monospace;
+      white-space: pre-wrap;
+      font-size: 0.95rem;
+      overflow-x: auto;
+      border: 1px solid #e2e8f0;
+      line-height: 1.5;
+    }
+
+    .flow-phase {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      margin: 2.5rem 0;
+      box-shadow: var(--shadow);
+    }
+
+    .phase-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      color: var(--secondary);
+    }
+
+    .email-sample, .slack-sample {
+      background: #f1f5f9;
+      border-left: 4px solid var(--accent);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    }
+
+    .email-sample p, .slack-sample p {
+      margin-bottom: 0.5rem;
+    }
+
+    .email-sample em, .slack-sample em {
+      font-style: normal;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin: 2rem 0 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 0.75rem 1.5rem;
+      background: #e2e8f0;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary);
+      color: white;
+      padding: 4rem 0 2rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .footer-logo i {
+      color: var(--accent-light);
+    }
+
+    .copyright {
+      margin-top: 2rem;
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.4rem; }
+      .hero p { font-size: 1.1rem; }
+      .header-content { flex-direction: column; gap: 1rem; }
+      .nav-links { display: flex; flex-wrap: wrap; justify-content: center; }
+      .section-title h2 { font-size: 2rem; }
+    }
+  </style>
+  <script>
+    document.addEventListener("contextmenu", e => e.preventDefault());
+
+    document.addEventListener("selectstart", e => e.preventDefault());
+    document.addEventListener("dragstart", e => e.preventDefault());
+
+    document.addEventListener("keydown", e => {
+      if (
+        e.ctrlKey && (e.key === "u" || e.key === "s" || e.key === "c" || e.key === "p" || e.key === "a") ||
+        e.key === "F12" ||
+        e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")
+      ) {
+        e.preventDefault();
+      }
+    });
+
+    document.addEventListener("copy", e => {
+      e.preventDefault();
+      alert("⚠️ Función de copiado bloqueada");
+    });
+  </script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+        <i class="fas fa-robot"></i>
+        <h1>Automatización por Jean Oviedo</h1>
+      </div>
+      <div class="nav-links">
+        <a href="#arquitectura">Arquitectura</a>
+        <a href="#bases">Bases de Datos</a>
+        <a href="#flujos">Flujos</a>
+        <a href="#implementacion">Implementación</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <span class="badge">
+        <i class="fas fa-check-circle"></i> Solución Completa y Detallada
+      </span>
+      <h1>Sistema de Automatización Integral para AustraliaPRO</h1>
+      <p>Documentación técnica exhaustiva: arquitectura, bases de datos, flujos completos (paso a paso), JSONs, prompts, emails, reportes — sin resúmenes, sin omisiones.</p>
+    </div>
+  </section>
+
+  <!-- Índice -->
+  <section id="indice">
+    <div class="container">
+      <div class="section-title">
+        <h2>📋 ÍNDICE</h2>
+      </div>
+      <div class="index">
+        <h3>Contenido Completo</h3>
+        <ol>
+          <li><strong>Arquitectura General del Sistema</strong></li>
+          <li><strong>Estructura de Bases de Datos en Airtable</strong></li>
+          <li><strong>Flujo 1: Seguimiento Post-Consultoría</strong></li>
+          <li><strong>Flujo 2: Gestión de Aplicantes</strong></li>
+          <li><strong>Configuración de N8N (JSON completo)</strong></li>
+          <li><strong>Mensajes y Plantillas</strong></li>
+          <li><strong>Implementación Paso a Paso</strong></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. ARQUITECTURA GENERAL DEL SISTEMA -->
+  <section id="arquitectura">
+    <div class="container">
+      <div class="section-title">
+        <h2>1. ARQUITECTURA GENERAL DEL SISTEMA</h2>
+      </div>
+
+      <div class="base-title">
+        <i class="fas fa-tools"></i>
+        <h3>Herramientas Seleccionadas y Justificación</h3>
+      </div>
+
+      <table class="tools-table">
+        <thead>
+          <tr>
+            <th>Herramienta</th>
+            <th>Rol</th>
+            <th>Justificación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>N8N (en lugar de Make)</strong></td>
+            <td>Motor de automatización</td>
+            <td>
+              <ul>
+                <li>Open-source y más económico, se puede instalar en su propio servidor para mantener confidencialidad de la información.</li>
+                <li>Mayor flexibilidad con código personalizado</li>
+                <li>Mejor manejo de lógica compleja</li>
+                <li>Integración nativa con IA (OpenAI, Anthropic)</li>
+                <li>Webhooks ilimitados</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Airtable</strong></td>
+            <td>Base de datos central</td>
+            <td>
+              <ul>
+                <li>Interface intuitiva</li>
+                <li>API robusta</li>
+                <li>Vistas personalizadas</li>
+                <li>Ya está en uso</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Tally</strong></td>
+            <td>Formularios</td>
+            <td>
+              <ul>
+                <li>Intuitivo para usuarios</li>
+                <li>Integración sencilla vía webhook</li>
+                <li>Ya está en uso</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Anthropic Claude API</strong></td>
+            <td>Evaluación con IA</td>
+            <td>
+              <ul>
+                <li>Mejor razonamiento estructurado</li>
+                <li>Más preciso en evaluaciones</li>
+                <li>Respuestas en español nativo</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Twilio SendGrid</strong></td>
+            <td>Email transaccional</td>
+            <td>
+              <ul>
+                <li>Deliverability superior</li>
+                <li>Templates dinámicos</li>
+                <li>Analytics integrado</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Twilio</strong></td>
+            <td>SMS</td>
+            <td>
+              <ul>
+                <li>Cobertura internacional</li>
+                <li>Confiable</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>WhatsApp Cloud API</strong></td>
+            <td>WhatsApp</td>
+            <td>
+              <ul>
+                <li>Oficial de Meta</li>
+                <li>Sin costo por mensaje (solo hosting)</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Clientify</strong></td>
+            <td>CRM existente</td>
+            <td>
+              <ul>
+                <li>Mantener datos centralizados</li>
+                <li>Sincronización bidireccional</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 2. ESTRUCTURA DE BASES DE DATOS EN AIRTABLE -->
+  <section id="bases">
+    <div class="container">
+      <div class="section-title">
+        <h2>2. ESTRUCTURA DE BASES DE DATOS EN AIRTABLE</h2>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="base1">Base 1: "Post-Consultoría"</button>
+        <button class="tab-btn" data-tab="base2">Base 2: "Reclutamiento"</button>
+      </div>
+
+      <!-- BASE 1 -->
+      <div id="base1" class="tab-content active">
+        <div class="base-title">
+          <i class="fas fa-database"></i>
+          <h3>Base 1: "Post-Consultoría"</h3>
+        </div>
+
+        <h4 class="table-subtitle"><i class="fas fa-table"></i> Tabla: Clientes</h4>
+        <div class="airtable-schema">
+          <table class="schema-table">
+            <tr>
+              <th>Campo</th>
+              <th>Tipo</th>
+              <th>Descripción</th>
+            </tr>
+            <tr><td>ID Cliente</td><td>Autonumber</td><td>Identificador único</td></tr>
+            <tr><td>Nombre Completo</td><td>Single line text</td><td>Nombre del cliente</td></tr>
+            <tr><td>Email</td><td>Email</td><td>Correo electrónico</td></tr>
+            <tr><td>Teléfono</td><td>Phone</td><td>Número con código país</td></tr>
+            <tr><td>WhatsApp</td><td>Phone</td><td>Número WhatsApp</td></tr>
+            <tr><td>Fecha Consultoría</td><td>Date</td><td>Fecha de la consulta inicial</td></tr>
+            <tr><td>Tipo Recomendación</td><td>Single select</td><td>1 semana / 1 mes / 3 meses / 6 meses</td></tr>
+            <tr><td>Tiempo Estimado Cliente</td><td>Single select</td><td>Respuesta del formulario</td></tr>
+            <tr><td>Estado</td><td>Single select</td><td>Pendiente / Formulario Enviado / Respuesta Recibida / En Seguimiento / Completado / Abandonado</td></tr>
+            <tr><td>Fecha Primer Contacto</td><td>Date</td><td>Automático</td></tr>
+            <tr><td>Fecha Seguimiento</td><td>Date</td><td>Calculada según estimación</td></tr>
+            <tr><td>Respuesta Formulario</td><td>Long text</td><td>JSON con respuestas</td></tr>
+            <tr><td>Ejecutó Recomendación</td><td>Checkbox</td><td>Respuesta del seguimiento</td></tr>
+            <tr><td>Notas Agente</td><td>Long text</td><td>Notas internas</td></tr>
+            <tr><td>Link Formulario</td><td>URL</td><td>URL personalizada</td></tr>
+          </table>
+        </div>
+
+        <h4 class="table-subtitle"><i class="fas fa-table"></i> Tabla: Comunicaciones</h4>
+        <div class="airtable-schema">
+          <table class="schema-table">
+            <tr>
+              <th>Campo</th>
+              <th>Tipo</th>
+              <th>Descripción</th>
+            </tr>
+            <tr><td>ID Comunicación</td><td>Autonumber</td><td>Identificador</td></tr>
+            <tr><td>Cliente</td><td>Link to Clientes</td><td>Relación</td></tr>
+            <tr><td>Tipo</td><td>Single select</td><td>Email / SMS / WhatsApp</td></tr>
+            <tr><td>Fecha Envío</td><td>Date</td><td>Timestamp</td></tr>
+            <tr><td>Estado Envío</td><td>Single select</td><td>Enviado / Entregado / Fallido</td></tr>
+            <tr><td>Contenido</td><td>Long text</td><td>Mensaje enviado</td></tr>
+            <tr><td>Canal</td><td>Single select</td><td>Seguimiento / Nutrición / Inicial</td></tr>
+          </table>
+        </div>
+
+        <h4 class="table-subtitle"><i class="fas fa-table"></i> Tabla: Secuencias de Nutrición</h4>
+        <div class="airtable-schema">
+          <table class="schema-table">
+            <tr>
+              <th>Campo</th>
+              <th>Tipo</th>
+              <th>Descripción</th>
+            </tr>
+            <tr><td>ID Secuencia</td><td>Autonumber</td><td>Identificador</td></tr>
+            <tr><td>Nombre</td><td>Single line text</td><td>Ej: "Nutrición - Visa de trabajo"</td></tr>
+            <tr><td>Día Envío</td><td>Number</td><td>Día relativo (ej: 7, 14, 21)</td></tr>
+            <tr><td>Tipo Mensaje</td><td>Single select</td><td>Educativo / Tips / Recordatorio</td></tr>
+            <tr><td>Contenido Email</td><td>Long text</td><td>Plantilla</td></tr>
+            <tr><td>Contenido WhatsApp</td><td>Long text</td><td>Plantilla</td></tr>
+            <tr><td>Activo</td><td>Checkbox</td><td>Si está en uso</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- BASE 2 -->
+      <div id="base2" class="tab-content">
+        <div class="base-title">
+          <i class="fas fa-database"></i>
+          <h3>Base 2: "Reclutamiento"</h3>
+        </div>
+
+        <h4 class="table-subtitle"><i class="fas fa-table"></i> Tabla: Aplicantes</h4>
+        <div class="airtable-schema">
+          <table class="schema-table">
+            <tr>
+              <th>Campo</th>
+              <th>Tipo</th>
+              <th>Descripción</th>
+            </tr>
+            <tr><td>ID Aplicante</td><td>Autonumber</td><td>Identificador</td></tr>
+            <tr><td>Nombre Completo</td><td>Single line text</td><td>Nombre</td></tr>
+            <tr><td>Email</td><td>Email</td><td>Correo</td></tr>
+            <tr><td>CV Adjunto</td><td>Attachment</td><td>Archivo CV</td></tr>
+            <tr><td>Experiencia Automatización</td><td>Single select</td><td>Sí / No</td></tr>
+            <tr><td>Experiencia Airtable</td><td>Single select</td><td>Sí / No</td></tr>
+            <tr><td>Experiencia Make</td><td>Single select</td><td>Sí / No</td></tr>
+            <tr><td>Motivación</td><td>Long text</td><td>¿Por qué quieres trabajar con nosotros?</td></tr>
+            <tr><td>Fecha Aplicación</td><td>Date</td><td>Automático</td></tr>
+            <tr><td>Estado</td><td>Single select</td><td>Nueva / Evaluada / Pre-seleccionado / Rechazado / Contratado</td></tr>
+            <tr><td>Puntaje IA</td><td>Number</td><td>0-100</td></tr>
+            <tr><td>Calificación Manejo Airtable</td><td>Number</td><td>0-20</td></tr>
+            <tr><td>Calificación Manejo Make</td><td>Number</td><td>0-20</td></tr>
+            <tr><td>Calificación Manejo IA</td><td>Number</td><td>0-20</td></tr>
+            <tr><td>Calificación Nivel Técnico</td><td>Number</td><td>0-20</td></tr>
+            <tr><td>Calificación Automatización</td><td>Number</td><td>0-20</td></tr>
+            <tr><td>Comentarios IA</td><td>Long text</td><td>Explicación del puntaje</td></tr>
+            <tr><td>Recomendado</td><td>Checkbox</td><td>Automático si puntaje > 70</td></tr>
+            <tr><td>Validado Humano</td><td>Checkbox</td><td>Revisión manual</td></tr>
+            <tr><td>Decisión Final</td><td>Single select</td><td>Pendiente / Aprobado / Rechazado</td></tr>
+            <tr><td>Fecha Evaluación</td><td>Date</td><td>Timestamp</td></tr>
+          </table>
+        </div>
+
+        <h4 class="table-subtitle"><i class="fas fa-table"></i> Tabla: Histórico Aplicantes</h4>
+        <div class="airtable-schema">
+          <table class="schema-table">
+            <tr>
+              <th>Campo</th>
+              <th>Tipo</th>
+              <th>Descripción</th>
+            </tr>
+            <tr><td>Todos los campos de Aplicantes</td><td>-</td><td>Copia completa</td></tr>
+            <tr><td>Fecha Movimiento</td><td>Date</td><td>Cuándo se archivó</td></tr>
+            <tr><td>Razón Rechazo</td><td>Single select</td><td>No cumple requisitos / Sobrecalificado / etc</td></tr>
+          </table>
+        </div>
+
+        <h4 class="table-subtitle"><i class="fas fa-table"></i> Tabla: Reportes Semanales</h4>
+        <div class="airtable-schema">
+          <table class="schema-table">
+            <tr>
+              <th>Campo</th>
+              <th>Tipo</th>
+              <th>Descripción</th>
+            </tr>
+            <tr><td>Semana</td><td>Week</td><td>Semana del reporte</td></tr>
+            <tr><td>Total Aplicaciones</td><td>Number</td><td>Contador</td></tr>
+            <tr><td>Pre-seleccionados</td><td>Number</td><td>Contador</td></tr>
+            <tr><td>Rechazados</td><td>Number</td><td>Contador</td></tr>
+            <tr><td>Puntaje Promedio</td><td>Number</td><td>Promedio</td></tr>
+            <tr><td>Reporte Generado</td><td>Long text</td><td>Texto del reporte</td></tr>
+            <tr><td>Fecha Generación</td><td>Date</td><td>Timestamp</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. FLUJO 1: SEGUIMIENTO POST-CONSULTORÍA -->
+  <section id="flujos">
+    <div class="container">
+      <div class="section-title">
+        <h2>3. FLUJO 1: SEGUIMIENTO POST-CONSULTORÍA</h2>
+      </div>
+
+      <div class="base-title">
+        <i class="fas fa-sitemap"></i>
+        <h3>Diagrama de Flujo</h3>
+      </div>
+
+      <div class="flow-diagram">
+INICIO: Cliente termina consultoría
+    ↓
+[1] Trigger: Webhook desde Clientify (nueva consultoría cerrada)
+    ↓
+[2] Crear registro en Airtable (Tabla: Clientes)
+    - Estado: "Pendiente"
+    - Fecha Consultoría: Hoy
+    - Tipo Recomendación: Del CRM
+    ↓
+[3] Esperar 24 horas (delay)
+    ↓
+[4] ENVÍO MULTICANAL (paralelo)
+    ├─→ [4a] Enviar Email (SendGrid)
+    │       - Plantilla: Bienvenida + Link formulario
+    │       - Variable: {{nombre}}, {{link_formulario}}
+    │
+    ├─→ [4b] Enviar SMS (Twilio)
+    │       - Mensaje corto + Link
+    │
+    └─→ [4c] Enviar WhatsApp (WhatsApp Cloud API)
+            - Mensaje personalizado + Link
+    ↓
+[5] Actualizar Airtable
+    - Estado: "Formulario Enviado"
+    - Fecha Primer Contacto: Timestamp
+    ↓
+[6] Trigger: Webhook desde Tally (respuesta formulario)
+    ↓
+[7] Procesar respuesta
+    - Extraer: Tiempo estimado del cliente
+    - Guardar en: Respuesta Formulario (JSON)
+    ↓
+[8] Calcular fecha seguimiento
+    - Si "1 semana" → +7 días
+    - Si "1 mes" → +30 días
+    - Si "3 meses" → +90 días
+    - Si "6 meses" → +180 días
+    ↓
+[9] Actualizar Airtable
+    - Estado: "Respuesta Recibida"
+    - Tiempo Estimado Cliente: Valor
+    - Fecha Seguimiento: Calculada
+    ↓
+[10] INICIAR SECUENCIA DE NUTRICIÓN (paralelo)
+     - Enviar mensajes cada 7 días
+     - Contenido según tabla Secuencias
+     - Hasta llegar a Fecha Seguimiento
+    ↓
+[11] Esperar hasta Fecha Seguimiento (scheduled trigger)
+    ↓
+[12] SEGUIMIENTO AUTOMÁTICO
+     ├─→ Email: "¿Completaste los pasos?"
+     ├─→ WhatsApp: Recordatorio amigable
+     └─→ SMS: Mensaje breve
+    ↓
+[13] ¿Responde el cliente?
+     ├─→ SÍ → [14] ¿Ejecutó recomendación?
+     │         ├─→ SÍ → [15a] Actualizar: Estado "Completado"
+     │         │              └→ Enviar a CRM para próximo paso
+     │         │
+     │         └─→ NO → [15b] ¿Necesita más tiempo?
+     │                   ├─→ SÍ → Recalcular fecha + volver a [9]
+     │                   └─→ NO → Ofrecer nueva consultoría
+     │
+     └─→ NO → [16] Esperar 3 días → Reenviar seguimiento
+                    ↓
+                  ¿Responde?
+                    ├─→ SÍ → Volver a [14]
+                    └─→ NO → [17] Esperar 7 días más
+                                   ↓
+                                 ¿Responde?
+                                   ├─→ SÍ → Volver a [14]
+                                   └─→ NO → [18] Marcar "Abandonado"
+                                                  └→ Notificar agente
+    ↓
+[19] FIN DEL FLUJO
+      </div>
+
+      <div class="base-title">
+        <i class="fas fa-pen"></i>
+        <h3>Lógica Paso a Paso Detallada</h3>
+      </div>
+
+      <div class="flow-phase">
+        <h4 class="phase-title"><i class="fas fa-rocket"></i> FASE 1: CAPTURA Y PRIMER CONTACTO</h4>
+        <p><strong>Paso 1-2:</strong> Al cerrar una consultoría en Clientify, se dispara un webhook que envía:</p>
+        <pre>{
+  "nombre": "Juan Pérez",
+  "email": "juan@email.com",
+  "telefono": "+61412345678",
+  "whatsapp": "+61412345678",
+  "tipo_recomendacion": "3 meses",
+  "id_clientify": "12345"
+}</pre>
+        <p>N8N crea el registro en Airtable con estado "Pendiente" y genera un link único al formulario Tally: <code>https://tally.so/r/seguimiento?cliente={{airtable_record_id}}</code></p>
+        
+        <p><strong>Paso 3-4:</strong> Después de 24 horas (para no saturar al cliente), se envían 3 mensajes simultáneamente:</p>
+        <ul>
+          <li><strong>Email:</strong> Diseño profesional con resumen de la consulta y CTA al formulario</li>
+          <li><strong>SMS:</strong> Mensaje corto de 160 caracteres con link acortado</li>
+          <li><strong>WhatsApp:</strong> Mensaje conversacional con opción de responder directamente</li>
+        </ul>
+      </div>
+
+      <div class="flow-phase">
+        <h4 class="phase-title"><i class="fas fa-file-alt"></i> FASE 2: CAPTURA DE EXPECTATIVAS</h4>
+        <p><strong>Paso 5-7:</strong> Cuando el cliente completa el formulario en Tally, este dispara un webhook con:</p>
+        <pre>{
+  "cliente_id": "rec123xyz",
+  "tiempo_estimado": "2 meses",
+  "comentarios": "Estoy juntando documentos...",
+  "preferencia_contacto": "WhatsApp"
+}</pre>
+
+        <p><strong>Paso 8-9:</strong> N8N calcula la fecha de seguimiento:</p>
+        <ul>
+          <li>Fecha base: Fecha de respuesta al formulario</li>
+          <li>Si cliente dice "2 meses" → Fecha seguimiento = Fecha base + 60 días</li>
+        </ul>
+        <p>Se actualiza Airtable con esta información.</p>
+      </div>
+
+      <div class="flow-phase">
+        <h4 class="phase-title"><i class="fas fa-seedling"></i> FASE 3: NUTRICIÓN</h4>
+        <p><strong>Paso 10:</strong> Se inicia una secuencia de nutrición que envía mensajes educativos cada 7 días:</p>
+        <ul>
+          <li><strong>Día 7:</strong> "5 tips para preparar tu documentación"</li>
+          <li><strong>Día 14:</strong> "Errores comunes a evitar"</li>
+          <li><strong>Día 21:</strong> "¿Sabías que...? (dato útil)"</li>
+          <li><strong>Día 28:</strong> "Casos de éxito similares al tuyo"</li>
+        </ul>
+        <p>Los mensajes se extraen de la tabla "Secuencias de Nutrición" y se personalizan según el tipo de visa.</p>
+      </div>
+
+      <div class="flow-phase">
+        <h4 class="phase-title"><i class="fas fa-bell"></i> FASE 4: SEGUIMIENTO PROACTIVO</h4>
+        <p><strong>Paso 11-12:</strong> Cuando llega la fecha de seguimiento, N8N envía automáticamente:</p>
+
+        <div class="email-sample">
+          <p><strong>Email:</strong></p>
+          <p><em>Asunto:</em> ¿Cómo va tu proceso, Juan?</p>
+          <p>Hola Juan,</p>
+          <p>hace 3 meses tuvimos nuestra consultoría sobre tu visa de trabajo.</p>
+          <p>¿Ya pudiste avanzar con los pasos que conversamos?</p>
+          <p>[Sí, ya los completé] [Necesito más tiempo] [Tengo dudas]</p>
+        </div>
+
+        <div class="email-sample">
+          <p><strong>WhatsApp:</strong></p>
+          <p>Hola Juan 👋 Soy [Agente] de AustraliaPRO. ¿Cómo vas con los pasos que hablamos hace 3 meses? ¿Puedo ayudarte en algo?</p>
+        </div>
+      </div>
+
+      <div class="flow-phase">
+        <h4 class="phase-title"><i class="fas fa-redo"></i> FASE 5: MANEJO DE RESPUESTAS</h4>
+        <p><strong>Paso 13-18:</strong> Sistema de reintentos inteligente:</p>
+        <ol>
+          <li><strong>Si responde inmediatamente:</strong>
+            <ul>
+              <li>"Sí completé" → Marcar completado → CRM para ofrecer siguiente servicio</li>
+              <li>"Necesito más tiempo" → Preguntar cuánto → Recalcular fecha</li>
+              <li>"Tengo dudas" → Conectar con agente humano</li>
+            </ul>
+          </li>
+          <li><strong>Si no responde:</strong>
+            <ul>
+              <li>Esperar 3 días → Reenviar solo por el canal preferido</li>
+              <li>Esperar 7 días más → Reenviar por otro canal</li>
+              <li>Después de 10 días sin respuesta → Marcar "Abandonado" y notificar al equipo</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. FLUJO 2: GESTIÓN DE APLICANTES -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>4. FLUJO 2: GESTIÓN DE APLICANTES</h2>
+      </div>
+
+      <div class="base-title">
+        <i class="fas fa-sitemap"></i>
+        <h3>Diagrama de Flujo</h3>
+      </div>
+
+      <div class="flow-diagram">
+INICIO: Candidato aplica vía formulario
+    ↓
+[1] Trigger: Webhook desde Tally (nueva aplicación)
+    ↓
+[2] Crear registro en Airtable (Tabla: Aplicantes)
+    - Estado: "Nueva"
+    - Todos los campos del formulario
+    ↓
+[3] ENVÍO INMEDIATO: Email de agradecimiento
+    - Template: Confirmación de recepción
+    - "Evaluaremos tu perfil en 48-72 horas"
+    ↓
+[4] Extraer texto del CV (si es PDF)
+    - N8N: PDF Extract Node
+    - Guardar texto completo
+    ↓
+[5] EVALUACIÓN CON IA (Claude API)
+    - Input: CV + Respuestas formulario
+    - Prompt estructurado (ver abajo)
+    - Output: JSON con calificaciones
+    ↓
+[6] Procesar respuesta de IA
+    {
+      "manejo_airtable": 18,
+      "manejo_make": 15,
+      "manejo_ia": 17,
+      "nivel_tecnico": 16,
+      "experiencia_automatizacion": 19,
+      "puntaje_total": 85,
+      "comentarios": "Candidato con sólida experiencia...",
+      "recomendado": true
+    }
+    ↓
+[7] Actualizar Airtable con resultados
+    - Todas las calificaciones individuales
+    - Puntaje total
+    - Comentarios IA
+    - Marcar "Recomendado" si puntaje > 70
+    - Estado: "Evaluada"
+    ↓
+[8] ¿Puntaje > 70?
+    ├─→ SÍ → [9a] Enviar notificación al equipo
+    │              - Slack/Email: "Nuevo candidato destacado"
+    │              - Link directo al registro
+    │
+    └─→ NO → [9b] Sin notificación
+                   - Esperar revisión semanal
+    ↓
+[10] REVISIÓN HUMANA (Manual en Airtable)
+     - Ver calificaciones IA
+     - Revisar CV completo
+     - Actualizar: "Validado Humano" = True
+     - Seleccionar: "Decisión Final"
+    ↓
+[11] ¿Decisión Final?
+     ├─→ APROBADO → [12a] Enviar email positivo
+     │                     - Invitación a entrevista
+     │                     - Calendario para agendar
+     │
+     └─→ RECHAZADO → [12b] Enviar email de rechazo
+                            - Agradecimiento
+                            - Feedback constructivo
+                            ↓
+                         [13] Mover a Histórico
+                            - Copiar registro completo
+                            - Tabla: Histórico Aplicantes
+                            - Eliminar de tabla principal
+    ↓
+[14] REPORTE SEMANAL (Scheduled: cada lunes 9am)
+     ↓
+     [15] Query Airtable
+          - Aplicaciones última semana
+          - Calcular estadísticas
+     ↓
+     [16] Generar reporte con IA
+          - Resumen ejecutivo
+          - Top 3 candidatos
+          - Métricas clave
+     ↓
+     [17] Enviar por email al equipo
+          - PDF adjunto
+          - Gráficas inline
+     ↓
+     [18] Guardar en Airtable (Tabla: Reportes)
+    ↓
+[19] FIN DEL FLUJO
+      </div>
+
+      <div class="base-title">
+        <i class="fas fa-pen"></i>
+        <h3>Lógica Paso a Paso Detallada</h3>
+      </div>
+
+      <div class="flow-phase">
+        <h4 class="phase-title"><i class="fas fa-inbox"></i> FASE 1: RECEPCIÓN DE APLICACIONES</h4>
+        <p><strong>Paso 1-2:</strong> El formulario Tally envía este webhook al completarse:</p>
+        <pre>{
+  "nombre": "María García",
+  "email": "maria@email.com",
+  "cv_url": "https://tally.so/uploads/cv_maria.pdf",
+  "experiencia_automatizacion": "Sí",
+  "experiencia_airtable": "Sí",
+  "experiencia_make": "No",
+  "motivacion": "Quiero trabajar con ustedes porque..."
+}</pre>
+
+        <p>N8N crea inmediatamente el registro en Airtable con timestamp.</p>
+
+        <p><strong>Paso 3:</strong> En menos de 1 minuto, el candidato recibe:</p>
+
+        <div class="email-sample">
+          <p><em>De:</em> reclutamiento@australiapro.com</p>
+          <p><em>Asunto:</em> ¡Recibimos tu aplicación, María!</p>
+          <p>Hola María,</p>
+          <p>¡Gracias por tu interés en unirte al equipo de Entrelingo Group!</p>
+          <p>Hemos recibido tu aplicación para el puesto de IT & Automation Specialist.</p>
+          <p>Nuestro proceso:</p>
+          <p>✓ Tu aplicación será evaluada en las próximas 48-72 horas</p>
+          <p>✓ Utilizamos IA para hacer una pre-selección objetiva</p>
+          <p>✓ Revisamos personalmente cada candidato destacado</p>
+          <p>✓ Te contactaremos si tu perfil avanza</p>
+          <p>¿Tienes preguntas? Responde a este correo.</p>
+          <p>Saludos,<br>Equipo de Talento Humano</p>
+        </div>
+      </div>
+
+      <div class="flow-phase">
+        <h4 class="phase-title"><i class="fas fa-robot"></i> FASE 2: EVALUACIÓN AUTOMÁTICA CON IA</h4>
+        <p><strong>Paso 4-5:</strong> N8N extrae el texto del CV y lo envía a Claude API con este prompt:</p>
+
+        <pre>Eres un experto evaluador de talento técnico. Analiza el siguiente perfil de candidato para el puesto de IT & Automation Specialist.
+
+CRITERIOS DE EVALUACIÓN (califica cada uno de 0 a 20 puntos):
+
+1. Manejo de Airtable (0-20):
+   - Experiencia demostrable
+   - Proyectos complejos
+   - Conocimiento de API y automatizaciones
+
+2. Manejo de Make/N8N (0-20):
+   - Experiencia con herramientas no-code
+   - Flujos complejos desarrollados
+   - Integraciones multi-plataforma
+
+3. Manejo de IA (0-20):
+   - Experiencia con APIs de IA
+   - Implementación de soluciones
+   - Conocimiento de prompting
+
+4. Nivel Técnico (0-20):
+   - Conocimientos de programación
+   - Lógica y resolución de problemas
+   - Stack tecnológico
+
+5. Experiencia en Automatización (0-20):
+   - Años de experiencia
+   - Complejidad de proyectos
+   - Resultados medibles
+
+DATOS DEL CANDIDATO:
+
+Nombre: {{nombre}}
+Experiencia en automatización: {{experiencia_automatizacion}}
+Experiencia con Airtable: {{experiencia_airtable}}
+Experiencia con Make: {{experiencia_make}}
+
+Motivación:
+{{motivacion}}
+
+CV (texto completo):
+{{cv_text}}
+
+RESPONDE ÚNICAMENTE CON UN JSON en este formato exacto:
+{
+  "manejo_airtable": [número 0-20],
+  "manejo_make": [número 0-20],
+  "manejo_ia": [número 0-20],
+  "nivel_tecnico": [número 0-20],
+  "experiencia_automatizacion": [número 0-20],
+  "puntaje_total": [suma de los 5 anteriores],
+  "comentarios": "[Explicación de 3-4 líneas justificando el puntaje. Menciona fortalezas y áreas de oportunidad.]",
+  "recomendado": [true si puntaje_total > 70, false si no]
+}
+
+NO incluyas texto adicional, solo el JSON.</pre>
+
+        <p><strong>Paso 6-7:</strong> N8N parsea la respuesta JSON y actualiza todos los campos en Airtable automáticamente.</p>
+      </div>
+
+      <div class="flow-phase">
+        <h4 class="phase-title"><i class="fas fa-bell"></i> FASE 3: NOTIFICACIONES INTELIGENTES</h4>
+        <p><strong>Paso 8-9:</strong> Si el puntaje es > 70, se envía inmediatamente un Slack al canal #reclutamiento:</p>
+
+        <div class="slack-sample">
+          <p>🌟 <strong>Nuevo Candidato Destacado</strong></p>
+          <p>Nombre: María García</p>
+          <p>Puntaje IA: 85/100</p>
+          <p>✓ Manejo Airtable: 18/20</p>
+          <p>✓ Manejo Make: 15/20</p>
+          <p>✓ Manejo IA: 17/20</p>
+          <p>Comentario IA:</p>
+          <p>"Candidata con sólida experiencia en automatizaciones no-code. Destaca su conocimiento profundo de Airtable y APIs. Aunque no tiene experiencia directa con Make, su background con Zapier es transferible."</p>
+          <p>👉 Ver perfil completo: [Link a Airtable]</p>
+        </div>
+      </div>
+
+      <div class="flow-phase">
+        <h4 class="phase-title"><i class="fas fa-user-check"></i> FASE 4: REVISIÓN HUMANA Y DECISIÓN</h4>
+        <p><strong>Paso 10-11:</strong> El equipo revisa en Airtable y actualiza manualmente:</p>
+        <ul>
+          <li>Campo "Validado Humano": ✓</li>
+          <li>Campo "Decisión Final": "Aprobado" o "Rechazado"</li>
+        </ul>
+        <p>Esto dispara automáticamente el siguiente paso.</p>
+
+        <p><strong>Paso 12:</strong> Según la decisión:</p>
+
+        <div class="email-sample">
+          <p><em>Si APROBADO:</em></p>
+          <p><em>De:</em> reclutamiento@australiapro.com</p>
+          <p><em>Asunto:</em> ¡Felicitaciones, María! - Siguiente paso</p>
+          <p>Hola María,</p>
+          <p>¡Tenemos excelentes noticias!</p>
+          <p>Tu perfil ha destacado en nuestra evaluación inicial y nos gustaría conocerte mejor.</p>
+          <p>Queremos invitarte a una entrevista técnica donde:</p>
+          <p>✓ Conocerás más sobre el puesto y el equipo</p>
+          <p>✓ Podrás hacer todas tus preguntas</p>
+          <p>✓ Revisaremos un caso práctico juntos</p>
+          <p>Agenda tu entrevista aquí: [Link a Calendly]</p>
+          <p>Duración: 60 minutos</p>
+          <p>Modalidad: Videollamada (Zoom)</p>
+          <p>¡Esperamos conversar contigo pronto!</p>
+          <p>Saludos,<br>[Nombre del Reclutador]</p>
+        </div>
+
+        <div class="email-sample">
+          <p><em>Si RECHAZADO:</em></p>
+          <p><em>De:</em> reclutamiento@australiapro.com</p>
+          <p><em>Asunto:</em> Actualización sobre tu aplicación</p>
+          <p>Hola María,</p>
+          <p>Gracias por tu interés en el puesto de IT & Automation Specialist.</p>
+          <p>Después de revisar cuidadosamente tu perfil, hemos decidido continuar con otros candidatos cuya experiencia se alinea más cercanamente con las necesidades actuales del puesto.</p>
+          <p>Tu perfil destaca en: {{fortalezas_segun_ia}}</p>
+          <p>Para futuras oportunidades, te recomendamos: {{areas_mejora}}</p>
+          <p>Mantendremos tu perfil en nuestra base de datos para futuras vacantes.</p>
+          <p>Te deseamos mucho éxito en tu búsqueda.</p>
+          <p>Saludos,<br>Equipo de Talento Humano</p>
+        </div>
+
+        <p><strong>Paso 13:</strong> Si es rechazado, N8N:</p>
+        <ol>
+          <li>Copia el registro completo a "Histórico Aplicantes"</li>
+          <li>Agrega fecha de rechazo y razón</li>
+          <li>Elimina de la tabla principal (para mantenerla limpia)</li>
+        </ol>
+      </div>
+
+      <div class="flow-phase">
+        <h4 class="phase-title"><i class="fas fa-chart-line"></i> FASE 5: REPORTERÍA AUTOMATIZADA</h4>
+        <p><strong>Paso 14-18:</strong> Cada lunes a las 9am, N8N genera automáticamente un reporte:</p>
+
+        <div class="email-sample">
+          <p><strong>REPORTE SEMANAL DE RECLUTAMIENTO</strong><br>
+          Semana del 26 nov - 2 dic 2025</p>
+          <p>📊 <strong>RESUMEN EJECUTIVO</strong><br>
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>
+          Total de aplicaciones: 23<br>
+          Pre-seleccionados (>70): 7 (30%)<br>
+          Rechazados: 12 (52%)<br>
+          En revisión: 4 (18%)</p>
+          <p>Puntaje promedio: 64/100<br>
+          Mejor puntaje: 92/100 (Juan Rodríguez)</p>
+          <p>🌟 <strong>TOP 3 CANDIDATOS</strong><br>
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>
+          1. Juan Rodríguez - 92/100<br>
+             Fortalezas: Experto en Make (20/20), sólido en IA<br>
+             Estado: Entrevista agendada</p>
+          <p>2. Ana Martínez - 87/100<br>
+             Fortalezas: Full-stack, experiencia con Airtable<br>
+             Estado: Pendiente revisión</p>
+          <p>3. Carlos López - 85/100<br>
+             Fortalezas: 5 años en automatización, portfolio sólido<br>
+             Estado: Pendiente revisión</p>
+          <p>📈 <strong>MÉTRICAS CLAVE</strong><br>
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>
+          Promedio Airtable: 13.2/20<br>
+          Promedio Make: 11.8/20<br>
+          Promedio IA: 12.5/20<br>
+          Promedio Técnico: 14.1/20<br>
+          Promedio Automatización: 12.8/20</p>
+          <p>🎯 <strong>RECOMENDACIONES</strong><br>
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>
+          - Priorizar entrevistas con puntajes >85<br>
+          - Considerar capacitación en IA para candidatos fuertes<br>
+          - Revisar requisitos: bajo promedio en Make</p>
+          <p>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>
+          Reporte generado automáticamente<br>
+          2 de diciembre de 2025, 9:00 AM<br>
+          Este reporte se envía al equipo y se guarda en Airtable para referencia histórica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <i class="fas fa-robot"></i>
+          <span>AustraliaPRO Automatización</span>
+        </div>
+        <p>Solución técnica completa para automatizar procesos por Jean Oviedo.</p>
+        <div class="copyright">
+          &copy; 2025 Jean Oviedo. Solución desarrollada con ❤️ y <i class="fas fa-bolt"></i> IA.<br>
+          <small>Todos los derechos reservados.</small>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Tabs for bases
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Remove active from all
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          document.querySelectorAll('.tab-content').forEach(content => {
+            content.classList.remove('active');
+          });
+          
+          // Add active to clicked
+          button.classList.add('active');
+          const targetId = button.getAttribute('data-tab');
+          document.getElementById(targetId).classList.add('active');
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
