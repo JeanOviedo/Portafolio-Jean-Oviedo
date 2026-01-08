@@ -1,4 +1,21 @@
 const projectData = {
+  'peluqueria': {
+    title: 'PeluquerIA - Platform',
+    image: 'img/peluqueria.jpg',
+    description: 'Sistema de gestión para peluquerías desarrollado con Next.js 16, diseñado para administrar citas, personal y servicios de manera eficiente.',
+    technologies: 'Next.js 16, TypeScript, MySQL, Prisma, Tailwind CSS 4',
+    features: [
+      'Gestión de citas y personal',
+      'Administración de servicios',
+      'Autenticación segura con JWT',
+      'Notificaciones por Email',
+      'Interfaz moderna con Framer Motion',
+      'Base de datos MySQL con Prisma'
+    ],
+    links: [
+      { url: 'https://github.com/JeanOviedo/Peluqueria', icon: 'fab fa-github', text: 'GitHub' }
+    ]
+  },
   'rescue': {
     title: 'Rescue Pets App',
     image: 'img/rescupets.jpg',
