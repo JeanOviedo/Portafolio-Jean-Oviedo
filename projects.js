@@ -1,7 +1,7 @@
 const projectData = {
   'lexgravity': {
     title: 'LexGravity - Agente Legal Inteligente Multi-IA',
-    image: 'img/lexgravity.png',
+    image: 'img/lexgravity.jpg',
     description: 'Plataforma avanzada de orquestación de IA para el sector legal. Realiza consultas jurídicas complejas usando múltiples LLMs (Claude, GPT-4) con fallback automático y RAG por país.',
     technologies: 'Next.js, Tailwind CSS, Framer Motion, PostgreSQL, OpenRouter, OpenAI, Anthropic',
     features: [
