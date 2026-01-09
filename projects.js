@@ -501,7 +501,7 @@ const projectData = {
     }
   },
   'automatizado': {
-    image: 'img/rescupets.jpg',
+    image: 'img/zapier.jpg',
     technologies: 'Zapier, Airtable, GoHighLevel, ClickUp, APIs',
     links: [],
     es: {
@@ -530,7 +530,7 @@ const projectData = {
     }
   },
   'onescript': {
-    image: 'img/rescupets.jpg',
+    image: 'img/konecta.jpg',
     technologies: 'React, Form.io, OneScript, JavaScript',
     links: [
       { url: 'https://onescript.konecta.cloud', icon: 'fas fa-globe-americas', text: 'Ver Plataforma' }
