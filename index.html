@@ -27,26 +27,394 @@
       }
     });
 
-    // Intento extra: evitar copiar desde el portapapeles
     document.addEventListener("copy", e => {
       e.preventDefault();
       alert("⚠️ Función de copiado bloqueada");
     });
+
+    // Theme Toggle Logic
+    function toggleTheme() {
+      const root = document.documentElement;
+      const isLight = root.getAttribute("data-theme") === "light";
+      const logo = document.getElementById("siteLogo");
+
+      if (isLight) {
+        root.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+        document.getElementById("themeIcon").className = "fas fa-sun";
+        if (logo) logo.src = "./img/logo.png";
+      } else {
+        root.setAttribute("data-theme", "light");
+        localStorage.setItem("theme", "light");
+        document.getElementById("themeIcon").className = "fas fa-moon";
+        if (logo) logo.src = "./img/logonegro.png";
+      }
+    }
+
+    // Load saved theme and language
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("theme") || "dark";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const btnIcon = document.getElementById("themeIcon");
+      if (btnIcon) {
+        btnIcon.className = savedTheme === "light" ? "fas fa-moon" : "fas fa-sun";
+      }
+
+      // Set initial logo
+      const logo = document.getElementById("siteLogo");
+      if (logo) {
+        logo.src = savedTheme === "light" ? "./img/logonegro.png" : "./img/logo.png";
+      }
+
+      // Load language
+      const savedLang = localStorage.getItem("lang") || "es";
+      changeLanguage(savedLang);
+    });
+
+    // Language Logic
+    const dictionaries = {
+      es: {
+        "nav.home": "Inicio",
+        "nav.about": "Sobre mí",
+        "nav.projects": "Proyectos",
+        "nav.contact": "Contacto",
+        "hero.role": "Ingeniero de Sistemas · Full Stack",
+        "hero.location": "Montería, Colombia · Disponible para trabajo remoto",
+        "about.title": "Hola, soy Jean Carlos Oviedo",
+        "about.subtitle": "Desarrollador Full Stack · Especialista en Automatización & Agentes IA",
+        "about.bio": "Ingeniero de Sistemas apasionado por la tecnología, enfocado en el desarrollo de aplicaciones web modernas, la automatización de procesos y la creación de agentes inteligentes. Me especializo en transformar ideas complejas en soluciones digitales eficientes, integrando arquitecturas robustas con interfaces intuitivas. Desde el desarrollo de sistemas a medida hasta la implementación de flujos de trabajo con IA, mi objetivo es potenciar la productividad y la innovación en cada proyecto.",
+        "edu.title": "Formación Académica",
+        "edu.master.title": "Maestría en Inteligencia Artificial y Computación",
+        "edu.master.desc": "Estudio actualmente - Virtual.",
+        "edu.1.title": "Especialización en Gestión y Seguridad de Bases de Datos",
+        "edu.1.desc": "Administración y seguridad de datos.",
+        "edu.2.title": "Ingeniero de Sistemas",
+        "edu.2.desc": "Desarrollo, arquitectura y gestión TI.",
+        "edu.3.title": "Tecnólogo en Análisis y Desarrollo de Sistemas",
+        "edu.3.desc": "Bases en programación y análisis.",
+        "edu.4.title": "Técnico en Informática y Redes",
+        "edu.4.desc": "Formación técnica en mantenimiento de equipos de cómputo, instalación de redes y soporte a usuarios.",
+        "exp.title": "Experiencia Laboral",
+        "exp.1.role": "KONECTA — Analista de Desarrollo (2022 - 2025)",
+        "exp.1.desc": "Construcción de aplicaciones y componentes, aseguramiento de calidad mediante pruebas y validaciones, y soporte técnico para garantizar la disponibilidad y correcto funcionamiento de los sistemas.",
+        "exp.2.role": "AZULURBANO — Desarrollador Web (2020 - 2021)",
+        "exp.2.desc": "Construcción de soluciones software enfocadas en usabilidad y rendimiento, enfocada en la inmobiliaria y sus necesidades.",
+        "exp.3.role": "Freelance — Desarrollo de Apps y Web (2016 - 2020)",
+        "exp.3.desc": "Primeros pasos en desarrollo web con PHP y aplicaciones de escritorio con Lua. Desarrollo web para diversas empresas como el Colegio Militar Almirante Colón, Fundación Santa Isabel y Postes Camel, entre otras.",
+        "skills.title": "Formación Complementaria & Certificaciones",
+        "projects.title": "Proyectos Destacados",
+        "contact.title": "Contacto",
+        "contact.subtitle": "¿Tienes un proyecto en mente? Escríbeme y lo construimos juntos.",
+        "form.name": "Nombre",
+        "form.name.placeholder": "Tu nombre",
+        "form.email": "Correo",
+        "form.email.placeholder": "tunombre@mail.com",
+        "form.message": "Mensaje",
+        "form.message.placeholder": "Cuéntame sobre tu proyecto",
+        "form.send": "Enviar mensaje",
+        "footer.rights": "Todos los derechos reservados."
+      },
+      en: {
+        "nav.home": "Home",
+        "nav.about": "About Me",
+        "nav.projects": "Projects",
+        "nav.contact": "Contact",
+        "hero.role": "Systems Engineer · Full Stack",
+        "hero.location": "Montería, Colombia · Available for Remote Work",
+        "about.title": "Hi, I am Jean Carlos Oviedo",
+        "about.subtitle": "Full Stack Developer · Automation Specialist & AI Agents",
+        "about.bio": "Systems Engineer passionate about technology, focused on modern web application development, process automation, and intelligent agent creation. I specialize in transforming complex ideas into efficient digital solutions, integrating robust architectures with intuitive interfaces. From custom system development to AI workflow implementation, my goal is to boost productivity and innovation in every project.",
+        "edu.title": "Academic Background",
+        "edu.master.title": "Master's in Artificial Intelligence and Computing",
+        "edu.master.desc": "Currently studying - Virtual.",
+        "edu.1.title": "Specialization in Database Management and Security",
+        "edu.1.desc": "Data administration and security.",
+        "edu.2.title": "Systems Engineer",
+        "edu.2.desc": "Development, architecture, and IT management.",
+        "edu.3.title": "Technologist in Systems Analysis and Development",
+        "edu.3.desc": "Programming and analysis foundations.",
+        "edu.4.title": "Technician in Computing and Networks",
+        "edu.4.desc": "Technical training in computer equipment maintenance, network installation, and user support.",
+        "exp.title": "Work Experience",
+        "exp.1.role": "KONECTA — Development Analyst (2022 - 2025)",
+        "exp.1.desc": "Application and component construction, quality assurance through testing and validation, and technical support to ensure system availability and proper functioning.",
+        "exp.2.role": "AZULURBANO — Web Developer (2020 - 2021)",
+        "exp.2.desc": "Building software solutions focused on usability and performance, tailored to the real estate industry and its needs.",
+        "exp.3.role": "Freelance — App & Web Development (2016 - 2020)",
+        "exp.3.desc": "First steps in web development with PHP and desktop applications with Lua. Web development for various companies such as Colegio Militar Almirante Colón, Fundación Santa Isabel, and Postes Camel, among others.",
+        "skills.title": "Complementary Training & Certifications",
+        "projects.title": "Featured Projects",
+        "contact.title": "Contact",
+        "contact.subtitle": "Have a project in mind? Write to me and let's build it together.",
+        "form.name": "Name",
+        "form.name.placeholder": "Your name",
+        "form.email": "Email",
+        "form.email.placeholder": "yourname@mail.com",
+        "form.message": "Message",
+        "form.message.placeholder": "Tell me about your project",
+        "form.send": "Send Message",
+        "footer.rights": "All rights reserved."
+      }
+    };
+
+    let currentLang = "es";
+
+    function changeLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem("lang", lang);
+      document.documentElement.lang = lang;
+
+      // Update static text
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (dictionaries[lang][key]) {
+          // Verify if it is an input/textarea placeholder
+          if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+            if (el.hasAttribute("placeholder")) {
+              el.setAttribute("placeholder", dictionaries[lang][key]);
+            }
+            // Should we also change label text? usually labels are separate elements.
+            // If the element *is* the label/span, textContent works.
+          } else {
+            el.textContent = dictionaries[lang][key];
+          }
+        }
+      });
+
+      // Update placeholders explicitly if separate keys
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+        const key = el.getAttribute("data-i18n-placeholder");
+        if (dictionaries[lang][key]) {
+          el.setAttribute("placeholder", dictionaries[lang][key]);
+        }
+      });
+
+
+      // Update toggle button text
+      const langBtn = document.getElementById("langToggle");
+      if (langBtn) {
+        langBtn.textContent = lang === "es" ? "EN" : "ES";
+      }
+
+      // Re-render projects
+      if (typeof renderProjects === "function") {
+        renderProjects();
+      }
+    }
+
+    function toggleLanguage() {
+      const newLang = currentLang === "es" ? "en" : "es";
+      changeLanguage(newLang);
+    }
   </script>
 
   <style>
     :root {
       --bg: #0f0b16;
       --card: #1c1326;
+      --text-main: #efe9ff;
+      --text-bio: #e9e1f8;
       --muted: #bdb4c8;
       --accent1: #8a2be2;
       --accent2: #6a1cb9;
       --glass: rgba(255, 255, 255, 0.04);
       --glass-2: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.04);
       --accent-cta: linear-gradient(90deg, var(--accent1), var(--accent2));
       --success: #32cd32;
       --radius: 12px;
       --transition: 0.25s;
+    }
+
+    /* Light Theme Overrides */
+    [data-theme="light"] {
+      --bg: #ffffff;
+      --card: #f8f8f8;
+      /* Slightly darker than bg for subtle separation */
+      --text-main: #000000;
+      /* Pure black for max contrast */
+      --text-bio: #222222;
+      --muted: #444444;
+      /* Much darker gray for readability */
+
+      /* Neutralizing Purples */
+      --accent1: #000000;
+      --accent2: #222222;
+      --accent-cta: linear-gradient(90deg, #000, #222);
+
+      --glass: rgba(0, 0, 0, 0.05);
+      --glass-2: rgba(0, 0, 0, 0.08);
+      --border: rgba(0, 0, 0, 0.15);
+      /* Stronger border for visibility */
+      --success: #006400;
+      /* Dark green for light mode */
+    }
+
+    /* Refined Shadows for Light Mode - Neutral Gray */
+    [data-theme="light"] .card-info,
+    [data-theme="light"] .skill-card,
+    [data-theme="light"] .project-card,
+    [data-theme="light"] .contact-card,
+    [data-theme="light"] .card-photo,
+    [data-theme="light"] .panel {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      border: 1px solid var(--border);
+      background: #ffffff;
+      /* Crisp white cards */
+    }
+
+    [data-theme="light"] .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #ccc;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Forced Dark Text for Headers */
+    [data-theme="light"] .card-info h2,
+    [data-theme="light"] .panel h3,
+    [data-theme="light"] .contact-card h2,
+    [data-theme="light"] .portfolio-head h2,
+    [data-theme="light"] .modal-header h2 {
+      color: #000;
+    }
+
+    /* Change Modal Header Background in Light Mode */
+    [data-theme="light"] .modal-header {
+      background: #f0f0f0;
+      color: #000;
+      border-bottom: 1px solid #ddd;
+    }
+
+    [data-theme="light"] .modal-content {
+      background: #fff;
+      border: 1px solid #ccc;
+    }
+
+    [data-theme="light"] .skill-accordion summary {
+      color: #222;
+    }
+
+    [data-theme="light"] .skill-accordion[open] summary {
+      color: #000;
+    }
+
+    [data-theme="light"] .skill-accordion[open] {
+      border-color: rgba(0, 0, 0, 0.2);
+      background: rgba(0, 0, 0, 0.03);
+    }
+
+    [data-theme="light"] .timeline-item h4 {
+      color: #111;
+    }
+
+    /* Neutral Tags */
+    [data-theme="light"] .skill-sidebar-tag {
+      background: #f0f0f0;
+      color: #000;
+      border: 1px solid #ddd;
+    }
+
+    [data-theme="light"] .cert-item {
+      background: #fff;
+      border: 1px solid var(--border);
+      color: #222;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    [data-theme="light"] .cert-item:hover {
+      border-color: #999;
+      background: #f9f9f9;
+      color: #000;
+    }
+
+    [data-theme="light"] .cert-item i {
+      color: #333;
+      /* Neutral Icon */
+    }
+
+    [data-theme="light"] .dot {
+      background: #333;
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    }
+
+    [data-theme="light"] .highlight {
+      background: #eee;
+      color: #000;
+      border: 1px solid #ddd;
+    }
+
+    [data-theme="light"] .socials a {
+      background: #f5f5f5;
+      color: #333;
+      border: 1px solid #ddd;
+    }
+
+    [data-theme="light"] .socials a:hover {
+      background: #e0e0e0;
+      color: #000;
+    }
+
+    /* Input Fields Light Mode */
+    [data-theme="light"] .input,
+    [data-theme="light"] textarea {
+      background: #ffffff;
+      border: 1px solid #888;
+      color: #000;
+    }
+
+    [data-theme="light"] .input:focus,
+    [data-theme="light"] textarea:focus {
+      border-color: #000;
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    }
+
+    [data-theme="light"] footer {
+      background: #f0f0f0;
+      border-top: 1px solid #ccc;
+      color: #333;
+    }
+
+    [data-theme="light"] .footer-links a {
+      border-color: #ccc;
+      color: #222;
+    }
+
+    [data-theme="light"] .footer-links a:hover {
+      background: #ccc;
+      color: #000;
+    }
+
+    [data-theme="light"] main.wrapper {
+      background-color: transparent;
+      /* Remove purple bg in light mode */
+    }
+
+    [data-theme="light"] .menu a.active {
+      background: #000;
+      /* meaningful active state */
+      color: #fff;
+    }
+
+    [data-theme="light"] .menu a:hover {
+      background: #e0e0e0;
+      color: #000;
+    }
+
+    [data-theme="light"] .contact-section {
+      background-color: transparent;
+    }
+
+    [data-theme="light"] .icon-link {
+      background: #f0f0f0;
+      color: #000;
+      border: 1px solid #ccc;
+    }
+
+    [data-theme="light"] .icon-link:hover {
+      background: #e0e0e0;
+      border-color: #999;
     }
 
     /* Reset */
@@ -63,8 +431,8 @@
     body {
       height: 100%;
       font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg, #06040a 0%, #0b0610 100%);
-      color: #efe9ff;
+      background: var(--bg);
+      color: var(--text-main);
       -webkit-font-smoothing: antialiased;
     }
 
@@ -92,6 +460,36 @@
       background: linear-gradient(90deg, rgba(138, 43, 226, 0.10), rgba(106, 28, 185, 0.04));
       backdrop-filter: blur(6px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.03)
+    }
+
+    .theme-toggle-btn {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--muted);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s;
+      margin-left: 12px;
+    }
+
+    [data-theme="light"] .theme-toggle-btn {
+      border-color: rgba(0, 0, 0, 0.1);
+      color: var(--accent2);
+    }
+
+    .theme-toggle-btn:hover {
+      background: var(--glass);
+      color: #fff;
+    }
+
+    [data-theme="light"] .theme-toggle-btn:hover {
+      background: rgba(0, 0, 0, 0.05);
+      color: var(--accent2);
     }
 
     .brand img {
@@ -206,7 +604,7 @@
     }
 
     .bio {
-      color: #e9e1f8;
+      color: var(--text-bio);
       line-height: 1.7;
       margin-bottom: 16px
     }
@@ -226,6 +624,158 @@
       color: #fff;
       border: 1px solid rgba(255, 255, 255, 0.03);
       font-size: 14px
+    }
+
+    .skill-category {
+      color: var(--text-bio);
+      font-size: 14px;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .skill-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .skill-card:hover {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+      border-color: rgba(138, 43, 226, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    [data-theme="light"] .skill-card:hover {
+      background: #ffffff;
+      border-color: #666;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skills-sidebar {
+      width: 100%;
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .cert-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--text-bio);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.2s;
+    }
+
+    .cert-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: #fff;
+    }
+
+    .cert-item i {
+      color: var(--accent1);
+      font-size: 12px;
+    }
+
+    .skill-accordion {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: background 0.2s;
+    }
+
+    .skill-accordion:hover {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .skill-accordion[open] {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .skill-accordion summary {
+      padding: 10px 14px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--text-bio);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+      outline: none;
+    }
+
+    .skill-accordion summary::-webkit-details-marker {
+      display: none;
+    }
+
+    /* Custom arrow */
+    .skill-accordion summary::after {
+      content: '\f078';
+      font-family: "Font Awesome 5 Pro";
+      font-size: 10px;
+      color: var(--muted);
+      transition: transform 0.2s;
+    }
+
+    .skill-accordion[open] summary::after {
+      transform: rotate(180deg);
+      color: #fff;
+    }
+
+    .skill-accordion-content {
+      padding: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill-sidebar-tag {
+      background: rgba(138, 43, 226, 0.15);
+      color: #f0f0f0;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .timeline-grid {
@@ -532,8 +1082,8 @@
     .input:focus,
     textarea:focus {
       outline: none;
-      box-shadow: 0 6px 32px rgba(138, 43, 226, 0.12);
-      border: 1px solid rgba(138, 43, 226, 0.6)
+      box-shadow: 0 6px 32px rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.5)
     }
 
     .btn-submit {
@@ -552,7 +1102,7 @@
 
     .btn-submit:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(106, 28, 185, 0.18)
+      box-shadow: 0 12px 40px rgba(255, 255, 255, 0.1)
     }
 
     .btn-submit:active {
@@ -633,14 +1183,23 @@
 <body>
   <!-- NAV -->
   <nav class="navbar" role="navigation">
-    <div class="brand"><img src="./img/logo.png" alt="logo" /></div>
-    <ul class="menu" role="menubar">
-      <li><a href="#" class="active">Inicio</a></li>
-      <li><a href="#sobre-mi">Sobre mí</a></li>
-      <li><a href="#portafolio">Proyectos</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+    <div class="brand"><img id="siteLogo" src="./img/logo.png" alt="logo" /></div>
+    <ul class="menu" id="menu">
+      <li><a href="#inicio" class="active" data-i18n="nav.home">Inicio</a></li>
+      <li><a href="#sobre-mi" data-i18n="nav.about">Sobre mí</a></li>
+      <li><a href="#proyectos" data-i18n="nav.projects">Proyectos</a></li>
+      <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
     </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
+    <div style="display:flex;align-items:center;gap:10px">
+      <button id="langToggle" class="theme-toggle-btn" onclick="toggleLanguage()" title="Cambiar idioma">
+        ES
+      </button>
+      <button class="theme-toggle-btn" onclick="toggleTheme()" title="Cambiar tema">
+        <i class="fas fa-moon" id="themeIcon"></i>
+      </button>
+      <div class="nav-toggle" id="navToggle">
+        <i class="fas fa-bars"></i>
+      </div>
   </nav>
 
   <main class="wrapper">
@@ -649,8 +1208,9 @@
       <aside class="card-photo" aria-hidden="false">
         <img src="img/about.png" alt="Foto Jean Carlos Oviedo" />
         <div style="text-align:center">
-          <div class="highlight">Ingeniero de Sistemas · Full Stack</div>
-          <div style="margin-top:8px;color:var(--muted);font-size:13px">Montería, Colombia · Disponible para trabajo
+          <div class="highlight" data-i18n="hero.role">Ingeniero de Sistemas · Full Stack</div>
+          <div style="margin-top:8px;color:var(--muted);font-size:13px" data-i18n="hero.location">Montería, Colombia ·
+            Disponible para trabajo
             remoto</div>
         </div>
         <div class="socials" aria-label="Redes sociales">
@@ -660,71 +1220,142 @@
               class="fab fa-linkedin"></i> LinkedIn</a>
           <a href="https://jeanoviedo.com" target="_blank" rel="noopener"><i class="fas fa-globe-americas"></i> Web</a>
         </div>
+
+        <div class="skills-sidebar">
+
+          <details class="skill-accordion" open>
+            <summary>Web & Backend</summary>
+            <div class="skill-accordion-content">
+              <span class="skill-sidebar-tag">JavaScript</span>
+              <span class="skill-sidebar-tag">TypeScript</span>
+              <span class="skill-sidebar-tag">React</span>
+              <span class="skill-sidebar-tag">Next.js</span>
+              <span class="skill-sidebar-tag">Node.js</span>
+              <span class="skill-sidebar-tag">Laravel</span>
+              <span class="skill-sidebar-tag">Python</span>
+              <span class="skill-sidebar-tag">Django</span>
+              <span class="skill-sidebar-tag">PHP</span>
+              <span class="skill-sidebar-tag">FastAPI</span>
+            </div>
+          </details>
+
+          <details class="skill-accordion">
+            <summary>Data & ORMs</summary>
+            <div class="skill-accordion-content">
+              <span class="skill-sidebar-tag">PostgreSQL</span>
+              <span class="skill-sidebar-tag">MySQL</span>
+              <span class="skill-sidebar-tag">MongoDB</span>
+              <span class="skill-sidebar-tag">Firebase</span>
+              <span class="skill-sidebar-tag">Prisma</span>
+              <span class="skill-sidebar-tag">Redis</span>
+              <span class="skill-sidebar-tag">Supabase</span>
+            </div>
+          </details>
+
+          <details class="skill-accordion">
+            <summary>IA & Automa...</summary>
+            <div class="skill-accordion-content">
+              <span class="skill-sidebar-tag">OpenAI</span>
+              <span class="skill-sidebar-tag">LLMs</span>
+              <span class="skill-sidebar-tag">RAG</span>
+              <span class="skill-sidebar-tag">n8n</span>
+              <span class="skill-sidebar-tag">Zapier</span>
+              <span class="skill-sidebar-tag">LangGraph</span>
+              <span class="skill-sidebar-tag">Claude</span>
+            </div>
+          </details>
+
+          <details class="skill-accordion">
+            <summary>Cloud & DevOps</summary>
+            <div class="skill-accordion-content">
+              <span class="skill-sidebar-tag">AWS</span>
+              <span class="skill-sidebar-tag">Docker</span>
+              <span class="skill-sidebar-tag">Linux</span>
+              <span class="skill-sidebar-tag">CI/CD</span>
+              <span class="skill-sidebar-tag">Vercel</span>
+              <span class="skill-sidebar-tag">GitHub</span>
+            </div>
+          </details>
+
+          <details class="skill-accordion">
+            <summary>Herramientas</summary>
+            <div class="skill-accordion-content">
+              <span class="skill-sidebar-tag">Git</span>
+              <span class="skill-sidebar-tag">VS Code</span>
+              <span class="skill-sidebar-tag">Figma</span>
+              <span class="skill-sidebar-tag">Postman</span>
+              <span class="skill-sidebar-tag">JIRA</span>
+            </div>
+          </details>
+
+        </div>
       </aside>
 
       <div class="card-info">
-        <h2>Hola, soy Jean Carlos Oviedo</h2>
-        <div class="subtitle">Construyo productos digitales que combinan diseño, rendimiento y automatización.</div>
-        <p class="bio">Soy un apasionado de la programación web y la tecnología. Me motiva transformar ideas en
-          soluciones digitales útiles, eficientes y visualmente sólidas. He liderado proyectos desde prototipo hasta
-          producción, aplicando buenas prácticas, automatizaciones y enfoque en la experiencia de usuario.</p>
+        <h2 data-i18n="about.title">Hola, soy Jean Carlos Oviedo</h2>
+        <div class="subtitle" data-i18n="about.subtitle">Desarrollador Full Stack · Especialista en Automatización &
+          Agentes IA</div>
+        <p class="bio" data-i18n="about.bio">
+          Ingeniero de Sistemas apasionado por la tecnología, enfocado en el <strong>desarrollo de aplicaciones web
+            modernas</strong>, la <strong>automatización de procesos</strong> y la creación de <strong>agentes
+            inteligentes</strong>. Me especializo en transformar ideas complejas en soluciones digitales eficientes,
+          integrando arquitecturas robustas con interfaces intuitivas. Desde el desarrollo de sistemas a medida hasta la
+          implementación de flujos de trabajo con IA, mi objetivo es potenciar la productividad y la innovación en cada
+          proyecto.
+        </p>
 
-        <div class="skills" aria-label="Tecnologías">
-          <span class="skill">JavaScript</span>
-          <span class="skill">React</span>
-          <span class="skill">Node.js</span>
-          <span class="skill">TailwindCSS</span>
-          <span class="skill">Laravel</span>
-          <span class="skill">n8n · Zapier</span>
-          <span class="skill">AWS · Google Cloud</span>
-          <span class="skill">MongoDB · MySQL</span>
-        </div>
 
-        <div class="timeline-grid" aria-hidden="false">
+
+        <div class="skills-grid" aria-hidden="false">
           <div class="panel">
-            <h3>Formación Académica</h3>
+            <h3 data-i18n="edu.title">Formación Académica</h3>
             <div class="timeline-item">
               <div class="dot"></div>
-              <div class="content">
-                <h4>Especialización en Gestión y Seguridad de Bases de Datos · 2020</h4>
-                <p>Administración y seguridad de datos.</p>
+              <div>
+                <h4 data-i18n="edu.master.title">Maestría en Inteligencia Artificial y Computación</h4>
+                <p><span data-i18n="edu.master.desc">Estudio actualmente - Virtual.</span> · 2026</p>
               </div>
             </div>
             <div class="timeline-item">
               <div class="dot"></div>
-              <div class="content">
-                <h4>Ingeniero de Sistemas · 2024</h4>
-                <p>Desarrollo, arquitectura y gestión TI.</p>
+              <div>
+                <h4 data-i18n="edu.1.title">Especialización en Gestión y Seguridad de Bases de Datos</h4>
+                <p><span data-i18n="edu.1.desc">Administración y seguridad de datos.</span> · 2020</p>
               </div>
             </div>
             <div class="timeline-item">
               <div class="dot"></div>
-              <div class="content">
-                <h4>Tecnólogo en Análisis y Desarrollo de Sistemas · 2019</h4>
-                <p>Bases en programación y análisis.</p>
+              <div>
+                <h4 data-i18n="edu.2.title">Ingeniero de Sistemas</h4>
+                <p><span data-i18n="edu.2.desc">Desarrollo, arquitectura y gestión TI.</span> · 2024</p>
               </div>
             </div>
             <div class="timeline-item">
               <div class="dot"></div>
-              <div class="content">
-                <h4>Técnico en Informática y Redes · 2017</h4>
-                <p>
-                  Formación técnica en mantenimiento de equipos de cómputo, instalación de redes y soporte a usuarios.
-                  Desarrollo de habilidades prácticas en infraestructura tecnológica y resolución de incidencias.
-                </p>
+              <div>
+                <h4 data-i18n="edu.3.title">Tecnólogo en Análisis y Desarrollo de Sistemas</h4>
+                <p><span data-i18n="edu.3.desc">Bases en programación y análisis.</span> · 2019</p>
               </div>
             </div>
-
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <div>
+                <h4 data-i18n="edu.4.title">Técnico en Informática y Redes</h4>
+                <p><span data-i18n="edu.4.desc">Formación técnica en mantenimiento de equipos de cómputo, instalación de
+                    redes y soporte a usuarios.</span> · 2017</p>
+              </div>
+            </div>
           </div>
 
           <div class="panel">
-            <h3>Experiencia Laboral</h3>
+            <h3 data-i18n="exp.title">Experiencia Laboral</h3>
             <div class="timeline-item">
               <div class="dot"></div>
-              <div class="content">
-                <h4>KONECTA — Analista de Desarrollo (2022 - 2025)</h4>
+              <div>
+                <h4 data-i18n="exp.1.role">KONECTA — Analista de Desarrollo (2022 - 2025)</h4>
 
-                <p>Construcción de aplicaciones y componentes, aseguramiento de calidad mediante pruebas y validaciones,
+                <p data-i18n="exp.1.desc">Construcción de aplicaciones y componentes, aseguramiento de calidad mediante
+                  pruebas y validaciones,
                   y soporte técnico para garantizar la disponibilidad y correcto funcionamiento de los sistemas.</p>
 
               </div>
@@ -732,12 +1363,42 @@
 
             <div class="timeline-item">
               <div class="dot"></div>
-              <div class="content">
-                <h4>AZULURBANO — Desarrollador Web (2020 - 2021)</h4>
-                <p>Construcción de soluciones software enfocadas en usabilidad y rendimiento, enfocada en la
+              <div>
+                <h4 data-i18n="exp.2.role">AZULURBANO — Desarrollador Web (2020 - 2021)</h4>
+                <p data-i18n="exp.2.desc">Construcción de soluciones software enfocadas en usabilidad y rendimiento,
+                  enfocada en la
                   inmobiliaria y sus necesidades.</p>
               </div>
             </div>
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <div>
+                <h4 data-i18n="exp.3.role">Freelance — Desarrollo de Apps y Web (2016 - 2020)</h4>
+                <p data-i18n="exp.3.desc">Primeros pasos en desarrollo web con PHP y aplicaciones de escritorio con Lua.
+                  Desarrollo web para diversas empresas como el Colegio Militar Almirante Colón, Fundación Santa Isabel
+                  y Postes Camel, entre otras.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top: 18px">
+          <h3 data-i18n="skills.title">Formación Complementaria & Certificaciones</h3>
+          <div class="cert-grid">
+            <div class="cert-item"><i class="fas fa-certificate"></i> Bootcamp Desarrollo Web Full Stack</div>
+            <div class="cert-item"><i class="fas fa-certificate"></i> Front-End Developer</div>
+            <div class="cert-item"><i class="fas fa-robot"></i> Diplomado Inteligencia Artificial</div>
+            <div class="cert-item"><i class="fas fa-shield-alt"></i> Diplomado Seguridad Informática</div>
+            <div class="cert-item"><i class="fas fa-code"></i> JavaScript Full</div>
+            <div class="cert-item"><i class="fas fa-code"></i> Desarrollo Web con PHP</div>
+            <div class="cert-item"><i class="fas fa-mobile-alt"></i> React Native Práctico & Game Dev</div>
+            <div class="cert-item"><i class="fas fa-android"></i> Desarrollo de Apps Android</div>
+            <div class="cert-item"><i class="fas fa-shield-alt"></i> Controles y Seguridad Informática</div>
+            <div class="cert-item"><i class="fas fa-search"></i> Auditoría Informática</div>
+            <div class="cert-item"><i class="fas fa-bullhorn"></i> Mercadeo Digital & Contenido</div>
+            <div class="cert-item"><i class="fas fa-user-graduate"></i> Desarrollo Personal</div>
+            <div class="cert-item"><i class="fas fa-keyboard"></i> Digitación de Textos</div>
+            <div class="cert-item"><i class="fas fa-laptop-code"></i> Programación Básica</div>
           </div>
         </div>
       </div>
@@ -746,7 +1407,7 @@
     <!-- PORTFOLIO -->
     <section class="portfolio-section" id="portafolio" aria-label="Proyectos">
       <div class="portfolio-head">
-        <h2>Proyectos Destacados</h2>
+        <h2 data-i18n="projects.title">Proyectos Destacados</h2>
       </div>
       <div class="portfolio-grid" id="projectsGrid" aria-live="polite"></div>
     </section>
@@ -778,14 +1439,14 @@
 
 
     <!-- CONTACT -->
-    <section id="contacto" class="contact-section" aria-label="Contacto">
+    <section id="contacto" class="contact-section">
       <div class="contact-card">
-        <h2>Contacto</h2>
-        <p class="lead">¿Tienes un proyecto en mente? Escríbeme y lo construimos juntos.</p>
+        <h2 data-i18n="contact.title">Contacto</h2>
+        <p class="lead" data-i18n="contact.subtitle">¿Tienes un proyecto en mente? Escríbeme y lo construimos juntos.
+        </p>
 
-        <!-- FormSubmit -->
-        <form id="contactForm" action="https://formsubmit.co/jeanoviedolopez@gmail.com" method="POST" novalidate="">
-
+        <form id="contactForm" class="contact-form" action="https://formsubmit.co/jeanoviedolopez@gmail.com"
+          method="POST" novalidate="">
           <!-- Configuración opcional -->
           <input type="hidden" name="_subject" value="Nuevo mensaje desde portfolio - Jean Oviedo">
           <input type="hidden" name="_next" value="https://jeanoviedo.com/#correo-enviado">
@@ -793,453 +1454,52 @@
 
           <div class="form-row">
             <div class="field">
-              <label for="name">Nombre</label>
-              <input id="name" name="name" class="input" type="text" required placeholder="Tu nombre">
+              <label class="subtitle" data-i18n="form.name">Nombre</label>
+              <input type="text" class="input" name="name" data-i18n-placeholder="form.name.placeholder" required
+                placeholder="Tu nombre" />
             </div>
-
             <div class="field">
-              <label for="email">Correo</label>
-              <input id="email" name="email" class="input" type="email" required placeholder="tunombre@mail.com">
+              <label class="subtitle" data-i18n="form.email">Correo</label>
+              <input type="email" class="input" name="email" data-i18n-placeholder="form.email.placeholder" required
+                placeholder="tunombre@mail.com" />
             </div>
           </div>
-
           <div class="field" style="margin-bottom:12px">
-            <label for="message">Mensaje</label>
-            <textarea id="message" name="message" class="input" rows="6" required
+            <label class="subtitle" data-i18n="form.message">Mensaje</label>
+            <textarea class="input" style="height:120px; resize:vertical" name="message"
+              data-i18n-placeholder="form.message.placeholder" required
               placeholder="Cuéntame sobre tu proyecto"></textarea>
           </div>
 
-          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-            <button type="submit" class="btn-submit">
-              Enviar mensaje <i class="fas fa-paper-plane" style="opacity:0.9"></i>
-            </button>
-
-            <div id="formFeedback" class="form-success" role="status" aria-live="polite">
-              ¡Gracias! Tu mensaje fue enviado.
-            </div>
-          </div>
+          <button type="submit" class="project-cta" style="width:auto">
+            <span data-i18n="form.send">Enviar mensaje</span> <i class="fas fa-paper-plane" style="margin-left:8px"></i>
+          </button>
+          <div id="formFeedback" style="margin-top:10px; font-size:14px; min-height:20px"></div>
         </form>
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-      <div class="footer-inner">
-        <div class="footer-links" role="navigation" aria-label="Redes sociales">
-          <a href="https://github.com/JeanOviedo" target="_blank" rel="noopener"><i class="fab fa-github"></i>
-            GitHub</a>
-          <a href="https://www.linkedin.com/in/jean-oviedo/" target="_blank" rel="noopener"><i
-              class="fab fa-linkedin"></i> LinkedIn</a>
-          <a href="https://jeanoviedo.com" target="_blank" rel="noopener"><i class="fas fa-globe-americas"></i> Web</a>
-        </div>
-        <div class="footer-small">© 2025 Jean Carlos Oviedo — Todos los derechos reservados. Desarrollado con pasión,
-          café y líneas de código.</div>
+    <footer class="footer">
+      <div class="footer-links" role="navigation" aria-label="Redes sociales">
+        <a href="https://github.com/JeanOviedo" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/jean-oviedo/" target="_blank" rel="noopener"><i
+            class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://jeanoviedo.com" target="_blank" rel="noopener"><i class="fas fa-globe-americas"></i> Web</a>
       </div>
+      <p>&copy; 2025 Jean Carlos Oviedo. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
     </footer>
 
 
   </main>
   <!-- SCRIPTS -->
+  <script src="projects.js"></script>
   <script>
-    /* ============== Project Data (como proporcionaste) ============== */
-    const projectData = {
 
-        'cloudsales': {
-    "title": 'CloudSales AI',
-    "image": 'img/agenteventas.jpg',
-"description": "Agente de ventas B2B desarrollado en Python con FastAPI y LangGraph para orquestación de flujos y manejo de estado. Integra LLMs vía OpenRouter y RAG con FAISS como base vectorial. Expone una API REST para consumo externo; el frontend en React y Vite se utiliza únicamente como interfaz de prueba."
-,    "technologies": 'Python 3.10+, FastAPI, LangGraph, OpenRouter, FAISS, React 19, Vite, TailwindCSS, Framer Motion',
-    "features": [
-      'Chat Inteligente con entendimiento de intención',
-      'Catálogo de Productos visual',
-      'Manejo de Objeciones autónomo',
-      'Memoria Conversacional con LangGraph',
-      'RAG (Búsqueda Aumentada por Recuperación)',
-      'Arquitectura Cliente-Servidor moderna'
-    ],
-    "links": [
-      { "url": 'https://github.com/JeanOviedo/AgenteVentas', icon: 'fab fa-github', text: 'GitHub' }
-    ]
-  },
-
-      "lexgravity": {
-        "title": "LexGravity - Agente Legal Inteligente Multi-IA",
-        "image": "img/lexgravity.jpg",
-        "description": "Plataforma avanzada de orquestación de IA para el sector legal. Realiza consultas jurídicas complejas usando múltiples LLMs (Claude, GPT-4) con fallback automático y RAG por país.",
-        "technologies": "Next.js, Tailwind CSS, Framer Motion, PostgreSQL, OpenRouter, OpenAI, Anthropic",
-        "features": [
-          "Orquestación Multi-IA con Fallback Automático",
-          "Motor RAG (LegalCorpus) por jurisdicción",
-          "Agente Legal con contexto jurídico estricto",
-          "Frontend Premium con Next.js y Tailwind",
-          "Modo Estricto/Creativo configurable",
-          "Manejo de errores y timeouts robusto"
-        ],
-        "links": [
-          { "url": "https://github.com/JeanOviedo/lex-gravity", "icon": "fab fa-github", "text": "GitHub" }
-        ]
-      },
-
-      "peluqueria": {
-        "title": "PeluquerIA - Platform",
-        "image": "img/peluqueria.jpg",
-        "description": "Sistema de gestión para peluquerías desarrollado con Next.js 16, diseñado para administrar citas, personal y servicios de manera eficiente.",
-        "technologies": "Next.js 16, TypeScript, MySQL, Prisma, Tailwind CSS 4",
-        "features": [
-          "Gestión de citas y personal",
-          "Administración de servicios",
-          "Autenticación segura con JWT",
-          "Notificaciones por Email",
-          "Interfaz moderna con Framer Motion",
-          "Base de datos MySQL con Prisma"
-        ],
-        "links": [
-          { "url": "https://github.com/JeanOviedo/Peluqueria", "icon": "fab fa-github", "text": "GitHub" }
-        ]
-      },
-
-      "autoprocessn8n": {
-        "title": "Automatización Integral Post-Consultoría y Gestión de Aplicantes",
-        "image": "img/autoprocessn8n.jpg",
-        "description": "Sistema unificado que automatiza todo el ciclo post-consultoría y el proceso completo de gestión de aplicantes. Incluye envíos multicanal, nutrición programada, seguimiento inteligente, evaluación automática de candidatos con IA, análisis de CVs, notificaciones internas y reportería semanal.",
-        "technologies": "n8n, Airtable, Tally, Clientify, SendGrid, Twilio SMS, WhatsApp Cloud API, IA (Claude/OpenAI), JavaScript, S3",
-        "features": [
-          "Seguimiento post-consultoría con envíos multicanal (Email, SMS, WhatsApp)",
-          "Secuencias de nutrición programadas según el tipo de cliente",
-          "Gestión completa de aplicantes con extracción de CV y análisis por IA",
-          "Evaluación técnica automática con puntajes y comentarios detallados",
-          "Flujos con ramificaciones inteligentes (reintentos, abandonos, recontactos)",
-          "Notificaciones internas en Slack y sincronización con CRM",
-          "Generación semanal de reportes automáticos con métricas clave",
-          "Arquitectura centralizada en Airtable como base de datos operativa"
-        ],
-        "links": [
-          { "url": "proyectos/post-consultoria-reclutamiento-automation/index.html", "icon": "fas fa-sitemap", "text": "Ver Arquitectura" }
-        ]
-      }
-      ,
-
-      "transaudion8n": {
-        "title": "Automatización de Transcripción de Audios",
-        "image": "img/transaudion8n.jpg",
-        "description": "Sistema de automatización que procesa audios, convirtiéndolos en texto mediante la API Assembly, filtrando la información relevante y guardando los datos en plataformas como AirTable y bases de datos. El flujo incluye análisis de emociones, menciones de empresas, y más.",
-        "technologies": "n8n, Assembly API, JavaScript, PostgreSQL, AirTable, SharePoint",
-        "features": [
-          "Conversión automática de audios a texto",
-          "Filtrado de datos relevantes (emociones, menciones de empresas)",
-          "Almacenamiento automático en AirTable, PostgreSQL o SharePoint",
-          "Generación de informes de ejecución y errores",
-          "Optimización de recursos y rendimiento (procesamiento por lotes)",
-          "Automatización de flujos de trabajo sin intervención manual"
-        ],
-        "links": [
-          { "url": "https://youtu.be/33WwGrzKPxc", "icon": "fas fa-globe-americas", "text": "Ver Demo" }
-        ]
-      }
-      ,
-
-      'restaurante': {
-        title: 'Automatizado Restaurante',
-        image: 'img/restaurante.jpg',
-        description: 'Sistema de automatización completo para restaurantes que procesa datos desde APIs externas, aplicando validaciones y generando reportes automáticos.',
-        technologies: 'n8n, Node.js, APIs REST, Zapier',
-        features: [
-          'Procesamiento automático de pedidos',
-          'Integración con APIs de restaurantes',
-          'Validaciones de datos en tiempo real',
-          'Generación de reportes automáticos',
-          'Notificaciones inteligentes',
-          'Dashboard de control'
-        ],
-        links: [
-
-        ]
-      },
-      'automatizado': {
-        title: 'Automatización con Zapier, Airtable, GHL y ClickUp',
-        image: 'img/zapier.jpg',
-        description: 'Sistema complejo de automatización que integra múltiples plataformas para gestión eficiente de solicitudes y tareas empresariales.',
-        technologies: 'Zapier, Airtable, GoHighLevel, ClickUp, APIs',
-        features: [
-          'Automatización de formularios',
-          'Clasificación automática de tareas',
-          'Integración multi-plataforma',
-          'Notificaciones inteligentes',
-          'Workflows personalizados',
-          'Reporting automático'
-        ],
-        links: [{ url: 'https://www.youtube.com/watch?v=61YLHIVcA7I', icon: 'fas fa-globe-americas', text: 'Ver Demo' }]
-      },
-      'onescript': {
-        title: 'Componentes React para Konecta',
-        image: 'img/konecta.jpg',
-        description: 'Componentes personalizados desarrollados con React para la plataforma Konecta.cloud, integrando Form.io con OneScript para gestión avanzada de casos y campañas.',
-        technologies: 'React, Form.io, OneScript, JavaScript',
-        features: [
-          'Componentes reutilizables',
-          'Integración con Form.io',
-          'Gestión de casos y campañas',
-          'Interfaz de usuario avanzada',
-          'Validaciones personalizadas',
-          'Optimización de rendimiento'
-        ],
-        links: [
-          { url: 'https://onescript.konecta.cloud', icon: 'fas fa-globe-americas', text: 'Ver Plataforma' }
-        ]
-      },
-
-      'rescue': {
-        title: 'Rescue Pets App',
-        image: 'img/rescupets.jpg',
-        description: 'Aplicación completa para el rescate de mascotas, desarrollada con tecnologías modernas de frontend y backend. Permite gestionar adopciones, reportar mascotas perdidas y conectar a dueños con adoptantes.',
-        technologies: 'React, Node.js, Express, MongoDB, Firebase',
-        features: [
-          'Sistema de registro y autenticación de usuarios',
-          'Gestión completa de perfiles de mascotas',
-          'Sistema de reportes de mascotas perdidas/encontradas',
-          'Interfaz intuitiva para adopciones',
-          'Integración con mapas para ubicación de mascotas',
-          'Notificaciones en tiempo real'
-        ],
-        links: [
-          { url: 'https://github.com/andresguaita/frontend-rescue-pets', icon: 'fab fa-github', text: 'GitHub' },
-          { url: 'https://www.youtube.com/watch?v=KwE2cDZ62IA', icon: 'fas fa-globe-americas', text: 'Demo' }
-        ]
-      },
-      'maq': {
-        title: 'Maquetación',
-        image: 'img/maq.jpg',
-        description: 'Proyecto de maquetación web responsive que demuestra habilidades en diseño moderno y técnicas de CSS avanzadas. Incluye componentes reutilizables y diseño adaptativo.',
-        technologies: 'HTML5, Tailwind CSS, JavaScript',
-        features: [
-          'Diseño completamente responsive',
-          'Componentes modulares y reutilizables',
-          'Animaciones CSS modernas',
-          'Optimización de rendimiento',
-          'Accesibilidad web (WCAG)',
-          'Compatibilidad cross-browser'
-        ],
-        links: [
-          { url: 'https://github.com/JeanOviedo/Frontend-Maquetacion', icon: 'fab fa-github', text: 'GitHub' },
-          { url: 'https://jeanoviedo.github.io/Frontend-Maquetacion/', icon: 'fas fa-globe-americas', text: 'Ver Sitio' }
-        ]
-      },
-      'fifa': {
-        title: 'Fifa 21',
-        image: 'img/fifa.jpg',
-        description: 'Aplicación web interactiva que consume la API oficial de FIFA para mostrar estadísticas, jugadores y equipos. Incluye búsqueda avanzada y visualización de datos.',
-        technologies: 'JavaScript, HTML5, CSS3, FIFA API',
-        features: [
-          'Consumo de API REST de FIFA',
-          'Búsqueda y filtrado de jugadores',
-          'Estadísticas detalladas de equipos',
-          'Interfaz de usuario intuitiva',
-          'Visualización de datos en tiempo real',
-          'Responsive design'
-        ],
-        links: [
-          { url: 'https://github.com/JeanOviedo/Fifa', icon: 'fab fa-github', text: 'GitHub' }
-        ]
-      },
-      'rece': {
-        title: 'Recetax',
-        image: 'img/rece.jpg',
-        description: 'Sistema de gestión de menús para hoteles desarrollado con React. Permite crear, editar y gestionar menús diarios, platos y precios de manera eficiente.',
-        technologies: 'React, JavaScript, CSS3, Local Storage',
-        features: [
-          'Gestión completa de menús',
-          'Sistema de categorías de platos',
-          'Cálculo automático de precios',
-          'Interfaz de administración intuitiva',
-          'Almacenamiento local de datos',
-          'Exportación de menús en PDF'
-        ],
-        links: [
-          { url: 'https://github.com/JeanOviedo/Recetax', icon: 'fab fa-github', text: 'GitHub' }
-        ]
-      },
-      'pokex': {
-        title: 'Pokex',
-        image: 'img/capturapokex.jpg',
-        description: 'Aplicación web interactiva sobre el universo Pokémon. Incluye pokedex completa, búsqueda de Pokémon, estadísticas y evoluciones.',
-        technologies: 'React, Node.js, PokeAPI, CSS3',
-        features: [
-          'Pokedex completa con todos los Pokémon',
-          'Búsqueda por nombre o tipo',
-          'Información detallada de cada Pokémon',
-          'Sistema de favoritos',
-          'Animaciones y efectos visuales',
-          'Modo offline limitado'
-        ],
-        links: [
-          { url: 'https://github.com/JeanOviedo/Pokex', icon: 'fab fa-github', text: 'GitHub' }
-        ]
-      },
-      'ahorked': {
-        title: 'Ahorked',
-        image: 'img/capturahorked.jpg',
-        description: 'Juego clásico del ahorcado desarrollado con tecnologías web puras. Incluye múltiples categorías, niveles de dificultad y sistema de puntuación.',
-        technologies: 'JavaScript, HTML5, CSS3',
-        features: [
-          'Múltiples categorías de palabras',
-          'Tres niveles de dificultad',
-          'Sistema de puntuación',
-          'Animaciones del ahorcado',
-          'Efectos de sonido',
-          'Responsive design'
-        ],
-        links: [
-          { url: 'https://github.com/JeanOviedo/Ahorked', icon: 'fab fa-github', text: 'GitHub' },
-          { url: 'https://jeanoviedo.github.io/Ahorked/', icon: 'fas fa-globe-americas', text: 'Jugar' }
-        ]
-      },
-      'progresuss': {
-        title: 'Progresuss',
-        image: 'img/capturaprogresuss.jpg',
-        description: 'Sitio web corporativo para una firma de abogados especializada en servicios legales. Diseño profesional con información clara y accesible.',
-        technologies: 'HTML5, CSS3, JavaScript, PHP',
-        features: [
-          'Diseño corporativo profesional',
-          'Secciones de servicios legales',
-          'Formulario de contacto integrado',
-          'Optimización SEO',
-          'Carga rápida y eficiente',
-          'Compatible con todos los navegadores'
-        ],
-        links: [
-          { url: 'https://www.legalprogresuss.com.co/', icon: 'fas fa-globe-americas', text: 'Ver Sitio' }
-        ]
-      },
-      'encriptex': {
-        title: 'Encriptex',
-        image: 'img/encriptex.jpg',
-        description: 'Herramienta de encriptación y desencriptación de texto desarrollada para Oracle y Alura Latam. Algoritmos de encriptación personalizados.',
-        technologies: 'JavaScript, HTML5, CSS3',
-        features: [
-          'Encriptación y desencriptación de texto',
-          'Algoritmos personalizados seguros',
-          'Interfaz simple e intuitiva',
-          'Copia al portapapeles',
-          'Validación de entrada',
-          'Responsive design'
-        ],
-        links: [
-          { url: 'https://github.com/JeanOviedo/Encriptex', icon: 'fab fa-github', text: 'GitHub' },
-          { url: 'https://jeanoviedo.github.io/Encriptex/', icon: 'fas fa-globe-americas', text: 'Usar Herramienta' }
-        ]
-      },
-      'cinex': {
-        title: 'Cinex',
-        image: 'img/capturacinex.jpg',
-        description: 'Aplicación web para explorar y descubrir películas y series. Incluye búsqueda, filtros por género y información detallada de cada título.',
-        technologies: 'JavaScript, HTML5, CSS3, TMDB API',
-        features: [
-          'Búsqueda de películas y series',
-          'Filtros por género y año',
-          'Información detallada de títulos',
-          'Valoraciones y reseñas',
-          'Lista de favoritos',
-          'Interfaz moderna y atractiva'
-        ],
-        links: [
-          { url: 'https://github.com/JeanOviedo/Cinex', icon: 'fab fa-github', text: 'GitHub' },
-          { url: 'https://jeanoviedo.github.io/Cinex/', icon: 'fas fa-globe-americas', text: 'Explorar' }
-        ]
-      },
-      'azul': {
-        title: 'Azul Urbano',
-        image: 'img/azulurbano.jpg',
-        description: 'Sitio web corporativo para servicios urbanos y ambientales. Diseño moderno que refleja la misión de sostenibilidad y desarrollo urbano.',
-        technologies: 'HTML5, CSS3, JavaScript, WordPress',
-        features: [
-          'Diseño corporativo moderno',
-          'Secciones de servicios ambientales',
-          'Blog integrado',
-          'Formulario de contacto',
-          'Optimización para motores de búsqueda',
-          'Diseño responsive completo'
-        ],
-        links: [
-          { url: 'http://azulurbano.com/', icon: 'fas fa-globe-americas', text: 'Ver Sitio' }
-        ]
-      },
-      'zinu': {
-        title: 'ZinuPlay',
-        image: 'img/zinuplay.jpg',
-        description: 'Plataforma de entretenimiento digital con contenido multimedia. Incluye streaming, juegos y comunidad interactiva.',
-        technologies: 'HTML5, CSS3, JavaScript, React',
-        features: [
-          'Plataforma de streaming',
-          'Sistema de juegos interactivos',
-          'Comunidad de usuarios',
-          'Contenido multimedia diverso',
-          'Interfaz de usuario moderna',
-          'Soporte multi-dispositivo'
-        ],
-        links: [
-          { url: 'https://zinuplay.com/', icon: 'fas fa-globe-americas', text: 'Visitar' }
-        ]
-      },
-      'mistareas': {
-        title: 'Mis Tareas',
-        image: 'img/mistareas.png',
-        description: 'Aplicación de gestión de tareas personales desarrollada con React. Permite crear, editar, eliminar y organizar tareas de manera eficiente.',
-        technologies: 'React, JavaScript, CSS3, Local Storage',
-        features: [
-          'Creación y edición de tareas',
-          'Sistema de categorías',
-          'Marcado de tareas completadas',
-          'Almacenamiento local persistente',
-          'Interfaz intuitiva y moderna',
-          'Funcionalidad drag & drop'
-        ],
-        links: [
-          { url: 'https://github.com/JeanOviedo/MisTareasReact', icon: 'fab fa-github', text: 'GitHub' }
-        ]
-      },
-
-      'sinu': {
-        title: 'Sinu Android',
-        image: 'img/sinu.png',
-        description: 'Videojuego inspirado en el río Sinú en Montería, donde Sinu debe completar misiones para cerrar un portal dimensional y derrotar criaturas de otra dimensión.',
-        technologies: 'JavaScript, HTML5, Canvas, CSS3, Construct 3',
-        features: [
-          'Historia basada en elementos culturales del Sinú',
-          'Misiones progresivas con zonas ancestrales',
-          'Sistema de combate usando cocos como arma principal',
-          'Enemigos, criaturas gigantes y amenazas dinámicas',
-          'Puntuación por derrotar criaturas',
-          'Nuevas misiones mediante actualizaciones'
-        ],
-        links: [
-          { url: 'https://www.amazon.co.uk/jeankee-Sinu-From-Colombia/dp/B00JE2TCS6', icon: 'fab fa-amazon', text: 'Amazon' }
-        ]
-      },
-      'destrozavirus': {
-        title: 'Destroza Virus USB (Descontinuado)',
-        image: 'img/destroza.webp',
-        description: 'Antivirus portable desarrollado en Lua con ejecución automática (autoplay). Diseñado para proteger dispositivos USB contra troyanos, malware y modificaciones no autorizadas.',
-        technologies: 'Lua, Autoplay, Windows Shell',
-        features: [
-          'Protección automática al conectar dispositivos USB',
-          'Modo protector residente en bandeja del sistema',
-          'Análisis rápido del dispositivo y acciones sugeridas',
-          'Vacunación y desvacunación de unidades USB',
-          'Exploración de archivos y envío al baúl seguro',
-          'Buscador de virus y troyanos en fase beta',
-          'Envío de muestras para análisis remoto',
-          'Versión instalable y versión portable en el propio USB'
-        ],
-        links: [
-          { url: 'https://destrozavirususb.uptodown.com/windows', icon: 'fas fa-globe-americas', text: 'Ver Proyecto' }
-        ]
-      },
-
-
-    };
 
     /* ============== Render projects dynamically ============== */
     function createProjectCard(key, project) {
+      const langData = project[currentLang] || project.es; // Fallback to ES
+
       const card = document.createElement('article');
       card.className = 'project-card';
 
@@ -1251,8 +1511,8 @@
       const body = document.createElement('div');
       body.className = 'project-body';
 
-      const h3 = document.createElement('h3'); h3.textContent = project.title;
-      const p = document.createElement('p'); p.textContent = project.description;
+      const h3 = document.createElement('h3'); h3.textContent = langData.title;
+      const p = document.createElement('p'); p.textContent = langData.description;
 
       const linksDiv = document.createElement('div'); linksDiv.className = 'project-links';
 
@@ -1264,7 +1524,7 @@
       });
 
       // CTA
-      const btn = document.createElement('button'); btn.className = 'project-cta'; btn.textContent = 'Ver detalles';
+      const btn = document.createElement('button'); btn.className = 'project-cta'; btn.textContent = currentLang === 'en' ? 'View Details' : 'Ver detalles';
       btn.onclick = () => openProjectModalFromKey(key);
       linksDiv.appendChild(btn);
 
@@ -1276,6 +1536,7 @@
 
     function renderProjects() {
       const grid = document.getElementById('projectsGrid');
+      if (!grid) return;
       grid.innerHTML = '';
       Object.keys(projectData).forEach(key => {
         const project = projectData[key];
@@ -1285,16 +1546,20 @@
     }
 
     /* ============== Modal controllers ============== */
+    /* ============== Modal controllers ============== */
     function openProjectModalFromKey(key) {
       const project = projectData[key];
       if (!project) return;
-      document.getElementById('modalTitle').textContent = project.title;
+
+      const langData = project[currentLang] || project.es;
+
+      document.getElementById('modalTitle').textContent = langData.title;
       document.getElementById('modalImage').src = project.image;
-      document.getElementById('modalDesc').textContent = project.description;
+      document.getElementById('modalDesc').textContent = langData.description;
       document.getElementById('modalTech').textContent = project.technologies;
 
       const features = document.getElementById('modalFeatures'); features.innerHTML = '';
-      (project.features || []).forEach(f => { const li = document.createElement('li'); li.textContent = f; features.appendChild(li); });
+      (langData.features || []).forEach(f => { const li = document.createElement('li'); li.textContent = f; features.appendChild(li); });
 
       const linksContainer = document.getElementById('modalLinks'); linksContainer.innerHTML = '';
       (project.links || []).forEach(l => {
