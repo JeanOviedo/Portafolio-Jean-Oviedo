@@ -124,6 +124,98 @@ const projectData = {
       ]
     }
   },
+
+   'restaurante': {
+    image: 'img/restaurante.jpg',
+    technologies: 'n8n, Node.js, APIs REST, Zapier',
+    links: [
+      { url: 'https://www.youtube.com/watch?v=61YLHIVcA7I', icon: 'fas fa-globe-americas', text: 'Ver Demo' }
+    ],
+    es: {
+      title: 'Automatizado Restaurante',
+      description: 'Sistema de automatización completo para restaurantes que procesa datos desde APIs externas, aplicando validaciones y generando reportes automáticos.',
+      features: [
+        'Procesamiento automático de pedidos',
+        'Integración con APIs de restaurantes',
+        'Validaciones de datos en tiempo real',
+        'Generación de reportes automáticos',
+        'Notificaciones inteligentes',
+        'Dashboard de control'
+      ]
+    },
+    en: {
+      title: 'Restaurant Automation',
+      description: 'Complete automation system for restaurants that processes data from external APIs, applying validations and generating automatic reports.',
+      features: [
+        'Automatic order processing',
+        'Restaurant API integration',
+        'Real-time data validation',
+        'Automatic report generation',
+        'Intelligent notifications',
+        'Control Dashboard'
+      ]
+    }
+  },
+  'automatizado': {
+    image: 'img/zapier.jpg',
+    technologies: 'Zapier, Airtable, GoHighLevel, ClickUp, APIs',
+    links: [],
+    es: {
+      title: 'Automatización con Zapier, Airtable, GHL y ClickUp',
+      description: 'Sistema complejo de automatización que integra múltiples plataformas para gestión eficiente de solicitudes y tareas empresariales.',
+      features: [
+        'Automatización de formularios',
+        'Clasificación automática de tareas',
+        'Integración multi-plataforma',
+        'Notificaciones inteligentes',
+        'Workflows personalizados',
+        'Reporting automático'
+      ]
+    },
+    en: {
+      title: 'Automation with Zapier, Airtable, GHL & ClickUp',
+      description: 'Complex automation system integrating multiple platforms for efficient management of business requests and tasks.',
+      features: [
+        'Form automation',
+        'Automatic task classification',
+        'Multi-platform integration',
+        'Intelligent notifications',
+        'Custom workflows',
+        'Automatic reporting'
+      ]
+    }
+  },
+  'onescript': {
+    image: 'img/konecta.jpg',
+    technologies: 'React, Form.io, OneScript, JavaScript',
+    links: [
+      { url: 'https://onescript.konecta.cloud', icon: 'fas fa-globe-americas', text: 'Ver Plataforma' }
+    ],
+    es: {
+      title: 'Componentes React para Konecta',
+      description: 'Componentes personalizados desarrollados con React para la plataforma Konecta.cloud, integrando Form.io con OneScript para gestión avanzada de casos y campañas.',
+      features: [
+        'Componentes reutilizables',
+        'Integración con Form.io',
+        'Gestión de casos y campañas',
+        'Interfaz de usuario avanzada',
+        'Validaciones personalizadas',
+        'Optimización de rendimiento'
+      ]
+    },
+    en: {
+      title: 'React Components for Konecta',
+      description: 'Custom components developed with React for the Konecta.cloud platform, integrating Form.io with OneScript for advanced case and campaign management.',
+      features: [
+        'Reusable components',
+        'Form.io integration',
+        'Case and campaign management',
+        'Advanced user interface',
+        'Custom validations',
+        'Performance optimization'
+      ]
+    }
+  },
   'maq': {
     image: 'img/maq.jpg',
     technologies: 'HTML5, Tailwind CSS, JavaScript',
@@ -469,95 +561,5 @@ const projectData = {
       ]
     }
   },
-  'restaurante': {
-    image: 'img/restaurante.jpg',
-    technologies: 'n8n, Node.js, APIs REST, Zapier',
-    links: [
-      { url: 'https://www.youtube.com/watch?v=61YLHIVcA7I', icon: 'fas fa-globe-americas', text: 'Ver Demo' }
-    ],
-    es: {
-      title: 'Automatizado Restaurante',
-      description: 'Sistema de automatización completo para restaurantes que procesa datos desde APIs externas, aplicando validaciones y generando reportes automáticos.',
-      features: [
-        'Procesamiento automático de pedidos',
-        'Integración con APIs de restaurantes',
-        'Validaciones de datos en tiempo real',
-        'Generación de reportes automáticos',
-        'Notificaciones inteligentes',
-        'Dashboard de control'
-      ]
-    },
-    en: {
-      title: 'Restaurant Automation',
-      description: 'Complete automation system for restaurants that processes data from external APIs, applying validations and generating automatic reports.',
-      features: [
-        'Automatic order processing',
-        'Restaurant API integration',
-        'Real-time data validation',
-        'Automatic report generation',
-        'Intelligent notifications',
-        'Control Dashboard'
-      ]
-    }
-  },
-  'automatizado': {
-    image: 'img/zapier.jpg',
-    technologies: 'Zapier, Airtable, GoHighLevel, ClickUp, APIs',
-    links: [],
-    es: {
-      title: 'Automatización con Zapier, Airtable, GHL y ClickUp',
-      description: 'Sistema complejo de automatización que integra múltiples plataformas para gestión eficiente de solicitudes y tareas empresariales.',
-      features: [
-        'Automatización de formularios',
-        'Clasificación automática de tareas',
-        'Integración multi-plataforma',
-        'Notificaciones inteligentes',
-        'Workflows personalizados',
-        'Reporting automático'
-      ]
-    },
-    en: {
-      title: 'Automation with Zapier, Airtable, GHL & ClickUp',
-      description: 'Complex automation system integrating multiple platforms for efficient management of business requests and tasks.',
-      features: [
-        'Form automation',
-        'Automatic task classification',
-        'Multi-platform integration',
-        'Intelligent notifications',
-        'Custom workflows',
-        'Automatic reporting'
-      ]
-    }
-  },
-  'onescript': {
-    image: 'img/konecta.jpg',
-    technologies: 'React, Form.io, OneScript, JavaScript',
-    links: [
-      { url: 'https://onescript.konecta.cloud', icon: 'fas fa-globe-americas', text: 'Ver Plataforma' }
-    ],
-    es: {
-      title: 'Componentes React para Konecta',
-      description: 'Componentes personalizados desarrollados con React para la plataforma Konecta.cloud, integrando Form.io con OneScript para gestión avanzada de casos y campañas.',
-      features: [
-        'Componentes reutilizables',
-        'Integración con Form.io',
-        'Gestión de casos y campañas',
-        'Interfaz de usuario avanzada',
-        'Validaciones personalizadas',
-        'Optimización de rendimiento'
-      ]
-    },
-    en: {
-      title: 'React Components for Konecta',
-      description: 'Custom components developed with React for the Konecta.cloud platform, integrating Form.io with OneScript for advanced case and campaign management.',
-      features: [
-        'Reusable components',
-        'Form.io integration',
-        'Case and campaign management',
-        'Advanced user interface',
-        'Custom validations',
-        'Performance optimization'
-      ]
-    }
-  }
+ 
 };
