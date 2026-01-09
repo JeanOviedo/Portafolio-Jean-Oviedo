@@ -1,4 +1,21 @@
 const projectData = {
+  'cloudsales': {
+    title: 'CloudSales AI',
+    image: 'img/agenteventas.jpg',
+    description: 'Plataforma de automatización de ventas de nivel empresarial diseñada para empresas tecnológicas B2B. Este sistema utiliza inteligencia artificial avanzada para cualificar leads, responder consultas y gestionar el ciclo de ventas de manera autónoma.',
+    technologies: 'Python 3.10+, FastAPI, LangGraph, OpenRouter, FAISS, React 19, Vite, TailwindCSS, Framer Motion',
+    features: [
+      'Chat Inteligente con entendimiento de intención',
+      'Catálogo de Productos visual',
+      'Manejo de Objeciones autónomo',
+      'Memoria Conversacional con LangGraph',
+      'RAG (Búsqueda Aumentada por Recuperación)',
+      'Arquitectura Cliente-Servidor moderna'
+    ],
+    links: [
+      { url: 'https://github.com/JeanOviedo/AgenteVentas', icon: 'fab fa-github', text: 'GitHub' }
+    ]
+  },
   'lexgravity': {
     title: 'LexGravity - Agente Legal Inteligente Multi-IA',
     image: 'img/lexgravity.jpg',
