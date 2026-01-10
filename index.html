@@ -1619,7 +1619,7 @@
       });
 
       // 2. Simple email format check
-      const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (email.value.trim() !== '' && !emailPattern.test(email.value)) {
         valid = false;
         email.style.borderColor = 'rgba(255,50,50,0.8)';
