@@ -1,4 +1,36 @@
 const projectData = {
+  'medicalok': {
+    image: 'img/medical.jpg',
+    technologies: 'Next.js 16, Tailwind CSS v4, TypeScript, Framer Motion, Radix UI',
+    links: [
+      { url: 'https://github.com/JeanOviedo/MedicalOk', icon: 'fab fa-github', text: 'GitHub' },
+      { url: 'https://jeanoviedo.github.io/MedicalOk/', icon: 'fas fa-globe-americas', text: 'Demo' }
+    ],
+    es: {
+      title: 'MedicalOk - Premium Medical Clinic Template',
+      description: 'Plantilla frontend moderna, rápida y totalmente responsive diseñada para clínicas, hospitales y consultorios médicos. Construida con Next.js 16, Tailwind CSS v4 y Framer Motion, ofrece una experiencia de usuario de primera clase.',
+      features: [
+        'Directorio de Doctores filtrable por especialidad',
+        'Perfiles detallados de doctores y servicios',
+        'Agendamiento de Citas (Wizard step-by-step)',
+        'Diseño Premium con Shadcn/ui y Framer Motion',
+        'Modo Oscuro/Claro persistente',
+        'Optimización SEO y Performance'
+      ]
+    },
+    en: {
+      title: 'MedicalOk - Premium Medical Clinic Template',
+      description: 'Modern, fast, and fully responsive frontend template designed for clinics, hospitals, and medical offices. Built with Next.js 16, Tailwind CSS v4, and Framer Motion, offering a top-class user experience.',
+      features: [
+        'Doctor Directory filterable by specialty',
+        'Detailed doctor and service profiles',
+        'Appointment Booking (Wizard step-by-step)',
+        'Premium Design with Shadcn/ui and Framer Motion',
+        'Persistent Dark/Light Mode',
+        'SEO and Performance Optimization'
+      ]
+    }
+  },
   'cloudsales': {
     image: 'img/agenteventas.jpg',
     technologies: 'Python 3.10+, FastAPI, LangGraph, OpenRouter, FAISS, React 19, Vite, TailwindCSS, Framer Motion',
@@ -125,7 +157,7 @@ const projectData = {
     }
   },
 
-   'restaurante': {
+  'restaurante': {
     image: 'img/restaurante.jpg',
     technologies: 'n8n, Node.js, APIs REST, Zapier',
     links: [
@@ -561,5 +593,5 @@ const projectData = {
       ]
     }
   },
- 
+
 };
