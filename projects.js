@@ -622,4 +622,71 @@ const projectData = {
     }
   },
 
+
+  'sinu': {
+    image: 'img/sinu.png',
+    technologies: 'JavaScript, HTML5, Canvas, CSS3, Construct 3',
+    links: [
+      { url: 'https://www.amazon.co.uk/jeankee-Sinu-From-Colombia/dp/B00JE2TCS6', icon: 'fab fa-amazon', text: 'Amazon' }
+    ],
+    es: {
+      title: 'Sinu Android',
+      description: 'Videojuego inspirado en el río Sinú en Montería, donde Sinu debe completar misiones para cerrar un portal dimensional y derrotar criaturas de otra dimensión.',
+      features: [
+        'Historia basada en elementos culturales del Sinú',
+        'Misiones progresivas con zonas ancestrales',
+        'Sistema de combate usando cocos como arma principal',
+        'Enemigos, criaturas gigantes y amenazas dinámicas',
+        'Puntuación por derrotar criaturas',
+        'Nuevas misiones mediante actualizaciones'
+      ]
+    },
+    en: {
+      title: 'Sinu Android',
+      description: 'Video game inspired by the Sinú River in Montería, where Sinu must complete missions to close a dimensional portal and defeat creatures from another dimension.',
+      features: [
+        'Story based on Sinú cultural elements',
+        'Progressive missions with ancestral zones',
+        'Combat system using coconuts as main weapon',
+        'Enemies, giant creatures, and dynamic threats',
+        'Score for defeating creatures',
+        'New missions via updates'
+      ]
+    }
+  },
+  'destrozavirus': {
+    image: 'img/destroza.webp',
+    technologies: 'Lua, Autoplay, Windows Shell',
+    links: [
+      { url: 'https://destrozavirususb.uptodown.com/windows', icon: 'fas fa-globe-americas', text: 'Ver Proyecto' }
+    ],
+    es: {
+      title: 'Destroza Virus USB (Descontinuado)',
+      description: 'Antivirus portable desarrollado en Lua con ejecución automática (autoplay). Diseñado para proteger dispositivos USB contra troyanos, malware y modificaciones no autorizadas.',
+      features: [
+        'Protección automática al conectar dispositivos USB',
+        'Modo protector residente en bandeja del sistema',
+        'Análisis rápido del dispositivo y acciones sugeridas',
+        'Vacunación y desvacunación de unidades USB',
+        'Exploración de archivos y envío al baúl seguro',
+        'Buscador de virus y troyanos en fase beta',
+        'Envío de muestras para análisis remoto',
+        'Versión instalable y versión portable en el propio USB'
+      ]
+    },
+    en: {
+      title: 'Destroza Virus USB (Discontinued)',
+      description: 'Portable antivirus developed in Lua with autoplay. Designed to protect USB devices against trojans, malware, and unauthorized modifications.',
+      features: [
+        'Automatic protection when connecting USB devices',
+        'Resident protector mode in system tray',
+        'Fast device analysis and suggested actions',
+        'Vaccination and devaccination of USB drives',
+        'File exploration and sending to safe vault',
+        'Virus and trojan searcher in beta phase',
+        'Sample submission for remote analysis',
+        'Installable version and portable version on the USB itself'
+      ]
+    }
+  },
 };
