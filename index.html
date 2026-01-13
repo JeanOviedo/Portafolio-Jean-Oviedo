@@ -4,7 +4,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio - Jean Carlos Oviedo López</title>
+  <title>Portfolio - Jean Carlos Oviedo López | Full Stack Developer & AI Specialist</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Portfolio de Jean Carlos Oviedo, Ingeniero de Sistemas especializado en desarrollo Full Stack, automatización de procesos y creación de agentes de inteligencia artificial. Descubre mis proyectos y experiencia." />
+  <meta name="keywords"
+    content="Jean Carlos Oviedo, Jean Oviedo, Full Stack Developer, Ingeniero de Sistemas, Inteligencia Artificial, Automatización, n8n, AI Agents, React, Next.js, Colombia, Remoto" />
+  <meta name="author" content="Jean Carlos Oviedo López" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://jeanoviedo.com/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jeanoviedo.com/" />
+  <meta property="og:title" content="Jean Carlos Oviedo | Full Stack Developer & AI Specialist" />
+  <meta property="og:description"
+    content="Ingeniero de Sistemas apasionado por transformar ideas complejas en soluciones digitales eficientes, integrando IA y automatización." />
+  <meta property="og:image" content="https://jeanoviedo.com/img/about.png" />
+  <meta property="og:site_name" content="Jean Oviedo Portfolio" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://jeanoviedo.com/" />
+  <meta property="twitter:title" content="Jean Carlos Oviedo | Full Stack Developer & AI Specialist" />
+  <meta property="twitter:description"
+    content="Especialista en desarrollo web moderno, automatización y agentes inteligentes." />
+  <meta property="twitter:image" content="https://jeanoviedo.com/img/about.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./img/logo.png" />
+  <link rel="apple-touch-icon" href="./img/logo.png" />
 
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -430,6 +460,17 @@
     [data-theme="light"] .icon-link:hover {
       background: #e0e0e0;
       border-color: #999;
+    }
+
+    /* Light Mode Scrollbars */
+    [data-theme="light"] .project-body p::-webkit-scrollbar-thumb,
+    [data-theme="light"] .modal-desc::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    [data-theme="light"] .project-body p::-webkit-scrollbar-thumb:hover,
+    [data-theme="light"] .modal-desc::-webkit-scrollbar-thumb:hover {
+      background: rgba(0, 0, 0, 0.4);
     }
 
     /* Reset */
@@ -965,13 +1006,47 @@
 
     .project-body h3 {
       color: #fff;
-      font-size: 18px
+      font-size: 18px;
+      height: 44px;
+      /* Fixed height for title alignment */
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      line-clamp: 2;
+      margin-bottom: 4px;
     }
 
     .project-body p {
       color: var(--muted);
       font-size: 14px;
-      line-height: 1.4
+      line-height: 1.6;
+      height: 90px;
+      /* Shortened fixed height for consistency and overflow prevention */
+      overflow-y: auto;
+      padding-right: 8px;
+      margin-bottom: 8px;
+      /* Smooth fade effect at the bottom */
+      mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    }
+
+    /* Custom Scrollbar for Project Description */
+    .project-body p::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .project-body p::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .project-body p::-webkit-scrollbar-thumb {
+      background: rgba(138, 43, 226, 0.3);
+      border-radius: 10px;
+    }
+
+    .project-body p::-webkit-scrollbar-thumb:hover {
+      background: var(--accent1);
     }
 
     .project-links {
@@ -1009,100 +1084,248 @@
       transform: translateY(-3px)
     }
 
-    /* Modal */
+    /* ==================================================== */
+    /* ✨ UPGRADED PREMIUM MODAL */
+    /* ==================================================== */
+
     .modal {
       display: none;
       position: fixed;
       inset: 0;
-      background: linear-gradient(180deg, rgba(3, 3, 6, 0.8), rgba(11, 7, 16, 0.85));
+      background: rgba(5, 5, 10, 0.85);
+      /* Darker overlay */
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       align-items: center;
       justify-content: center;
-      z-index: 200;
-      padding: 24px
+      z-index: 1000;
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-close-icon {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 20px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 100;
+    }
+
+    .modal-close-icon:hover {
+      background: var(--accent1);
+      border-color: transparent;
+      transform: rotate(90deg) scale(1.1);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    [data-theme="light"] .modal-close-icon {
+      background: #f0f0f0;
+      border-color: #ddd;
+      color: #333;
+    }
+
+    [data-theme="light"] .modal-close-icon:hover {
+      background: #000;
+      color: #fff;
     }
 
     .modal-content {
-      background: linear-gradient(180deg, #0f0b16, #130a1d);
-      border-radius: 12px;
-      max-width: 1000px;
+      background: linear-gradient(145deg, rgba(20, 15, 30, 0.9), rgba(10, 8, 16, 0.95));
+      border-radius: 24px;
+      max-width: 1100px;
       width: 100%;
-      max-height: 90vh;
-      overflow: auto;
-      border: 1px solid rgba(138, 43, 226, 0.18);
-      box-shadow: 0 30px 120px rgba(10, 6, 12, 0.8)
+      max-height: 85vh;
+      overflow-y: auto;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      /* Subtle border */
+      box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      position: relative;
+      transform: scale(0.95);
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    /* Make the modal visible helper for script usage */
+    .modal[style*="display: flex"] {
+      opacity: 1;
+    }
+
+    .modal[style*="display: flex"] .modal-content {
+      transform: scale(1);
     }
 
     .modal-header {
-      padding: 18px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      padding: 32px 32px 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.02), transparent);
       color: #fff;
-      border-radius: 12px 12px 0 0
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-header h2 {
+      font-size: 28px;
+      background: linear-gradient(135deg, #fff 0%, #d0bfff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0;
     }
 
     .modal-body {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      padding: 18px;
-      color: #eae6f8
+      grid-template-columns: 1.2fr 1fr;
+      /* Image wider */
+      gap: 32px;
+      padding: 32px;
+      color: #eae6f8;
+      align-items: start;
     }
 
     .modal-body img {
       width: 100%;
       height: auto;
-      border-radius: 8px;
-      box-shadow: 0 10px 40px rgba(106, 28, 185, 0.12)
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .modal-desc p {
-      color: #e6e0f8;
-      line-height: 1.6
+    .modal-desc {
+      max-height: 200px;
+      overflow-y: auto;
+      padding-right: 12px;
+      margin-bottom: 24px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent1) transparent;
+    }
+
+    .modal-desc::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .modal-desc::-webkit-scrollbar-thumb {
+      background: var(--accent1);
+      border-radius: 10px;
     }
 
     .modal-tech {
-      background: rgba(255, 255, 255, 0.02);
-      padding: 10px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      color: #fff
+      background: rgba(0, 0, 0, 0.2);
+      padding: 16px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .modal-tech strong {
+      color: var(--accent1);
+      display: block;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 1px;
     }
 
     .modal-features {
-      list-style: disc;
-      margin-left: 18px;
-      color: var(--muted)
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      color: var(--muted);
+    }
+
+    .modal-features li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 10px;
+    }
+
+    .modal-features li::before {
+      content: '•';
+      color: var(--accent1);
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 18px;
+      line-height: 1.4;
     }
 
     .modal-footer {
       display: flex;
       justify-content: space-between;
       gap: 12px;
-      padding: 12px;
-      border-top: 1px solid rgba(255, 255, 255, 0.02);
-      align-items: center
+      padding: 24px 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      background: rgba(0, 0, 0, 0.1);
+      align-items: center;
     }
 
-    .modal-links a {
-      margin-right: 8px
+    .modal-links {
+      display: flex;
+      gap: 12px;
     }
 
     .modal-action {
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      background: var(--accent-cta);
       color: #fff;
-      padding: 10px 14px;
-      border-radius: 10px;
+      padding: 12px 24px;
+      border-radius: 12px;
       border: none;
-      font-weight: 700
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .modal-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(138, 43, 226, 0.4);
     }
 
     .modal-close {
       background: transparent;
-      color: #d9d4ea;
-      padding: 8px 12px;
+      color: #9b94a9;
+      padding: 8px 16px;
       border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      cursor: pointer
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    @media (max-width: 900px) {
+      .modal-body {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-content {
+        margin: 10px;
+        max-height: 95vh;
+      }
     }
 
     /* CONTACT FORM */
@@ -1295,7 +1518,194 @@
         /* Dark icon for light background */
       }
     }
+
+    /* ==================================================== */
+    /* ✨ SIDE-BY-SIDE LAYOUT (Projects & Sticky Contact) */
+    /* ==================================================== */
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 2rem;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0 4%;
+      align-items: start;
+    }
+
+    /* Reset default section spacing/background so they fit in grid */
+    .content-grid .portfolio-section {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      background: transparent;
+      margin: 28px 0;
+    }
+
+    .content-grid .contact-section {
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+      padding: 0;
+      margin: 78px 0 28px 0;
+      /* Aligned with project cards (Title + Margin offset) */
+      width: 100%;
+      background: transparent;
+    }
+
+    .content-grid .contact-card {
+      width: 100%;
+      padding: 24px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .content-grid .contact-card h2 {
+      font-size: 1.5em;
+    }
+
+    /* Stack form fields in sidebar */
+    .content-grid .form-row {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    /* ==================================================== */
+    /* ✨ UPGRADED PROJECT CARDS */
+    /* ==================================================== */
+
+    /* Override existing project card for premium look */
+    .project-card {
+      background: rgba(255, 255, 255, 0.03) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      border-radius: 20px !important;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease !important;
+      height: 460px;
+      /* Fixed height for consistency */
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Subtle gradient border effect via pseudo-element */
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      pointer-events: none;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px) !important;
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5), 0 0 25px rgba(138, 43, 226, 0.15) !important;
+      background: rgba(255, 255, 255, 0.05) !important;
+    }
+
+    .project-media {
+      height: 180px !important;
+      transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .project-card:hover .project-media {
+      transform: scale(1.05);
+    }
+
+    /* New Icon Button */
+    .project-cta-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: none;
+      background: var(--glass);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-left: auto;
+      /* Push to right */
+    }
+
+    .project-cta-icon:hover {
+      background: var(--accent1);
+      color: #fff;
+      transform: rotate(-15deg) scale(1.1);
+      box-shadow: 0 0 15px var(--accent-glow);
+      border-color: transparent;
+    }
+
+    /* Update Project Links Layout */
+    .project-links {
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ==================================================== */
+    /* ✨ RESPONSIVE for SIDE-BY-SIDE */
+    /* ==================================================== */
+    @media (max-width: 1100px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        padding: 0;
+      }
+
+      .content-grid .portfolio-section {
+        padding: 28px 4%;
+        margin: 28px auto;
+      }
+
+      .content-grid .contact-section {
+        position: static;
+        padding: 28px 4%;
+        margin: 0 auto;
+      }
+
+      .content-grid .contact-card {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      /* Retrieve grid for form in stack mode */
+      .content-grid .form-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .content-grid .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jean Carlos Oviedo López",
+    "url": "https://jeanoviedo.com/",
+    "jobTitle": "Full Stack Developer",
+    "sameAs": [
+      "https://github.com/JeanOviedo",
+      "https://www.linkedin.com/in/jean-oviedo/"
+    ],
+    "description": "Ingeniero de Sistemas especializado en desarrollo Full Stack, automatización e IA."
+  }
+  </script>
 </head>
 
 <body>
@@ -1523,17 +1933,62 @@
       </div>
     </section>
 
-    <!-- PORTFOLIO -->
-    <section class="portfolio-section fade-in" style="animation-delay: 0.2s" id="portafolio" aria-label="Proyectos">
-      <div class="portfolio-head">
-        <h2 data-i18n="projects.title">Proyectos Destacados</h2>
-      </div>
-      <div class="portfolio-grid" id="projectsGrid" aria-live="polite"></div>
-    </section>
+    <div class="content-grid">
+      <!-- PORTFOLIO -->
+      <section class="portfolio-section fade-in" style="animation-delay: 0.2s" id="portafolio" aria-label="Proyectos">
+        <div class="portfolio-head">
+          <h2 data-i18n="projects.title">Proyectos Destacados</h2>
+        </div>
+        <div class="portfolio-grid" id="projectsGrid" aria-live="polite"></div>
+      </section>
 
-    <!-- MODAL -->
+      <!-- CONTACT -->
+      <section id="contacto" class="contact-section fade-in" style="animation-delay: 0.3s">
+        <div class="contact-card">
+          <h2 data-i18n="contact.title">Contacto</h2>
+          <p class="lead" data-i18n="contact.subtitle">¿Tienes un proyecto en mente? Escríbeme y lo construimos
+            juntos.
+          </p>
+
+          <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" target="_blank"
+            method="POST" novalidate="">
+            <!-- Web3Forms Configuration -->
+            <input type="hidden" name="access_key" value="18fd45ab-0977-40bc-b808-21b806ba248f">
+
+            <div class="form-row">
+              <div class="field">
+                <label class="subtitle" data-i18n="form.name">Nombre</label>
+                <input type="text" id="name" class="input" name="name" data-i18n-placeholder="form.name.placeholder"
+                  required placeholder="Tu nombre" />
+              </div>
+              <div class="field">
+                <label class="subtitle" data-i18n="form.email">Correo</label>
+                <input type="email" id="email" class="input" name="email" data-i18n-placeholder="form.email.placeholder"
+                  required placeholder="tunombre@mail.com" />
+              </div>
+            </div>
+            <div class="field" style="margin-bottom:12px">
+              <label class="subtitle" data-i18n="form.message">Mensaje</label>
+              <textarea id="message" class="input" style="height:120px; resize:vertical" name="message"
+                data-i18n-placeholder="form.message.placeholder" required
+                placeholder="Cuéntame sobre tu proyecto"></textarea>
+            </div>
+
+            <button type="submit" class="project-cta" style="width:auto">
+              <span data-i18n="form.send">Enviar mensaje</span> <i class="fas fa-paper-plane"
+                style="margin-left:8px"></i>
+            </button>
+            <div id="formFeedback" style="margin-top:10px; font-size:14px; min-height:20px"></div>
+          </form>
+        </div>
+      </section>
+    </div>
+
     <div id="projectModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
       <div class="modal-content" role="document" aria-labelledby="modalTitle">
+        <button class="modal-close-icon" onclick="closeProjectModal()" aria-label="Cerrar modal">
+          <i class="fas fa-times"></i>
+        </button>
         <div class="modal-header">
           <h2 id="modalTitle">Título</h2>
         </div>
@@ -1554,47 +2009,6 @@
         </div>
       </div>
     </div>
-
-
-
-    <!-- CONTACT -->
-    <section id="contacto" class="contact-section fade-in" style="animation-delay: 0.3s">
-      <div class="contact-card">
-        <h2 data-i18n="contact.title">Contacto</h2>
-        <p class="lead" data-i18n="contact.subtitle">¿Tienes un proyecto en mente? Escríbeme y lo construimos juntos.
-        </p>
-
-        <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" target="_blank"
-          method="POST" novalidate="">
-          <!-- Web3Forms Configuration -->
-          <input type="hidden" name="access_key" value="18fd45ab-0977-40bc-b808-21b806ba248f">
-
-          <div class="form-row">
-            <div class="field">
-              <label class="subtitle" data-i18n="form.name">Nombre</label>
-              <input type="text" id="name" class="input" name="name" data-i18n-placeholder="form.name.placeholder"
-                required placeholder="Tu nombre" />
-            </div>
-            <div class="field">
-              <label class="subtitle" data-i18n="form.email">Correo</label>
-              <input type="email" id="email" class="input" name="email" data-i18n-placeholder="form.email.placeholder"
-                required placeholder="tunombre@mail.com" />
-            </div>
-          </div>
-          <div class="field" style="margin-bottom:12px">
-            <label class="subtitle" data-i18n="form.message">Mensaje</label>
-            <textarea id="message" class="input" style="height:120px; resize:vertical" name="message"
-              data-i18n-placeholder="form.message.placeholder" required
-              placeholder="Cuéntame sobre tu proyecto"></textarea>
-          </div>
-
-          <button type="submit" class="project-cta" style="width:auto">
-            <span data-i18n="form.send">Enviar mensaje</span> <i class="fas fa-paper-plane" style="margin-left:8px"></i>
-          </button>
-          <div id="formFeedback" style="margin-top:10px; font-size:14px; min-height:20px"></div>
-        </form>
-      </div>
-    </section>
 
     <footer class="footer">
       <div class="footer-links" role="navigation" aria-label="Redes sociales">
@@ -1640,8 +2054,11 @@
         linksDiv.appendChild(a);
       });
 
-      // CTA
-      const btn = document.createElement('button'); btn.className = 'project-cta'; btn.textContent = currentLang === 'en' ? 'View Details' : 'Ver detalles';
+      // CTA Icon Button
+      const btn = document.createElement('button');
+      btn.className = 'project-cta-icon';
+      btn.setAttribute('aria-label', currentLang === 'en' ? 'View Details' : 'Ver detalles');
+      btn.innerHTML = `<i class="far fa-eye"></i>`;
       btn.onclick = () => openProjectModalFromKey(key);
       linksDiv.appendChild(btn);
 
@@ -1672,6 +2089,7 @@
 
       document.getElementById('modalTitle').textContent = langData.title;
       document.getElementById('modalImage').src = project.image;
+      document.getElementById('modalImage').alt = `Vista previa de ${langData.title}`;
       document.getElementById('modalDesc').textContent = langData.description;
       document.getElementById('modalTech').textContent = project.technologies;
 
