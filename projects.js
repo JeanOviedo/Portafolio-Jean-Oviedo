@@ -8,7 +8,7 @@ const projectData = {
     ],
     es: {
       title: 'DienteOk - Premium Dental Clinic Template',
-      description: 'Plantilla web moderna y de alta gama diseñada para clínicas dentales y profesionales médicos. Construida con Next.js 16 y TailwindCSS v4, ofrece una estética "Future Health" premium con efectos de glassmorphism, animaciones avanzadas y un diseño totalmente responsivo.',
+      description: 'Plantilla web moderna y de alta gama diseñada para clínicas dentales y profesionales médicos. Construida con Next.js 16 y TailwindCSS v4.',
       features: [
         'Diseño Premium "Future Health"',
         'Suite de Seguridad (Anti-robo de contenido)',
@@ -18,7 +18,7 @@ const projectData = {
     },
     en: {
       title: 'DienteOk - Premium Dental Clinic Template',
-      description: 'High-end, modern web template designed for dental clinics and medical professionals. Built with Next.js 16 and TailwindCSS v4, it offers a premium "Future Health" aesthetic with glassmorphism effects, advanced animations, and a fully responsive layout.',
+      description: 'High-end, modern web template designed for dental clinics and medical professionals. Built with Next.js 16 and TailwindCSS v4.',
       features: [
         'Premium "Future Health" Design',
         'Security Suite (Content theft protection)',
