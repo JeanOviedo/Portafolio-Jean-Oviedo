@@ -323,6 +323,20 @@
     [data-theme="light"] .portfolio-head h2,
     [data-theme="light"] .modal-header h2 {
       color: #000;
+      background: none;
+      -webkit-text-fill-color: initial;
+    }
+
+    [data-theme="light"] .text-gradient {
+      background: none;
+      -webkit-background-clip: initial;
+      background-clip: initial;
+      -webkit-text-fill-color: initial;
+      color: #000;
+    }
+
+    [data-theme="light"] .subtitle {
+      color: #333;
     }
 
     /* Change Modal Header Background in Light Mode */
@@ -449,6 +463,57 @@
 
     [data-theme="light"] .contact-section {
       background-color: transparent;
+    }
+
+    /* Project Cards & Modal Light Mode Fixes */
+    [data-theme="light"] .project-body h3 {
+      color: #000;
+    }
+
+    [data-theme="light"] .project-body p {
+      color: #333;
+      mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    }
+
+    [data-theme="light"] .project-cta-icon {
+      background: #f0f0f0;
+      color: #222;
+      border-color: #ddd;
+    }
+
+    [data-theme="light"] .project-cta-icon:hover {
+      background: #000;
+      color: #fff;
+    }
+
+    [data-theme="light"] .icon-link {
+      background: #f0f0f0;
+      color: #333;
+      border-color: #ddd;
+    }
+
+    [data-theme="light"] .icon-link:hover {
+      background: #e0e0e0;
+      color: #000;
+    }
+
+    [data-theme="light"] .modal-desc {
+      color: #222;
+    }
+
+    [data-theme="light"] .modal-tech {
+      background: #f9f9f9;
+      color: #222;
+      border-color: #ddd;
+    }
+
+    [data-theme="light"] .modal-features {
+      color: #444;
+    }
+
+    [data-theme="light"] .modal-footer {
+      background: #fcfcfc;
     }
 
     [data-theme="light"] .icon-link {
