@@ -1,4 +1,35 @@
 const projectData = {
+  'reveal-timer-jo': {
+    image: 'img/timerWP.png',
+    technologies: 'PHP 7.4+, WordPress API, Vanilla JavaScript, CSS3, WordPress Security Standards',
+    links: [
+      { url: 'https://github.com/JeanOviedo/WP-Reveal-Timer-JO/tree/main', icon: 'fab fa-github', text: 'GitHub' }
+    ],
+    es: {
+      title: 'Reveal Timer JO - WordPress Plugin',
+      description: 'Plugin profesional de WordPress de alto rendimiento diseñado para aumentar las conversiones y el compromiso mediante la revelación de contenido oculto después de una cuenta regresiva precisa.',
+      features: [
+        'Ligero y Rápido: Código optimizado con una huella muy pequeña',
+        'Personalización Visual: Ajuste de colores, tamaños de fuente y radio de borde desde el panel de administración',
+        'Responsive y Moderno: Diseño mobile-first para una experiencia perfecta',
+        'Compatible con Builders: Funciona con Elementor, Gutenberg, Divi y más',
+        'Múltiples Instancias: Temporizadores independientes en la misma página',
+        'Seguridad WordPress: Implementación de estándares oficiales (wp_kses_post, esc_html, etc.)'
+      ]
+    },
+    en: {
+      title: 'Reveal Timer JO - WordPress Plugin',
+      description: 'Professional, high-performance WordPress plugin designed to increase conversions and engagement by revealing hidden content after a precise countdown.',
+      features: [
+        'Lightweight & Fast: Optimized code with a very small footprint',
+        'Visual Customization: Adjust colors, font sizes, and border radius from the admin panel',
+        'Responsive & Modern: Mobile-first design for a perfect experience',
+        'Builder Compatible: Works with Elementor, Gutenberg, Divi, and more',
+        'Multiple Instances: Independent timers on the same page',
+        'WordPress Security Standards: Implementation of official repository requirements'
+      ]
+    }
+  },
   'angulartienda': {
     image: 'img/angulartienda.jpg',
     technologies: 'Angular 15, TailwindCSS, RxJS, FakeStoreAPI, Heroicons',
