@@ -1,4 +1,36 @@
 const projectData = {
+  'angulartienda': {
+    image: 'img/angulartienda.jpg',
+    technologies: 'Angular 15, TailwindCSS, RxJS, FakeStoreAPI, Heroicons',
+    links: [
+      { url: 'https://github.com/JeanOviedo/AngularTienda', icon: 'fab fa-github', text: 'GitHub' },
+      { url: 'https://jeanoviedo.github.io/AngularTienda/', icon: 'fas fa-globe-americas', text: 'Demo' }
+    ],
+    es: {
+      title: 'AngularTienda - Premium E-commerce Template',
+      description: 'Plantilla moderna, hermosa y profesional de una tienda online, desarrollada con Angular 15 y diseñada bajo estándares UI/UX Premium. Consume datos en tiempo real desde FakeStoreAPI.',
+      features: [
+        'Home Page con Hero de alto impacto y banners',
+        'Tienda Completa con listado dinámico y skeletons',
+        'Categorías y navegación por departamentos',
+        'Detalle de Producto con rating y selector de cantidad',
+        'Carrito de Compras gestionado con RxJS',
+        'Diseño Responsive optimizado para todos los dispositivos'
+      ]
+    },
+    en: {
+      title: 'AngularTienda - Premium E-commerce Template',
+      description: 'Modern, beautiful, and professional online store template, developed with Angular 15 and designed under Premium UI/UX standards. Consumes real-time data from FakeStoreAPI.',
+      features: [
+        'High-impact Hero and promotional banners',
+        'Full Store with dynamic listing and skeletons',
+        'Department categories and navigation',
+        'Product Detail with dynamic rating and quantity selector',
+        'Shopping Cart managed with RxJS',
+        'Responsive Design optimized for all devices'
+      ]
+    }
+  },
   'dienteok': {
     image: 'img/dientesok.jpg',
     technologies: 'Next.js 16 (App Router), TailwindCSS v4, Lucide React, TypeScript',
