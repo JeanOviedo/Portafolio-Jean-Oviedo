@@ -1,4 +1,33 @@
 const projectData = {
+  'autoomated': {
+    image: 'img/autoomated.jpg',
+    technologies: 'Next.js 16, React 19, Axios, Framer Motion, Lucide React, Tailwind CSS',
+    links: [
+      { url: 'https://www.autoomated.com/', icon: 'fas fa-globe-americas', text: 'Demo' }
+    ],
+    es: {
+      title: 'AUTOOmated - Web Corporativa',
+      description: 'Landing page corporativa de alto impacto diseñada para una agencia de tecnología y automatización. Presenta una estructura profesional y moderna donde se ofrecen servicios integrales de desarrollo de software, creación de MVPs, y soluciones inteligentes con IA para empresas.',
+      features: [
+        'Sitios Web Corporativos con alto impacto visual',
+        'MVPs & SaaS Premium en 8-10 semanas',
+        'Sistemas robustos con React, Next.js y Supabase',
+        'Automatización de procesos con IA y n8n',
+        'Soporte & Evolución proactiva'
+      ]
+    },
+    en: {
+      title: 'AUTOOmated - Corporate Web',
+      description: 'High-impact corporate landing page designed for a technology and automation agency. It features a professional and modern structure offering comprehensive software development services, MVP creation, and intelligent AI solutions for businesses.',
+      features: [
+        'Corporate Websites with high visual impact',
+        'Premium MVPs & SaaS in 8-10 weeks',
+        'Robust systems with React, Next.js, and Supabase',
+        'Process automation with AI and n8n',
+        'Proactive Support & Evolution'
+      ]
+    }
+  },
   'reveal-timer-jo': {
     image: 'img/timerWP.png',
     technologies: 'PHP 7.4+, WordPress API, Vanilla JavaScript, CSS3, WordPress Security Standards',
