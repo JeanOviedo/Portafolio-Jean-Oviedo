@@ -77,15 +77,35 @@ function createProjectCard(key, project) {
     return card;
 }
 
-function renderProjects() {
+function renderProjects(query = '') {
     const grid = document.getElementById('projectsGrid');
     if (!grid) return;
     grid.innerHTML = '';
+
+    const normalizedQuery = query.toLowerCase().trim();
+
     Object.keys(projectData).forEach(key => {
         const project = projectData[key];
-        const card = createProjectCard(key, project);
-        grid.appendChild(card);
+        const langData = project[currentLang] || project.es;
+
+        // Search in title and features
+        const matchesTitle = langData.title.toLowerCase().includes(normalizedQuery);
+        const matchesFeatures = (langData.features || []).some(f => f.toLowerCase().includes(normalizedQuery));
+        const matchesTech = (project.technologies || '').toLowerCase().includes(normalizedQuery);
+
+        if (normalizedQuery === '' || matchesTitle || matchesFeatures || matchesTech) {
+            const card = createProjectCard(key, project);
+            grid.appendChild(card);
+        }
     });
+
+    // Show message if no results
+    if (grid.children.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--muted);">
+            <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+            <p>${currentLang === 'en' ? 'No projects found matching your search.' : 'No se encontraron proyectos que coincidan con tu búsqueda.'}</p>
+        </div>`;
+    }
 }
 
 /* ============== Modal controllers ============== */
@@ -161,6 +181,14 @@ document.addEventListener('DOMContentLoaded', () => {
         formFeedback.style.color = 'var(--success)';
         formFeedback.textContent = '¡Gracias! Tu mensaje fue enviado.';
         setTimeout(() => { formFeedback.style.display = 'none'; }, 6000);
+    }
+
+    // Search input event
+    const searchInput = document.getElementById('projectSearch');
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            renderProjects(e.target.value);
+        });
     }
 });
 

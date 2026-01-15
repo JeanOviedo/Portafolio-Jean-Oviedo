@@ -233,6 +233,23 @@
 }
 
 /* Project Cards & Modal Light Mode Fixes */
+[data-theme="light"] .search-container {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .search-input {
+  color: #000;
+}
+
+[data-theme="light"] .search-input::placeholder {
+  color: #777;
+}
+
+[data-theme="light"] .search-icon {
+  color: #555;
+}
+
 [data-theme="light"] .project-body h3 {
   color: #000;
 }
@@ -1421,7 +1438,7 @@ footer {
   top: 100px;
   height: fit-content;
   padding: 0;
-  margin: 78px 0 28px 0;
+  margin: 154px 0 28px 0;
   /* Aligned with project cards (Title + Margin offset) */
   width: 100%;
   background: transparent;
@@ -1446,6 +1463,60 @@ footer {
 /* ==================================================== */
 /* ✨ UPGRADED PROJECT CARDS */
 /* ==================================================== */
+
+.portfolio-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 12px 24px;
+  width: 90%;
+  max-width: 700px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.search-container:focus-within {
+  border-color: var(--accent1);
+  box-shadow: 0 0 30px var(--accent-glow), 0 10px 20px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-2px) scale(1.01);
+}
+
+.search-icon {
+  color: var(--accent1);
+  margin-right: 16px;
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+.search-input {
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+  font-family: inherit;
+}
+
+.search-input::placeholder {
+  color: var(--muted);
+  opacity: 0.6;
+}
 
 /* Override existing project card for premium look */
 .project-card {

@@ -1,4 +1,35 @@
 const projectData = {
+  'n8n-call-transcription': {
+    image: 'img/llamadas.jpg',
+    technologies: 'n8n, OpenAI (Whisper & GPT-4), Speech-to-Text, Sentiment Analysis, Report Automation',
+    links: [
+      { url: 'https://www.youtube.com/watch?v=33WwGrzKPxc', icon: 'fab fa-youtube', text: 'Video Demo' }
+    ],
+    es: {
+      title: 'Trascripción y Análisis de Llamadas con n8n e IA',
+      description: 'Sistema avanzado de automatización que procesa grabaciones de llamadas de forma autónoma. Utiliza IA para transcribir el audio, detectar emociones y sentimientos, y generar informes detallados para la toma de decisiones.',
+      features: [
+        'Transcripción automática de audio a texto con alta precisión',
+        'Detección de emociones y análisis de sentimientos del cliente',
+        'Generación de resúmenes e informes detallados del contenido',
+        'Clasificación automática de llamadas por intención o resultado',
+        'Integración continua con n8n para flujos de trabajo escalables',
+        'Optimización de procesos de atención al cliente y ventas'
+      ]
+    },
+    en: {
+      title: 'Call Transcription & AI Analysis with n8n',
+      description: 'Advanced automation system that processes call recordings autonomously. It uses AI to transcribe audio, detect emotions and sentiments, and generate detailed reports for decision-making.',
+      features: [
+        'High-precision automatic audio-to-text transcription',
+        'Customer emotion detection and sentiment analysis',
+        'Generation of summaries and detailed content reports',
+        'Automatic call classification by intent or outcome',
+        'Seamless n8n integration for scalable workflows',
+        'Optimization of customer service and sales processes'
+      ]
+    }
+  },
   'autoomated': {
     image: 'img/autoomated.jpg',
     technologies: 'Next.js 16, React 19, Axios, Framer Motion, Lucide React, Tailwind CSS',
@@ -311,7 +342,9 @@ const projectData = {
   'automatizado': {
     image: 'img/zapier.jpg',
     technologies: 'Zapier, Airtable, GoHighLevel, ClickUp, APIs',
-    links: [],
+    links: [
+      { url: 'https://www.youtube.com/watch?v=61YLHIVcA7I', icon: 'fab fa-youtube', text: 'Video Demo' }
+    ],
     es: {
       title: 'Automatización con Zapier, Airtable, GHL y ClickUp',
       description: 'Sistema complejo de automatización que integra múltiples plataformas para gestión eficiente de solicitudes y tareas empresariales.',
