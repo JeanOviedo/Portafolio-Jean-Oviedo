@@ -1,4 +1,95 @@
 const projectData = {
+  'inmobiliaria-jo': {
+    image: 'img/inmofront.jpg',
+    technologies: 'Next.js 15, Tailwind CSS, Framer Motion, Zustand, Lucide React',
+    links: [
+      { url: 'https://frontend-inmobiliaria-psi.vercel.app/', icon: 'fas fa-globe-americas', text: 'Demo' }
+    ],
+    es: {
+      title: 'JO Inmobiliaria SaaS - Elite Estate Platform',
+      description: 'Plataforma SaaS multi-tenant de alto rendimiento diseñada para agencias inmobiliarias. Permite gestionar catálogos de propiedades y personalizar sitios web públicos mediante un CMS visual integrado.',
+      features: [
+        'Arquitectura Multi-tenant desacoplada',
+        'Panel administrativo con CMS Visual',
+        'Diseño SaaS Elite Estate & Clean Aesthetic',
+        'Gestión avanzada de catálogos inmobiliarios',
+        'Optimización con Next.js 15 App Router'
+      ]
+    },
+    en: {
+      title: 'JO Real Estate SaaS - Elite Estate Platform',
+      description: 'High-performance multi-tenant SaaS platform designed for real estate agencies. It allows managing property catalogs and customizing public websites through an integrated visual CMS.',
+      features: [
+        'Decoupled Multi-tenant architecture',
+        'Admin panel with Visual CMS',
+        'Premium SaaS Elite Estate & Clean Aesthetic',
+        'Advanced real estate catalog management',
+        'Optimized with Next.js 15 App Router'
+      ]
+    }
+  },
+  'meeduco': {
+    image: 'img/educo.jpg',
+    technologies: 'HTML5, CSS3, JavaScript',
+    links: [
+      { url: 'https://github.com/JeanOviedo/meeduco', icon: 'fab fa-github', text: 'GitHub' },
+      { url: 'https://jeanoviedo.github.io/meeduco', icon: 'fas fa-globe-americas', text: 'Demo' }
+    ],
+    es: {
+      title: 'Meeduco - Plataforma de Cursos',
+      description: 'Sitio web moderno diseñado para la visualización de detalles y compra de cursos tecnológicos. Ofrece una interfaz intuitiva para navegar por el catálogo educativo.',
+      features: [
+        'Catálogo de cursos tecnológicos',
+        'Detalles completos de cada programa',
+        'Interfaz optimizada para conversión',
+        'Diseño responsive y moderno',
+        'Navegación fluida entre categorías'
+      ]
+    },
+    en: {
+      title: 'Meeduco - Courses Platform',
+      description: 'Modern website designed for viewing details and purchasing technology courses. It offers an intuitive interface to navigate through the educational catalog.',
+      features: [
+        'Technology courses catalog',
+        'Full details for each program',
+        'Optimized conversion interface',
+        'Modern responsive design',
+        'Seamless navigation between categories'
+      ]
+    }
+  },
+  'zinuplay': {
+    image: 'img/zinuplay.jpg',
+    technologies: 'HTML5, CSS3, JavaScript, React',
+    links: [
+      { url: 'https://github.com/JeanOviedo/Zinuplay', icon: 'fab fa-github', text: 'GitHub' },
+      { url: 'https://jeanoviedo.github.io/Zinuplay/', icon: 'fas fa-globe-americas', text: 'Demo' }
+    ],
+    es: {
+      title: 'ZinuPlay',
+      description: 'Plataforma de entretenimiento digital con contenido multimedia. Incluye streaming, juegos y comunidad interactiva.',
+      features: [
+        'Plataforma de streaming',
+        'Sistema de juegos interactivos',
+        'Comunidad de usuarios',
+        'Contenido multimedia diverso',
+        'Interfaz de usuario moderna',
+        'Soporte multi-dispositivo'
+      ]
+    },
+    en: {
+      title: 'ZinuPlay',
+      description: 'Digital entertainment platform with multimedia content. Includes streaming, games, and interactive community.',
+      features: [
+        'Streaming platform',
+        'Interactive game system',
+        'User community',
+        'Diverse multimedia content',
+        'Modern user interface',
+        'Multi-device support'
+      ]
+    }
+  },
   'n8n-call-transcription': {
     image: 'img/llamadas.jpg',
     technologies: 'n8n, OpenAI (Whisper & GPT-4), Speech-to-Text, Sentiment Analysis, Report Automation',
@@ -307,6 +398,7 @@ const projectData = {
       ]
     }
   },
+
 
   'restaurante': {
     image: 'img/restaurante.jpg',
@@ -684,37 +776,7 @@ const projectData = {
       ]
     }
   },
-  'zinu': {
-    image: 'img/zinuplay.jpg',
-    technologies: 'HTML5, CSS3, JavaScript, React',
-    links: [
-      { url: 'https://zinuplay.com/', icon: 'fas fa-globe-americas', text: 'Visitar' }
-    ],
-    es: {
-      title: 'ZinuPlay',
-      description: 'Plataforma de entretenimiento digital con contenido multimedia. Incluye streaming, juegos y comunidad interactiva.',
-      features: [
-        'Plataforma de streaming',
-        'Sistema de juegos interactivos',
-        'Comunidad de usuarios',
-        'Contenido multimedia diverso',
-        'Interfaz de usuario moderna',
-        'Soporte multi-dispositivo'
-      ]
-    },
-    en: {
-      title: 'ZinuPlay',
-      description: 'Digital entertainment platform with multimedia content. Includes streaming, games, and interactive community.',
-      features: [
-        'Streaming platform',
-        'Interactive game system',
-        'User community',
-        'Diverse multimedia content',
-        'Modern user interface',
-        'Multi-device support'
-      ]
-    }
-  },
+
   'mistareas': {
     image: 'img/mistareas.png',
     technologies: 'React, JavaScript, CSS3, Local Storage',
