@@ -1,4 +1,35 @@
 const projectData = {
+  'inmobiliaria-jo-backend': {
+    image: 'img/dash.png',
+    technologies: 'NestJS, PostgreSQL, Prisma, JWT, Clean Architecture',
+    links: [],
+    es: {
+      title: 'JO Inmobiliaria SaaS - Dashboard & Backend',
+      description: 'Ecosistema administrativo y API core de la plataforma Elite Estate. Implementa una arquitectura modular de alto rendimiento para la gestión integral de agencias inmobiliarias.',
+      features: [
+        'Aislamiento Multi-tenant por agencia',
+        'Panel Administrativo (Dashboard) integral',
+        'Módulos de Finanzas y CRM (Leads)',
+        'Gestión de Propiedades e Inventario',
+        'Editor CMS Visual y Configuración Web',
+        'Generación de Contratos y Plantillas',
+        'Arquitectura Limpia y Modular (NestJS)'
+      ]
+    },
+    en: {
+      title: 'JO Real Estate SaaS - Dashboard & Backend',
+      description: 'Administrative ecosystem and core API of the Elite Estate platform. Implements a high-performance modular architecture for comprehensive real estate agency management.',
+      features: [
+        'Multi-tenant Isolation per agency',
+        'Comprehensive Admin Dashboard',
+        'Finance and CRM (Leads) Modules',
+        'Property and Inventory Management',
+        'Visual CMS & Web Configuration',
+        'Contract and Template Generation',
+        'Clean and Modular Architecture (NestJS)'
+      ]
+    }
+  },
   'inmobiliaria-jo': {
     image: 'img/inmofront.jpg',
     technologies: 'Next.js 15, Tailwind CSS, Framer Motion, Zustand, Lucide React',
