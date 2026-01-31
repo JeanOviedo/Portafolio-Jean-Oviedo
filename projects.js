@@ -1,4 +1,37 @@
 const projectData = {
+
+  'n8n-telegram-automation': {
+    image: 'img/telgram.jpg',
+    technologies: 'n8n, Supabase, JavaScript, Node.js, Obsidian, Telegram API',
+    links: [
+      { url: 'https://www.youtube.com/watch?v=fHwFFslJ5pw', icon: 'fab fa-youtube', text: 'Video Demo' }
+    ],
+    es: {
+      title: 'Automatización Avanzada: Telegram + n8n + Supabase',
+      description: 'Sistema de automatización avanzado diseñado para capturar comandos desde Telegram, procesarlos con IA y documentar los resultados de forma estructurada en Obsidian y Supabase.',
+      features: [
+        'Captura y estructuración de comandos desde Telegram',
+        'Procesamiento mediante agente de IA interno',
+        'Almacenamiento persistente en tablas de Supabase (JSON)',
+        'Generación automática de ficheros Markdown para Obsidian',
+        'Flujos de trabajo pedagógicos para formación en IA',
+        'Documentación técnica con enfoque educativo'
+      ]
+    },
+    en: {
+      title: 'Advanced Automation: Telegram + n8n + Supabase',
+      description: 'Advanced automation system designed to capture commands from Telegram, process them with AI, and document the results in a structured way in Obsidian and Supabase.',
+      features: [
+        'Command capture and structuring from Telegram',
+        'Processing via internal AI agent',
+        'Persistent storage in Supabase tables (JSON)',
+        'Automatic generation of Markdown files for Obsidian',
+        'Educational workflows for AI training',
+        'Technical documentation with an educational focus'
+      ]
+    }
+  },
+
   'inmobiliaria-jo-backend': {
     image: 'img/dash.png',
     technologies: 'NestJS, PostgreSQL, Prisma, JWT, Clean Architecture',
