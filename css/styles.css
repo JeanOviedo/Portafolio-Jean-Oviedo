@@ -1415,13 +1415,11 @@ footer {
 /* ==================================================== */
 
 .content-grid {
-  display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 2rem;
+  display: block;
+  /* Stacked layout */
   max-width: 100%;
   margin: 0 auto;
   padding: 0 4%;
-  align-items: start;
 }
 
 /* Reset default section spacing/background so they fit in grid */
@@ -1434,13 +1432,13 @@ footer {
 }
 
 .content-grid .contact-section {
-  position: sticky;
-  top: 100px;
-  height: fit-content;
-  padding: 0;
-  margin: 154px 0 28px 0;
-  /* Aligned with project cards (Title + Margin offset) */
+  position: static;
+  /* No longer sticky */
   width: 100%;
+  max-width: 100%;
+  /* Full width to match projects */
+  margin: 40px 0;
+  padding: 0;
   background: transparent;
 }
 
@@ -1456,8 +1454,15 @@ footer {
 
 /* Stack form fields in sidebar */
 .content-grid .form-row {
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
+  /* Restore 2 cols for wide screen */
   gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .content-grid .form-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ==================================================== */

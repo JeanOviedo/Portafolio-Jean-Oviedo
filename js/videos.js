@@ -181,7 +181,7 @@ const VIDEO_DATA = [
     },
 
     {
-        "title": "Desde Abajo (repetido)",
+        "title": "Desde Abajo",
         "thumbnail": "https://i.ytimg.com/vi/1y1xy10XvaI/hqdefault.jpg",
         "duration": "3:30",
         "views": "157",

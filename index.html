@@ -327,85 +327,85 @@
           </section>
         </div>
 
+        <!-- CONTACT -->
+        <section id="contacto" class="contact-section fade-in" style="animation-delay: 0.3s">
+          <div class="contact-card">
+            <h2 data-i18n="contact.title">Contacto</h2>
+            <p class="lead" data-i18n="contact.subtitle">¿Tienes un proyecto en mente? Escríbeme y lo construimos
+              juntos.
+            </p>
+
+            <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" target="_blank"
+              method="POST" novalidate="">
+              <!-- Web3Forms Configuration -->
+              <input type="hidden" name="access_key" value="18fd45ab-0977-40bc-b808-21b806ba248f">
+
+              <div class="form-row">
+                <div class="field">
+                  <label class="subtitle" data-i18n="form.name">Nombre</label>
+                  <input type="text" id="name" class="input" name="name" data-i18n-placeholder="form.name.placeholder"
+                    required placeholder="Tu nombre" />
+                </div>
+                <div class="field">
+                  <label class="subtitle" data-i18n="form.email">Correo</label>
+                  <input type="email" id="email" class="input" name="email"
+                    data-i18n-placeholder="form.email.placeholder" required placeholder="tunombre@mail.com" />
+                </div>
+              </div>
+              <div class="field" style="margin-bottom:12px">
+                <label class="subtitle" data-i18n="form.message">Mensaje</label>
+                <textarea id="message" class="input" style="height:120px; resize:vertical" name="message"
+                  data-i18n-placeholder="form.message.placeholder" required
+                  placeholder="Cuéntame sobre tu proyecto"></textarea>
+              </div>
+
+              <button type="submit" class="project-cta" style="width:auto">
+                <span data-i18n="form.send">Enviar mensaje</span> <i class="fas fa-paper-plane"
+                  style="margin-left:8px"></i>
+              </button>
+              <div id="formFeedback" style="margin-top:10px; font-size:14px; min-height:20px"></div>
+            </form>
+          </div>
+        </section>
+
       </div>
 
-      <!-- CONTACT -->
-      <section id="contacto" class="contact-section fade-in" style="animation-delay: 0.3s">
-        <div class="contact-card">
-          <h2 data-i18n="contact.title">Contacto</h2>
-          <p class="lead" data-i18n="contact.subtitle">¿Tienes un proyecto en mente? Escríbeme y lo construimos
-            juntos.
-          </p>
-
-          <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" target="_blank"
-            method="POST" novalidate="">
-            <!-- Web3Forms Configuration -->
-            <input type="hidden" name="access_key" value="18fd45ab-0977-40bc-b808-21b806ba248f">
-
-            <div class="form-row">
-              <div class="field">
-                <label class="subtitle" data-i18n="form.name">Nombre</label>
-                <input type="text" id="name" class="input" name="name" data-i18n-placeholder="form.name.placeholder"
-                  required placeholder="Tu nombre" />
-              </div>
-              <div class="field">
-                <label class="subtitle" data-i18n="form.email">Correo</label>
-                <input type="email" id="email" class="input" name="email" data-i18n-placeholder="form.email.placeholder"
-                  required placeholder="tunombre@mail.com" />
-              </div>
+      <div id="projectModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-content" role="document" aria-labelledby="modalTitle">
+          <button class="modal-close-icon" onclick="closeProjectModal()" aria-label="Cerrar modal">
+            <i class="fas fa-times"></i>
+          </button>
+          <div class="modal-header">
+            <h2 id="modalTitle">Título</h2>
+          </div>
+          <div class="modal-body">
+            <div><img id="modalImage" src="" alt="Imagen del proyecto" /></div>
+            <div>
+              <p id="modalDesc" class="modal-desc"></p>
+              <div class="modal-tech"><strong>Tecnologías:</strong> <span id="modalTech"></span></div>
+              <h4>Características:</h4>
+              <ul id="modalFeatures" class="modal-features"></ul>
             </div>
-            <div class="field" style="margin-bottom:12px">
-              <label class="subtitle" data-i18n="form.message">Mensaje</label>
-              <textarea id="message" class="input" style="height:120px; resize:vertical" name="message"
-                data-i18n-placeholder="form.message.placeholder" required
-                placeholder="Cuéntame sobre tu proyecto"></textarea>
+          </div>
+          <div class="modal-footer">
+            <div id="modalLinks" class="modal-links"></div>
+            <div>
+              <button class="modal-close" onclick="closeProjectModal()" aria-label="Cerrar modal">Cerrar</button>
             </div>
-
-            <button type="submit" class="project-cta" style="width:auto">
-              <span data-i18n="form.send">Enviar mensaje</span> <i class="fas fa-paper-plane"
-                style="margin-left:8px"></i>
-            </button>
-            <div id="formFeedback" style="margin-top:10px; font-size:14px; min-height:20px"></div>
-          </form>
-        </div>
-      </section>
-    </div>
-
-    <div id="projectModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
-      <div class="modal-content" role="document" aria-labelledby="modalTitle">
-        <button class="modal-close-icon" onclick="closeProjectModal()" aria-label="Cerrar modal">
-          <i class="fas fa-times"></i>
-        </button>
-        <div class="modal-header">
-          <h2 id="modalTitle">Título</h2>
-        </div>
-        <div class="modal-body">
-          <div><img id="modalImage" src="" alt="Imagen del proyecto" /></div>
-          <div>
-            <p id="modalDesc" class="modal-desc"></p>
-            <div class="modal-tech"><strong>Tecnologías:</strong> <span id="modalTech"></span></div>
-            <h4>Características:</h4>
-            <ul id="modalFeatures" class="modal-features"></ul>
           </div>
         </div>
-        <div class="modal-footer">
-          <div id="modalLinks" class="modal-links"></div>
-          <div>
-            <button class="modal-close" onclick="closeProjectModal()" aria-label="Cerrar modal">Cerrar</button>
-          </div>
-        </div>
       </div>
-    </div>
 
-    <footer class="footer">
-      <div class="footer-links" role="navigation" aria-label="Redes sociales">
-        <a href="https://github.com/JeanOviedo" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://www.linkedin.com/in/jean-oviedo/" target="_blank" rel="noopener"><i
-            class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://jeanoviedo.com" target="_blank" rel="noopener"><i class="fas fa-globe-americas"></i> Web</a>
-      </div>
-      <p>&copy; 2025 Jean Carlos Oviedo. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
-    </footer>
+      <footer class="footer">
+        <div class="footer-links" role="navigation" aria-label="Redes sociales">
+          <a href="https://github.com/JeanOviedo" target="_blank" rel="noopener"><i class="fab fa-github"></i>
+            GitHub</a>
+          <a href="https://www.linkedin.com/in/jean-oviedo/" target="_blank" rel="noopener"><i
+              class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="https://jeanoviedo.com" target="_blank" rel="noopener"><i class="fas fa-globe-americas"></i> Web</a>
+        </div>
+        <p>&copy; 2025 Jean Carlos Oviedo. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+      </footer>
 
 
   </main>
