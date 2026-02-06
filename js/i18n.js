@@ -43,7 +43,13 @@ const dictionaries = {
         "form.error.empty": "Por favor completa todos los campos correctamente.",
         "form.error.email": "Por favor ingresa un correo electrónico válido.",
         "form.error.language": "Solo se permiten mensajes en Inglés o Español (caracteres no válidos detectados).",
-        "form.success.sending": "Enviando mensaje..."
+        "form.success.sending": "Enviando mensaje...",
+        "nav.audiovisual": "Audiovisual",
+        "audiovisual.title": "Producción Audiovisual",
+        "audiovisual.desc": "Experto generando video e imágenes con IA usando modelos como Runway, Veo 3, etc.",
+        "portfolio.title": "Portafolio",
+        "tabs.software": "Software & Apps",
+        "tabs.audiovisual": "Música & Audiovisual"
     },
     en: {
         "nav.home": "Home",
@@ -89,7 +95,13 @@ const dictionaries = {
         "form.error.empty": "Please complete all fields correctly.",
         "form.error.email": "Please enter a valid email address.",
         "form.error.language": "Only English or Spanish messages are allowed (invalid characters detected).",
-        "form.success.sending": "Sending message..."
+        "form.success.sending": "Sending message...",
+        "nav.audiovisual": "Audiovisual",
+        "audiovisual.title": "Audiovisual Production",
+        "audiovisual.desc": "Expert in AI video and image generation using models like Runway, Veo 3, etc.",
+        "portfolio.title": "Portfolio",
+        "tabs.software": "Software & Apps",
+        "tabs.audiovisual": "Music & Audiovisual"
     }
 };
 

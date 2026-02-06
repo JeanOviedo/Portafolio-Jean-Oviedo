@@ -1,0 +1,290 @@
+document.addEventListener('DOMContentLoaded', () => {
+    loadVideos();
+});
+
+const VIDEO_DATA = [
+    {
+        "title": "Katherine",
+        "thumbnail": "https://i.ytimg.com/vi/0WV5U1ITyb4/hqdefault.jpg",
+        "duration": "4:29",
+        "views": "43",
+        "date": "hace 23 horas",
+        "id": "0WV5U1ITyb4"
+    },
+    {
+        "title": "Sigo firme con mi voz",
+        "thumbnail": "https://i.ytimg.com/vi/NoaM7Uii5ak/hqdefault.jpg",
+        "duration": "3:03",
+        "views": "123",
+        "date": "hace 1 día",
+        "id": "NoaM7Uii5ak"
+    },
+    {
+        "title": "La fuente de mi inspiración",
+        "thumbnail": "https://i.ytimg.com/vi/vfxH_PNfeYc/hqdefault.jpg",
+        "duration": "4:18",
+        "views": "64",
+        "date": "hace 4 días",
+        "id": "vfxH_PNfeYc"
+    },
+    {
+        "title": "Viajero del Tiempo",
+        "thumbnail": "https://i.ytimg.com/vi/AxmPwgjkNwA/hqdefault.jpg",
+        "duration": "3:11",
+        "views": "113",
+        "date": "hace 7 días",
+        "id": "AxmPwgjkNwA"
+    },
+    {
+        "title": "Mi Comienzo y Mi Final",
+        "thumbnail": "https://i.ytimg.com/vi/gxC2Nv3R-yU/hqdefault.jpg",
+        "duration": "3:55",
+        "views": "39",
+        "date": "hace 12 días",
+        "id": "gxC2Nv3R-yU"
+    },
+    {
+        "title": "Señorita",
+        "thumbnail": "https://i.ytimg.com/vi/oLAyP2gMQGc/hqdefault.jpg",
+        "duration": "3:56",
+        "views": "286",
+        "date": "hace 2 semanas",
+        "id": "oLAyP2gMQGc"
+    },
+    {
+        "title": "Quédate Hasta Qué Amanezca",
+        "thumbnail": "https://i.ytimg.com/vi/ItlLI0Tk7iA/hqdefault.jpg",
+        "duration": "3:37",
+        "views": "113",
+        "date": "hace 3 semanas",
+        "id": "ItlLI0Tk7iA"
+    },
+    {
+        "title": "Final del Año",
+        "thumbnail": "https://i.ytimg.com/vi/CcVQUykbN54/hqdefault.jpg",
+        "duration": "3:26",
+        "views": "24",
+        "date": "hace 1 mes",
+        "id": "CcVQUykbN54"
+    },
+    {
+        "title": "Me Voy De Fiesta",
+        "thumbnail": "https://i.ytimg.com/vi/HwLMYVUM4Uo/hqdefault.jpg",
+        "duration": "3:00",
+        "views": "80",
+        "date": "hace 1 mes",
+        "id": "HwLMYVUM4Uo"
+    },
+    {
+        "title": "La Primera Que Escribí",
+        "thumbnail": "https://i.ytimg.com/vi/W3YP4BQX4Fk/hqdefault.jpg",
+        "duration": "2:40",
+        "views": "104",
+        "date": "hace 1 mes",
+        "id": "W3YP4BQX4Fk"
+    },
+    {
+        "title": "Su intelecto",
+        "thumbnail": "https://i.ytimg.com/vi/9ZoSeRW3_ZE/hqdefault.jpg",
+        "duration": "2:02",
+        "views": "73",
+        "date": "hace 1 mes",
+        "id": "9ZoSeRW3_ZE"
+    },
+    {
+        "title": "Un Bailecito",
+        "thumbnail": "https://i.ytimg.com/vi/CCxDL7cBTAU/hqdefault.jpg",
+        "duration": "2:01",
+        "views": "97",
+        "date": "hace 1 mes",
+        "id": "CCxDL7cBTAU"
+    },
+    {
+        "title": "Feliz Navidad",
+        "thumbnail": "https://i.ytimg.com/vi/anNfyeQ04dI/hqdefault.jpg",
+        "duration": "3:13",
+        "views": "524",
+        "date": "hace 1 mes",
+        "id": "anNfyeQ04dI"
+    },
+    {
+        "title": "Mi Todo",
+        "thumbnail": "https://i.ytimg.com/vi/otO3Y88LP2E/hqdefault.jpg",
+        "duration": "2:01",
+        "views": "103",
+        "date": "hace 1 mes",
+        "id": "otO3Y88LP2E"
+    },
+    {
+        "title": "Reggaeton modo bestia",
+        "thumbnail": "https://i.ytimg.com/vi/0GKrChCMVJY/hqdefault.jpg",
+        "duration": "3:20",
+        "views": "400",
+        "date": "hace 1 mes",
+        "id": "0GKrChCMVJY"
+    },
+    {
+        "title": "Brutal",
+        "thumbnail": "https://i.ytimg.com/vi/WQgHJ9BjcM8/hqdefault.jpg",
+        "duration": "1:54",
+        "views": "41",
+        "date": "hace 1 mes",
+        "id": "WQgHJ9BjcM8"
+    },
+    {
+        "title": "Time Machine",
+        "thumbnail": "https://i.ytimg.com/vi/cGNGl8z7vSQ/hqdefault.jpg",
+        "duration": "3:00",
+        "views": "48",
+        "date": "hace 2 meses",
+        "id": "cGNGl8z7vSQ"
+    },
+    {
+        "title": "Quédate Conmigo",
+        "thumbnail": "https://i.ytimg.com/vi/v0Nnn1Do6aI/hqdefault.jpg",
+        "duration": "3:52",
+        "views": "272",
+        "date": "hace 2 meses",
+        "id": "v0Nnn1Do6aI"
+    },
+    {
+        "title": "Desde que te fuiste",
+        "thumbnail": "https://i.ytimg.com/vi/Dq1KngooKEQ/hqdefault.jpg",
+        "duration": "4:05",
+        "views": "515",
+        "date": "hace 2 meses",
+        "id": "Dq1KngooKEQ"
+    },
+    {
+        "title": "Si tú supieras",
+        "thumbnail": "https://i.ytimg.com/vi/vs_VFGuI1gk/hqdefault.jpg",
+        "duration": "3:00",
+        "views": "82",
+        "date": "hace 2 meses",
+        "id": "vs_VFGuI1gk"
+    },
+    {
+        "title": "Flechazo Quebrado",
+        "thumbnail": "https://i.ytimg.com/vi/_gjsRZFCtgc/hqdefault.jpg",
+        "duration": "3:18",
+        "views": "203",
+        "date": "hace 2 meses",
+        "id": "_gjsRZFCtgc"
+    },
+    {
+        "title": "Ella",
+        "thumbnail": "https://i.ytimg.com/vi/GrImak_AfSc/hqdefault.jpg",
+        "duration": "4:13",
+        "views": "210",
+        "date": "hace 3 meses",
+        "id": "GrImak_AfSc"
+    },
+
+    {
+        "title": "Desde Abajo (repetido)",
+        "thumbnail": "https://i.ytimg.com/vi/1y1xy10XvaI/hqdefault.jpg",
+        "duration": "3:30",
+        "views": "157",
+        "date": "hace 3 meses",
+        "id": "1y1xy10XvaI"
+    },
+    {
+        "title": "Amor leal que da fuerzas",
+        "thumbnail": "https://i.ytimg.com/vi/YBtaz9ujqMY/hqdefault.jpg",
+        "duration": "2:32",
+        "views": "191",
+        "date": "hace 3 meses",
+        "id": "YBtaz9ujqMY"
+    },
+    {
+        "title": "Reina de mi Vida",
+        "thumbnail": "https://i.ytimg.com/vi/KQnqG2GHcY4/hqdefault.jpg",
+        "duration": "3:52",
+        "views": "95",
+        "date": "hace 5 meses",
+        "id": "KQnqG2GHcY4"
+    },
+    {
+        "title": "Subliminal",
+        "thumbnail": "https://i.ytimg.com/vi/iDLBXh_9fRA/hqdefault.jpg",
+        "duration": "3:12",
+        "views": "34",
+        "date": "hace 5 meses",
+        "id": "iDLBXh_9fRA"
+    },
+    {
+        "title": "Fallémonos",
+        "thumbnail": "https://i.ytimg.com/vi/phIjP1Om2nk/hqdefault.jpg",
+        "duration": "2:58",
+        "views": "34",
+        "date": "hace 5 meses",
+        "id": "phIjP1Om2nk"
+    }
+];
+
+function loadVideos(filterText = '') {
+    const grid = document.getElementById('audiovisualGrid');
+    if (!grid) return;
+
+    grid.innerHTML = '';
+
+    const normalizedFilter = filterText.toLowerCase().trim();
+
+    const filteredVideos = VIDEO_DATA.filter(video =>
+        video.title.toLowerCase().includes(normalizedFilter)
+    );
+
+    if (filteredVideos.length === 0) {
+        grid.innerHTML = '<p class="no-results" style="grid-column: 1/-1; text-align: center; color: var(--muted); padding: 2rem;">No se encontraron videos.</p>';
+        return;
+    }
+
+    filteredVideos.forEach(video => {
+        const card = createVideoCard(video);
+        grid.appendChild(card);
+    });
+}
+
+function createVideoCard(video) {
+    const card = document.createElement('article');
+    card.className = 'project-card video-card';
+
+    // Open YouTube video on click
+    card.onclick = () => {
+        window.open(`https://www.youtube.com/watch?v=${video.id}`, '_blank');
+    };
+    card.style.cursor = 'pointer';
+
+    const media = document.createElement('div');
+    media.className = 'project-media';
+    media.style.backgroundImage = `url('${video.thumbnail}')`;
+    media.setAttribute('aria-hidden', 'true');
+
+    // Play icon overlay
+    const playOverlay = document.createElement('div');
+    playOverlay.className = 'play-overlay';
+    playOverlay.innerHTML = '<i class="fas fa-play"></i>';
+    media.appendChild(playOverlay);
+
+    // Duration badge
+    const duration = document.createElement('span');
+    duration.className = 'video-duration';
+    duration.textContent = video.duration;
+    media.appendChild(duration);
+
+    const body = document.createElement('div');
+    body.className = 'project-body video-body';
+
+    const h3 = document.createElement('h3');
+    h3.textContent = video.title;
+    h3.style.marginBottom = '0'; // Adjusted since meta is gone
+    h3.style.fontSize = '15px';
+
+    body.appendChild(h3);
+    // Removed video-meta (views/date) as per user request
+
+    card.appendChild(media);
+    card.appendChild(body);
+
+    return card;
+}

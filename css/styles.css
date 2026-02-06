@@ -1635,3 +1635,153 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==================================================== */
+/* ✨ AUDIOVISUAL VIDEO CARDS */
+/* ==================================================== */
+
+.video-card {
+  position: relative;
+  cursor: pointer;
+}
+
+.video-card .project-media {
+  position: relative;
+}
+
+.play-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(2px);
+}
+
+.video-card:hover .play-overlay {
+  opacity: 1;
+}
+
+.play-overlay i {
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+  transform: scale(0.8);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.video-card:hover .play-overlay i {
+  transform: scale(1);
+}
+
+.video-duration {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.video-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: auto;
+  /* Pushes to bottom if flex column */
+}
+
+.video-meta i {
+  font-size: 12px;
+  color: var(--accent1);
+}
+
+/* Compact Video Card */
+.video-card {
+  min-height: auto !important;
+  height: auto !important;
+  /* Fix for excess space */
+}
+
+.video-card .project-body {
+  padding: 12px !important;
+  flex: 0 0 auto !important;
+  /* Don't expand */
+}
+
+.video-card h3 {
+  font-size: 15px !important;
+  margin-bottom: 4px !important;
+  height: auto !important;
+  /* No fixed height */
+  -webkit-line-clamp: 1 !important;
+  /* Single line title */
+}
+
+/* Visibility Toggle */
+/* Tab System */
+.category-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--muted);
+  padding: 10px 20px;
+  border-radius: 999px;
+  /* Pill */
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+}
+
+.tab-btn.active {
+  background: var(--accent1);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+[data-theme="light"] .tab-btn {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .tab-btn.active {
+  background: #000;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tab-panel {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* Remove old video overrides since layouts are now handled by panels */
+#audiovisual {
+  display: block;
+  /* Managed by panel */
+}

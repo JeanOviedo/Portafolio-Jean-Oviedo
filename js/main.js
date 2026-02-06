@@ -31,6 +31,47 @@ document.addEventListener("keydown", e => {
     }
 });
 
+// Tab System Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.tab-panel');
+    const navLinks = document.querySelectorAll('.menu a');
+
+    function switchTab(tabId) {
+        // Update Tabs
+        tabs.forEach(tab => {
+            tab.classList.toggle('active', tab.dataset.tab === tabId);
+        });
+
+        // Update Panels
+        panels.forEach(panel => {
+            const isActive = (tabId === 'tech' && panel.id === 'techPanel') ||
+                (tabId === 'av' && panel.id === 'avPanel');
+
+            panel.classList.toggle('active', isActive);
+        });
+    }
+
+    // Tab Click Event
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            switchTab(tab.dataset.tab);
+        });
+    });
+
+    // Sync with Navigation
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href === '#portafolio') {
+                switchTab('tech');
+            } else if (href === '#audiovisual') {
+                switchTab('av');
+            }
+        });
+    });
+});
+
 document.addEventListener("copy", e => {
     e.preventDefault();
     alert("⚠️ Función de copiado bloqueada");
@@ -187,7 +228,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('projectSearch');
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
-            renderProjects(e.target.value);
+            const term = e.target.value;
+            if (typeof renderProjects === 'function') renderProjects(term);
+            if (typeof loadVideos === 'function') loadVideos(term);
         });
     }
 });
@@ -262,3 +305,29 @@ if (navToggle) {
         if (menu) menu.classList.toggle('active');
     });
 }
+
+/* ============== Scroll Spy for Active Link ============== */
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.menu a');
+
+const observerOptions = {
+    threshold: 0.3
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${id}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    });
+}, observerOptions);
+
+sections.forEach(section => {
+    observer.observe(section);
+});

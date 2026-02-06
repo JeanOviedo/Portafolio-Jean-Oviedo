@@ -69,6 +69,7 @@
       <li><a href="#inicio" class="active" data-i18n="nav.home">Inicio</a></li>
       <li><a href="#sobre-mi" data-i18n="nav.about">Sobre mí</a></li>
       <li><a href="#portafolio" data-i18n="nav.projects">Proyectos</a></li>
+      <li><a href="#audiovisual" data-i18n="nav.audiovisual">Audiovisual</a></li>
       <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:10px">
@@ -291,18 +292,42 @@
     </section>
 
     <div class="content-grid">
-      <!-- PORTFOLIO -->
-      <section class="portfolio-section fade-in" style="animation-delay: 0.2s" id="portafolio" aria-label="Proyectos">
-        <div class="portfolio-head">
-          <h2 data-i18n="projects.title">Proyectos Destacados</h2>
-          <div class="search-container">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" id="projectSearch" class="search-input"
-              data-i18n-placeholder="projects.search.placeholder" placeholder="Buscar por título o característica...">
+      <div class="main-column">
+        <!-- GLOBAL CONTROLS HEADER -->
+        <section class="portfolio-controls fade-in">
+          <div class="portfolio-head">
+            <h2 data-i18n="portfolio.title">Portafolio</h2>
+            <div class="search-container">
+              <i class="fas fa-search search-icon"></i>
+              <input type="text" id="projectSearch" class="search-input"
+                data-i18n-placeholder="projects.search.placeholder" placeholder="Buscar por título o característica...">
+            </div>
           </div>
+
+          <div class="category-tabs">
+            <button class="tab-btn active" data-tab="tech" data-i18n="tabs.software">Software & Apps</button>
+            <button class="tab-btn" data-tab="av" data-i18n="tabs.audiovisual">Música & Audiovisual</button>
+          </div>
+        </section>
+
+        <!-- SOFTWARE PANEL -->
+        <div id="techPanel" class="tab-panel active">
+          <section class="portfolio-section" id="portafolio" aria-label="Proyectos">
+            <div class="portfolio-grid" id="projectsGrid" aria-live="polite"></div>
+          </section>
         </div>
-        <div class="portfolio-grid" id="projectsGrid" aria-live="polite"></div>
-      </section>
+
+        <!-- AUDIOVISUAL PANEL -->
+        <div id="avPanel" class="tab-panel">
+          <section class="portfolio-section" id="audiovisual" aria-label="Audiovisual">
+            <p class="lead" data-i18n="audiovisual.desc"
+              style="max-width: 600px; margin: 0 auto 24px auto; text-align:center">Experto generando video e imágenes
+              con IA.</p>
+            <div class="portfolio-grid" id="audiovisualGrid"></div>
+          </section>
+        </div>
+
+      </div>
 
       <!-- CONTACT -->
       <section id="contacto" class="contact-section fade-in" style="animation-delay: 0.3s">
@@ -386,6 +411,7 @@
   </main>
   <!-- SCRIPTS -->
   <script src="projects.js"></script>
+  <script src="js/videos.js"></script>
   <script src="js/main.js"></script>
 </body>
 
