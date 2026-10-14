@@ -450,14 +450,6 @@ const VIDEO_DATA = [
         "views": "34",
         "date": "hace 5 meses",
         "id": "iDLBXh_9fRA"
-    },
-    {
-        "title": "Fallémonos",
-        "thumbnail": "https://i.ytimg.com/vi/phIjP1Om2nk/hqdefault.jpg",
-        "duration": "2:58",
-        "views": "34",
-        "date": "hace 5 meses",
-        "id": "phIjP1Om2nk"
     }
 ];
 
