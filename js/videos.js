@@ -4,6 +4,238 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const VIDEO_DATA = [
     {
+        "title": "Relax, Tranquilo y Bacano",
+        "thumbnail": "https://i.ytimg.com/vi/Zh4kRi2nBb0/hqdefault.jpg",
+        "duration": "3:28",
+        "views": "141",
+        "date": "hace 2 días",
+        "id": "Zh4kRi2nBb0"
+    },
+    {
+        "title": "Freestyle # 10 (El Carbón)",
+        "thumbnail": "https://i.ytimg.com/vi/CDumoIEljUk/hqdefault.jpg",
+        "duration": "3:08",
+        "views": "52",
+        "date": "hace 4 días",
+        "id": "CDumoIEljUk"
+    },
+    {
+        "title": "Soledad Cósmica",
+        "thumbnail": "https://i.ytimg.com/vi/dlbXItGRpGc/hqdefault.jpg",
+        "duration": "2:56",
+        "views": "127",
+        "date": "hace 5 días",
+        "id": "dlbXItGRpGc"
+    },
+    {
+        "title": "Quererte Bonito (Reggaeton Versión)",
+        "thumbnail": "https://i.ytimg.com/vi/ouA5hpbPuaY/hqdefault.jpg",
+        "duration": "3:52",
+        "views": "19",
+        "date": "hace 9 días",
+        "id": "ouA5hpbPuaY"
+    },
+    {
+        "title": "Quererte Bonito (Vallenato Versión)",
+        "thumbnail": "https://i.ytimg.com/vi/9zEDlThzGrE/hqdefault.jpg",
+        "duration": "3:53",
+        "views": "14",
+        "date": "hace 10 días",
+        "id": "9zEDlThzGrE"
+    },
+    {
+        "title": "Mi Razón",
+        "thumbnail": "https://i.ytimg.com/vi/xbX4PN7VNpE/hqdefault.jpg",
+        "duration": "4:04",
+        "views": "27",
+        "date": "hace 11 días",
+        "id": "xbX4PN7VNpE"
+    },
+    {
+        "title": "Miami",
+        "thumbnail": "https://i.ytimg.com/vi/2-n-fmTSPyw/hqdefault.jpg",
+        "duration": "3:52",
+        "views": "85",
+        "date": "hace 12 días",
+        "id": "2-n-fmTSPyw"
+    },
+    {
+        "title": "Voy a Seguir",
+        "thumbnail": "https://i.ytimg.com/vi/cYkep-OSaLs/hqdefault.jpg",
+        "duration": "4:51",
+        "views": "227",
+        "date": "hace 2 semanas",
+        "id": "cYkep-OSaLs"
+    },
+    {
+        "title": "Reggaeton De La Mata",
+        "thumbnail": "https://i.ytimg.com/vi/15_AGYkEc-o/hqdefault.jpg",
+        "duration": "3:58",
+        "views": "175",
+        "date": "hace 2 semanas",
+        "id": "15_AGYkEc-o"
+    },
+    {
+        "title": "Freestyle # 9 (Libreta de Evidencias)",
+        "thumbnail": "https://i.ytimg.com/vi/YeKALXdKN5g/hqdefault.jpg",
+        "duration": "4:49",
+        "views": "94",
+        "date": "hace 3 semanas",
+        "id": "YeKALXdKN5g"
+    },
+    {
+        "title": "Estamos Ready",
+        "thumbnail": "https://i.ytimg.com/vi/qg7jNrzrbNg/hqdefault.jpg",
+        "duration": "3:05",
+        "views": "504",
+        "date": "hace 3 semanas",
+        "id": "qg7jNrzrbNg"
+    },
+    {
+        "title": "Mi Niña Bonita",
+        "thumbnail": "https://i.ytimg.com/vi/LgGY47HMM3c/hqdefault.jpg",
+        "duration": "5:00",
+        "views": "344",
+        "date": "hace 1 mes",
+        "id": "LgGY47HMM3c"
+    },
+    {
+        "title": "Freestyle #8 Se Aprende, Se Aplica y Se Mejora",
+        "thumbnail": "https://i.ytimg.com/vi/vuxajuuufNw/hqdefault.jpg",
+        "duration": "2:50",
+        "views": "76",
+        "date": "hace 1 mes",
+        "id": "vuxajuuufNw"
+    },
+    {
+        "title": "Angelito",
+        "thumbnail": "https://i.ytimg.com/vi/T80XTOlFUxs/hqdefault.jpg",
+        "duration": "3:20",
+        "views": "919",
+        "date": "hace 2 meses",
+        "id": "T80XTOlFUxs"
+    },
+    {
+        "title": "Freestyle # 7 (Agamenón)",
+        "thumbnail": "https://i.ytimg.com/vi/ckvFZTiET1M/hqdefault.jpg",
+        "duration": "3:43",
+        "views": "104",
+        "date": "hace 2 meses",
+        "id": "ckvFZTiET1M"
+    },
+    {
+        "title": "Qué Cule' Vaina Bacana",
+        "thumbnail": "https://i.ytimg.com/vi/s7okNI1oaQI/hqdefault.jpg",
+        "duration": "3:28",
+        "views": "438",
+        "date": "hace 2 meses",
+        "id": "s7okNI1oaQI"
+    },
+    {
+        "title": "Don Omar",
+        "thumbnail": "https://i.ytimg.com/vi/WnmQFYO-fd8/hqdefault.jpg",
+        "duration": "4:12",
+        "views": "468",
+        "date": "hace 2 meses",
+        "id": "WnmQFYO-fd8"
+    },
+    {
+        "title": "Ay Dios Mío",
+        "thumbnail": "https://i.ytimg.com/vi/fcOeWh6Ils4/hqdefault.jpg",
+        "duration": "3:13",
+        "views": "290",
+        "date": "hace 2 meses",
+        "id": "fcOeWh6Ils4"
+    },
+    {
+        "title": "Freestyle #6 (Máquina de Guerra)",
+        "thumbnail": "https://i.ytimg.com/vi/qXSuNHf3kpg/hqdefault.jpg",
+        "duration": "2:20",
+        "views": "197",
+        "date": "hace 3 meses",
+        "id": "qXSuNHf3kpg"
+    },
+    {
+        "title": "Poco a Poco",
+        "thumbnail": "https://i.ytimg.com/vi/2lrC8f22qCI/hqdefault.jpg",
+        "duration": "3:17",
+        "views": "90",
+        "date": "hace 3 meses",
+        "id": "2lrC8f22qCI"
+    },
+    {
+        "title": "Golpe Directo",
+        "thumbnail": "https://i.ytimg.com/vi/38xsBKzEXqg/hqdefault.jpg",
+        "duration": "4:09",
+        "views": "74",
+        "date": "hace 3 meses",
+        "id": "38xsBKzEXqg"
+    },
+    {
+        "title": "Eres Fuego",
+        "thumbnail": "https://i.ytimg.com/vi/6R9OjBJHxpU/hqdefault.jpg",
+        "duration": "3:46",
+        "views": "111",
+        "date": "hace 4 meses",
+        "id": "6R9OjBJHxpU"
+    },
+    {
+        "title": "Luz y Oscuridad",
+        "thumbnail": "https://i.ytimg.com/vi/DEGkTqnnej4/hqdefault.jpg",
+        "duration": "3:03",
+        "views": "99",
+        "date": "hace 4 meses",
+        "id": "DEGkTqnnej4"
+    },
+    {
+        "title": "Más Pa' Arriba",
+        "thumbnail": "https://i.ytimg.com/vi/hWp29pyzI6I/hqdefault.jpg",
+        "duration": "2:25",
+        "views": "40",
+        "date": "hace 4 meses",
+        "id": "hWp29pyzI6I"
+    },
+    {
+        "title": "De Rodillas",
+        "thumbnail": "https://i.ytimg.com/vi/6JYCnd-0KZM/hqdefault.jpg",
+        "duration": "5:28",
+        "views": "79",
+        "date": "hace 4 meses",
+        "id": "6JYCnd-0KZM"
+    },
+    {
+        "title": "Brutality",
+        "thumbnail": "https://i.ytimg.com/vi/YsCjh_Co0Fg/hqdefault.jpg",
+        "duration": "2:58",
+        "views": "25",
+        "date": "hace 4 meses",
+        "id": "YsCjh_Co0Fg"
+    },
+    {
+        "title": "Estoy Harto",
+        "thumbnail": "https://i.ytimg.com/vi/dxW6cwqHy0M/hqdefault.jpg",
+        "duration": "3:35",
+        "views": "19",
+        "date": "hace 4 meses",
+        "id": "dxW6cwqHy0M"
+    },
+    {
+        "title": "Sube",
+        "thumbnail": "https://i.ytimg.com/vi/bykxa1IKg2g/hqdefault.jpg",
+        "duration": "3:00",
+        "views": "191",
+        "date": "hace 4 meses",
+        "id": "bykxa1IKg2g"
+    },
+    {
+        "title": "Nota de Voz",
+        "thumbnail": "https://i.ytimg.com/vi/O-U5rA-6384/hqdefault.jpg",
+        "duration": "3:42",
+        "views": "87",
+        "date": "hace 4 meses",
+        "id": "O-U5rA-6384"
+    },
+    {
         "title": "Katherine",
         "thumbnail": "https://i.ytimg.com/vi/0WV5U1ITyb4/hqdefault.jpg",
         "duration": "4:29",
@@ -179,9 +411,16 @@ const VIDEO_DATA = [
         "date": "hace 3 meses",
         "id": "GrImak_AfSc"
     },
-
     {
         "title": "Desde Abajo",
+        "thumbnail": "https://i.ytimg.com/vi/e9SGo95ShBQ/hqdefault.jpg",
+        "duration": "3:30",
+        "views": "16",
+        "date": "hace 3 meses",
+        "id": "e9SGo95ShBQ"
+    },
+    {
+        "title": "Desde Abajo (repetido)",
         "thumbnail": "https://i.ytimg.com/vi/1y1xy10XvaI/hqdefault.jpg",
         "duration": "3:30",
         "views": "157",
