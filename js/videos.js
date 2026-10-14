@@ -420,14 +420,6 @@ const VIDEO_DATA = [
         "id": "e9SGo95ShBQ"
     },
     {
-        "title": "Desde Abajo (repetido)",
-        "thumbnail": "https://i.ytimg.com/vi/1y1xy10XvaI/hqdefault.jpg",
-        "duration": "3:30",
-        "views": "157",
-        "date": "hace 3 meses",
-        "id": "1y1xy10XvaI"
-    },
-    {
         "title": "Amor leal que da fuerzas",
         "thumbnail": "https://i.ytimg.com/vi/YBtaz9ujqMY/hqdefault.jpg",
         "duration": "2:32",
