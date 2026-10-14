@@ -274,9 +274,9 @@ function trapModalFocus(e) {
 /* ============== Presentation enhancements (text is never changed) ============== */
 const BIO_HIGHLIGHTS = {
     es: ['desarrollo de aplicaciones web modernas', 'automatización de procesos', 'agentes inteligentes',
-        'creación audiovisual', 'trabajo de manera profesional'],
+        'música y videoclips con IA', 'de manera profesional'],
     en: ['modern web application development', 'process automation', 'intelligent agent creation',
-        'audiovisual creation', 'work professionally']
+        'music and music videos with AI', 'professionally']
 };
 
 function wrapPhrases(node, phrases, tag, className) {
@@ -319,7 +319,7 @@ function onLanguageApplied() {
     const title = document.querySelector('[data-accent]');
     if (title) wrapPhrases(title, [title.dataset.accent], 'span', 'accent-text');
 
-    document.querySelectorAll('.bio').forEach(bio => wrapPhrases(bio, BIO_HIGHLIGHTS[currentLang] || [], 'strong', ''));
+    document.querySelectorAll('.bio, [data-i18n="about.bio.av"]').forEach(bio => wrapPhrases(bio, BIO_HIGHLIGHTS[currentLang] || [], 'strong', ''));
 
     document.querySelectorAll('[data-split-role]').forEach(splitRole);
 

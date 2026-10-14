@@ -777,10 +777,37 @@ strong {
   top: calc(var(--header-h) + 32px);
 }
 
-.bio--secondary {
-  margin-top: 22px;
-  padding-top: 22px;
-  border-top: 1px solid var(--line);
+.bio-callout {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
+  padding: 16px 18px;
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in srgb, var(--cyan) 28%, var(--line));
+  background:
+    linear-gradient(90deg, var(--cyan-tint), transparent 80%),
+    var(--surface);
+  color: var(--text-2);
+  font-size: 15.5px;
+  line-height: 1.55;
+}
+
+.bio-callout strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.bio-callout-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--cyan-tint);
+  color: var(--cyan);
+  font-size: 15px;
 }
 
 .bio {
