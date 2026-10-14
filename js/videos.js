@@ -474,7 +474,7 @@ function loadVideos(filterText = '') {
     );
 
     if (filteredVideos.length === 0) {
-        grid.innerHTML = '<p class="no-results" style="grid-column: 1/-1; text-align: center; color: var(--muted); padding: 2rem;">No se encontraron videos.</p>';
+        grid.innerHTML = '<div class="empty-state"><i class="fas fa-search" aria-hidden="true"></i><p class="no-results">No se encontraron videos.</p></div>';
         return;
     }
 
@@ -482,26 +482,34 @@ function loadVideos(filterText = '') {
         const card = createVideoCard(video);
         grid.appendChild(card);
     });
+
+    if (typeof observeReveal === 'function') observeReveal(grid);
 }
 
 function createVideoCard(video) {
-    const card = document.createElement('article');
-    card.className = 'project-card video-card';
-
-    // Open YouTube video on click
-    card.onclick = () => {
-        window.open(`https://www.youtube.com/watch?v=${video.id}`, '_blank');
-    };
-    card.style.cursor = 'pointer';
+    // Whole card is a real link to the YouTube video (keyboard and middle-click friendly)
+    const card = document.createElement('a');
+    card.className = 'video-card reveal';
+    card.href = `https://www.youtube.com/watch?v=${video.id}`;
+    card.target = '_blank';
+    card.rel = 'noopener';
 
     const media = document.createElement('div');
-    media.className = 'project-media';
-    media.style.backgroundImage = `url('${video.thumbnail}')`;
-    media.setAttribute('aria-hidden', 'true');
+    media.className = 'video-media';
+
+    const img = document.createElement('img');
+    img.src = video.thumbnail;
+    img.alt = '';
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.width = 480;
+    img.height = 360;
+    media.appendChild(img);
 
     // Play icon overlay
-    const playOverlay = document.createElement('div');
+    const playOverlay = document.createElement('span');
     playOverlay.className = 'play-overlay';
+    playOverlay.setAttribute('aria-hidden', 'true');
     playOverlay.innerHTML = '<i class="fas fa-play"></i>';
     media.appendChild(playOverlay);
 
@@ -511,19 +519,13 @@ function createVideoCard(video) {
     duration.textContent = video.duration;
     media.appendChild(duration);
 
-    const body = document.createElement('div');
-    body.className = 'project-body video-body';
-
     const h3 = document.createElement('h3');
+    h3.className = 'video-title';
     h3.textContent = video.title;
-    h3.style.marginBottom = '0'; // Adjusted since meta is gone
-    h3.style.fontSize = '15px';
-
-    body.appendChild(h3);
     // Removed video-meta (views/date) as per user request
 
     card.appendChild(media);
-    card.appendChild(body);
+    card.appendChild(h3);
 
     return card;
 }

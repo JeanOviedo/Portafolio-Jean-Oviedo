@@ -49,7 +49,12 @@ const dictionaries = {
         "audiovisual.desc": "Experto generando video e imágenes con IA usando modelos como Runway, Veo 3, etc.",
         "portfolio.title": "Portafolio",
         "tabs.software": "Software & Apps",
-        "tabs.audiovisual": "Música & Audiovisual"
+        "tabs.audiovisual": "Música & Audiovisual",
+        "av.tools.video.title": "Video con IA y edición",
+        "av.tools.video.desc": "Utilizo diversas herramientas de inteligencia artificial para la creación y edición de contenido audiovisual, incluyendo Runway, Kling AI, Google Veo, Luma Dream Machine, Adobe Firefly, CapCut, Adobe Premiere Pro y DaVinci Resolve para generar escenas cinematográficas, animar imágenes, editar videos musicales y crear contenido para YouTube y redes sociales.",
+        "av.tools.audio.title": "Audio con IA y producción",
+        "av.tools.audio.desc": "Para trabajar con audio, utilizo herramientas como ElevenLabs, Adobe Podcast, Descript, Audacity, iZotope RX, Moises, LALAL.AI y LANDR, que permiten generar voces, limpiar grabaciones, reducir ruido, separar voces e instrumentos, editar pistas, mejorar mezclas y masterizar canciones.",
+        "av.tools.intro": "Integro estas tecnologías en mis procesos creativos para producir música, videoclips, narraciones y contenido digital, combinando generación con IA, edición profesional y automatización para optimizar tiempos y mejorar la calidad de los resultados."
     },
     en: {
         "nav.home": "Home",
@@ -101,7 +106,12 @@ const dictionaries = {
         "audiovisual.desc": "Expert in AI video and image generation using models like Runway, Veo 3, etc.",
         "portfolio.title": "Portfolio",
         "tabs.software": "Software & Apps",
-        "tabs.audiovisual": "Music & Audiovisual"
+        "tabs.audiovisual": "Music & Audiovisual",
+        "av.tools.video.title": "AI Video & Editing",
+        "av.tools.video.desc": "I use a variety of artificial intelligence tools to create and edit audiovisual content, including Runway, Kling AI, Google Veo, Luma Dream Machine, Adobe Firefly, CapCut, Adobe Premiere Pro, and DaVinci Resolve to generate cinematic scenes, animate images, edit music videos, and create content for YouTube and social media.",
+        "av.tools.audio.title": "AI Audio & Production",
+        "av.tools.audio.desc": "For audio work, I use tools such as ElevenLabs, Adobe Podcast, Descript, Audacity, iZotope RX, Moises, LALAL.AI, and LANDR, which let me generate voices, clean up recordings, reduce noise, separate vocals and instruments, edit tracks, improve mixes, and master songs.",
+        "av.tools.intro": "I integrate these technologies into my creative processes to produce music, music videos, narrations, and digital content, combining AI generation, professional editing, and automation to optimize turnaround times and improve the quality of the results."
     }
 };
 
@@ -140,9 +150,15 @@ function changeLanguage(lang) {
         langBtn.textContent = lang === "es" ? "EN" : "ES";
     }
 
-    // Re-render projects
+    // Re-render projects (keeping any active search term)
     if (typeof renderProjects === "function") {
-        renderProjects();
+        const search = document.getElementById("projectSearch");
+        renderProjects(search ? search.value : "");
+    }
+
+    // Presentation-only enhancements (wrap existing text in styled spans)
+    if (typeof onLanguageApplied === "function") {
+        onLanguageApplied(lang);
     }
 }
 

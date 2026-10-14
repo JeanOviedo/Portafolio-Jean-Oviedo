@@ -13,6 +13,7 @@
     content="Jean Carlos Oviedo, Jean Oviedo, Full Stack Developer, Ingeniero de Sistemas, Inteligencia Artificial, Automatización, n8n, AI Agents, React, Next.js, Colombia, Remoto" />
   <meta name="author" content="Jean Carlos Oviedo López" />
   <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#070b16" />
   <link rel="canonical" href="https://jeanoviedo.com/" />
 
   <!-- Open Graph / Facebook -->
@@ -36,11 +37,26 @@
   <link rel="icon" type="image/png" href="./img/logo.png" />
   <link rel="apple-touch-icon" href="./img/logo.png" />
 
+  <!-- Theme + JS flag before paint (avoids flash of wrong theme / hidden content without JS) -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      try { root.setAttribute('data-theme', localStorage.getItem('theme') || 'dark'); }
+      catch (e) { root.setAttribute('data-theme', 'dark'); }
+    })();
+  </script>
+
   <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
+  <link rel="preload" as="image" href="img/about.webp" type="image/webp" />
   <link rel="stylesheet" href="css/styles.css" />
   <script src="js/i18n.js"></script>
 
@@ -63,352 +79,539 @@
 
 <body>
   <!-- NAV -->
-  <nav class="navbar" role="navigation">
-    <div class="brand"><img id="siteLogo" src="./img/logo.png" alt="logo" /></div>
-    <ul class="menu" id="menu">
-      <li><a href="#inicio" class="active" data-i18n="nav.home">Inicio</a></li>
-      <li><a href="#sobre-mi" data-i18n="nav.about">Sobre mí</a></li>
-      <li><a href="#portafolio" data-i18n="nav.projects">Proyectos</a></li>
-      <li><a href="#audiovisual" data-i18n="nav.audiovisual">Audiovisual</a></li>
-      <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
-    </ul>
-    <div style="display:flex;align-items:center;gap:10px">
-      <button id="langToggle" class="theme-toggle-btn" onclick="toggleLanguage()" title="Cambiar idioma">
-        ES
-      </button>
-      <button class="theme-toggle-btn" onclick="toggleTheme()" title="Cambiar tema">
-        <i class="fas fa-moon" id="themeIcon"></i>
-      </button>
-      <div class="nav-toggle" id="navToggle">
-        <i class="fas fa-bars"></i>
+  <header class="site-header" id="siteHeader">
+    <nav class="navbar container" role="navigation">
+      <a class="brand" href="#inicio"><img id="siteLogo" src="./img/logo.png" alt="logo" width="588" height="131" /></a>
+
+      <ul class="menu" id="menu">
+        <li><a href="#inicio" class="active" data-i18n="nav.home">Inicio</a></li>
+        <li><a href="#sobre-mi" data-i18n="nav.about">Sobre mí</a></li>
+        <li><a href="#portafolio" data-i18n="nav.projects">Proyectos</a></li>
+        <li><a href="#audiovisual" data-i18n="nav.audiovisual">Audiovisual</a></li>
+        <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="langToggle" class="icon-btn lang-btn" type="button" onclick="toggleLanguage()"
+          title="Cambiar idioma" aria-label="Cambiar idioma">
+          ES
+        </button>
+        <button class="icon-btn" type="button" onclick="toggleTheme()" title="Cambiar tema" aria-label="Cambiar tema">
+          <i class="fas fa-moon" id="themeIcon" aria-hidden="true"></i>
+        </button>
+        <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-controls="menu" aria-expanded="false"
+          aria-label="Menu">
+          <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
       </div>
-  </nav>
+    </nav>
+  </header>
 
-  <main class="wrapper">
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero" id="inicio" aria-label="Inicio">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-grid-lines"></div>
+        <div class="hero-glow hero-glow--violet"></div>
+        <div class="hero-glow hero-glow--cyan"></div>
+      </div>
+
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <p class="status-pill reveal">
+            <span class="pulse" aria-hidden="true"></span>
+            <span data-i18n="hero.location">Montería, Colombia · Disponible para trabajo remoto</span>
+          </p>
+
+          <h1 class="hero-title reveal" data-i18n="about.title" data-accent="Jean Carlos Oviedo">Hola, soy Jean Carlos
+            Oviedo</h1>
+
+          <p class="hero-subtitle reveal" data-i18n="about.subtitle">Desarrollador Full Stack · Especialista en
+            Automatización & Agentes IA</p>
+
+          <p class="hero-role reveal">
+            <i class="fas fa-terminal" aria-hidden="true"></i>
+            <span data-i18n="hero.role">Ingeniero de Sistemas · Full Stack</span>
+          </p>
+
+          <div class="hero-actions reveal">
+            <a href="#portafolio" class="btn btn-primary">
+              <span data-i18n="nav.projects">Proyectos</span>
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="#contacto" class="btn btn-ghost">
+              <span data-i18n="nav.contact">Contacto</span>
+              <i class="fas fa-paper-plane" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <div class="socials reveal" aria-label="Redes sociales">
+            <a href="https://github.com/JeanOviedo" target="_blank" rel="noopener"><i class="fab fa-github"
+                aria-hidden="true"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/jean-oviedo/" target="_blank" rel="noopener"><i
+                class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+            <a href="https://jeanoviedo.com" target="_blank" rel="noopener"><i class="fas fa-globe-americas"
+                aria-hidden="true"></i> Web</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-hidden="false">
+          <div class="portrait">
+            <div class="portrait-ring" aria-hidden="true"></div>
+            <picture>
+              <source srcset="img/about.webp" type="image/webp" />
+              <img src="img/about.png" alt="Foto Jean Carlos Oviedo" width="720" height="720" fetchpriority="high" />
+            </picture>
+          </div>
+
+          <!-- Automation graph: decorative, labels taken from the existing stack -->
+          <svg class="flow" viewBox="0 0 520 520" aria-hidden="true" focusable="false">
+            <path class="flow-path" d="M60 120 C 140 120, 150 200, 230 210" />
+            <path class="flow-path" d="M470 90 C 400 110, 380 170, 300 200" />
+            <path class="flow-path" d="M470 400 C 400 400, 380 340, 310 320" />
+            <path class="flow-path" d="M50 420 C 130 420, 150 350, 220 320" />
+          </svg>
+          <span class="node node--1" aria-hidden="true"><i class="fas fa-project-diagram"></i> n8n</span>
+          <span class="node node--2" aria-hidden="true"><i class="fas fa-brain"></i> OpenAI</span>
+          <span class="node node--3" aria-hidden="true"><i class="fas fa-layer-group"></i> Next.js</span>
+          <span class="node node--4" aria-hidden="true"><i class="fas fa-network-wired"></i> LangGraph</span>
+        </div>
+      </div>
+
+      <a href="#sobre-mi" class="scroll-cue" aria-label="Sobre mí"><span aria-hidden="true"></span></a>
+    </section>
+
     <!-- ABOUT -->
-    <section class="about-wrap fade-in" id="sobre-mi" aria-label="Sobre mí">
-      <aside class="card-photo" aria-hidden="false">
-        <img src="img/about.png" alt="Foto Jean Carlos Oviedo" />
-        <div style="text-align:center">
-          <div class="highlight" data-i18n="hero.role">Ingeniero de Sistemas · Full Stack</div>
-          <div style="margin-top:8px;color:var(--muted);font-size:13px" data-i18n="hero.location">Montería, Colombia ·
-            Disponible para trabajo
-            remoto</div>
-        </div>
-        <div class="socials" aria-label="Redes sociales">
-          <a href="https://github.com/JeanOviedo" target="_blank" rel="noopener"><i class="fab fa-github"></i>
-            GitHub</a>
-          <a href="https://www.linkedin.com/in/jean-oviedo/" target="_blank" rel="noopener"><i
-              class="fab fa-linkedin"></i> LinkedIn</a>
-          <a href="https://jeanoviedo.com" target="_blank" rel="noopener"><i class="fas fa-globe-americas"></i> Web</a>
-        </div>
+    <section class="section about" id="sobre-mi" aria-label="Sobre mí">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="section-index" aria-hidden="true">01</span>
+          <h2 class="section-title" data-i18n="nav.about">Sobre mí</h2>
+        </header>
 
-        <div class="skills-sidebar">
+        <div class="about-layout">
+          <p class="bio reveal" data-i18n="about.bio">
+            Ingeniero de Sistemas apasionado por la tecnología, enfocado en el <strong>desarrollo de aplicaciones web
+              modernas</strong>, la <strong>automatización de procesos</strong> y la creación de <strong>agentes
+              inteligentes</strong>. Me especializo en transformar ideas complejas en soluciones digitales eficientes,
+            integrando arquitecturas robustas con interfaces intuitivas. Desde el desarrollo de sistemas a medida hasta
+            la implementación de flujos de trabajo con IA, mi objetivo es potenciar la productividad y la innovación en
+            cada proyecto.
+          </p>
 
-          <details class="skill-accordion" open>
-            <summary>Web & Backend</summary>
-            <div class="skill-accordion-content">
-              <span class="skill-sidebar-tag">JavaScript</span>
-              <span class="skill-sidebar-tag">TypeScript</span>
-              <span class="skill-sidebar-tag">React</span>
-              <span class="skill-sidebar-tag">Next.js</span>
-              <span class="skill-sidebar-tag">Node.js</span>
-              <span class="skill-sidebar-tag">Laravel</span>
-              <span class="skill-sidebar-tag">Python</span>
-              <span class="skill-sidebar-tag">Django</span>
-              <span class="skill-sidebar-tag">PHP</span>
-              <span class="skill-sidebar-tag">FastAPI</span>
-              <span class="skill-sidebar-tag">Angular</span>
+          <div class="stack-grid">
+            <article class="stack-card stack-card--wide reveal">
+              <header><span class="stack-icon"><i class="fas fa-code" aria-hidden="true"></i></span>
+                <h3>Web & Backend</h3>
+              </header>
+              <ul class="tag-list">
+                <li class="tag">JavaScript</li>
+                <li class="tag">TypeScript</li>
+                <li class="tag">React</li>
+                <li class="tag">Next.js</li>
+                <li class="tag">Node.js</li>
+                <li class="tag">Laravel</li>
+                <li class="tag">Python</li>
+                <li class="tag">Django</li>
+                <li class="tag">PHP</li>
+                <li class="tag">FastAPI</li>
+                <li class="tag">Angular</li>
+              </ul>
+            </article>
 
-            </div>
-          </details>
+            <article class="stack-card stack-card--ai reveal">
+              <header><span class="stack-icon"><i class="fas fa-robot" aria-hidden="true"></i></span>
+                <h3>IA & Automation</h3>
+              </header>
+              <ul class="tag-list">
+                <li class="tag">OpenAI</li>
+                <li class="tag">LLMs</li>
+                <li class="tag">RAG</li>
+                <li class="tag">n8n</li>
+                <li class="tag">Zapier</li>
+                <li class="tag">LangGraph</li>
+                <li class="tag">Claude</li>
+              </ul>
+            </article>
 
-          <details class="skill-accordion">
-            <summary>Data & ORMs</summary>
-            <div class="skill-accordion-content">
-              <span class="skill-sidebar-tag">PostgreSQL</span>
-              <span class="skill-sidebar-tag">MySQL</span>
-              <span class="skill-sidebar-tag">MongoDB</span>
-              <span class="skill-sidebar-tag">Firebase</span>
-              <span class="skill-sidebar-tag">Prisma</span>
-              <span class="skill-sidebar-tag">Redis</span>
-              <span class="skill-sidebar-tag">Supabase</span>
-            </div>
-          </details>
+            <article class="stack-card stack-card--wide reveal">
+              <header><span class="stack-icon"><i class="fas fa-photo-video" aria-hidden="true"></i></span>
+                <h3>Audio & Video IA</h3>
+              </header>
+              <ul class="tag-list">
+                <li class="tag">Runway</li>
+                <li class="tag">Kling AI</li>
+                <li class="tag">Google Veo</li>
+                <li class="tag">Luma Dream Machine</li>
+                <li class="tag">Adobe Firefly</li>
+                <li class="tag">CapCut</li>
+                <li class="tag">Adobe Premiere Pro</li>
+                <li class="tag">DaVinci Resolve</li>
+                <li class="tag">ElevenLabs</li>
+                <li class="tag">Adobe Podcast</li>
+                <li class="tag">Descript</li>
+                <li class="tag">Audacity</li>
+                <li class="tag">iZotope RX</li>
+                <li class="tag">Moises</li>
+                <li class="tag">LALAL.AI</li>
+                <li class="tag">LANDR</li>
+              </ul>
+            </article>
 
-          <details class="skill-accordion">
-            <summary>IA & Automation</summary>
-            <div class="skill-accordion-content">
-              <span class="skill-sidebar-tag">OpenAI</span>
-              <span class="skill-sidebar-tag">LLMs</span>
-              <span class="skill-sidebar-tag">RAG</span>
-              <span class="skill-sidebar-tag">n8n</span>
-              <span class="skill-sidebar-tag">Zapier</span>
-              <span class="skill-sidebar-tag">LangGraph</span>
-              <span class="skill-sidebar-tag">Claude</span>
-            </div>
-          </details>
+            <article class="stack-card reveal">
+              <header><span class="stack-icon"><i class="fas fa-database" aria-hidden="true"></i></span>
+                <h3>Data & ORMs</h3>
+              </header>
+              <ul class="tag-list">
+                <li class="tag">PostgreSQL</li>
+                <li class="tag">MySQL</li>
+                <li class="tag">MongoDB</li>
+                <li class="tag">Firebase</li>
+                <li class="tag">Prisma</li>
+                <li class="tag">Redis</li>
+                <li class="tag">Supabase</li>
+              </ul>
+            </article>
 
-          <details class="skill-accordion">
-            <summary>Cloud & DevOps</summary>
-            <div class="skill-accordion-content">
-              <span class="skill-sidebar-tag">AWS</span>
-              <span class="skill-sidebar-tag">Docker</span>
-              <span class="skill-sidebar-tag">Linux</span>
-              <span class="skill-sidebar-tag">CI/CD</span>
-              <span class="skill-sidebar-tag">Vercel</span>
-              <span class="skill-sidebar-tag">GitHub</span>
-            </div>
-          </details>
+            <article class="stack-card reveal">
+              <header><span class="stack-icon"><i class="fas fa-cloud" aria-hidden="true"></i></span>
+                <h3>Cloud & DevOps</h3>
+              </header>
+              <ul class="tag-list">
+                <li class="tag">AWS</li>
+                <li class="tag">Docker</li>
+                <li class="tag">Linux</li>
+                <li class="tag">CI/CD</li>
+                <li class="tag">Vercel</li>
+                <li class="tag">GitHub</li>
+              </ul>
+            </article>
 
-          <details class="skill-accordion">
-            <summary>Herramientas</summary>
-            <div class="skill-accordion-content">
-              <span class="skill-sidebar-tag">Git</span>
-              <span class="skill-sidebar-tag">VS Code</span>
-              <span class="skill-sidebar-tag">Figma</span>
-              <span class="skill-sidebar-tag">Postman</span>
-              <span class="skill-sidebar-tag">JIRA</span>
-            </div>
-          </details>
-
-        </div>
-      </aside>
-
-      <div class="card-info">
-        <h2 class="text-gradient" data-i18n="about.title" style="font-size: 32px; letter-spacing: -0.5px;">Hola, soy
-          Jean Carlos Oviedo</h2>
-        <div class="subtitle" data-i18n="about.subtitle">Desarrollador Full Stack · Especialista en Automatización &
-          Agentes IA</div>
-        <p class="bio" data-i18n="about.bio">
-          Ingeniero de Sistemas apasionado por la tecnología, enfocado en el <strong>desarrollo de aplicaciones web
-            modernas</strong>, la <strong>automatización de procesos</strong> y la creación de <strong>agentes
-            inteligentes</strong>. Me especializo en transformar ideas complejas en soluciones digitales eficientes,
-          integrando arquitecturas robustas con interfaces intuitivas. Desde el desarrollo de sistemas a medida hasta la
-          implementación de flujos de trabajo con IA, mi objetivo es potenciar la productividad y la innovación en cada
-          proyecto.
-        </p>
-
-
-
-        <div class="skills-grid" aria-hidden="false">
-          <div class="panel">
-            <h3 data-i18n="edu.title">Formación Académica</h3>
-            <!-- 
-            <div class="timeline-item">
-              <div class="dot"></div>
-              <div>
-                <h4 data-i18n="edu.master.title">Maestría en Inteligencia Artificial y Computación</h4>
-                <p><span data-i18n="edu.master.desc">Estudio actualmente - Virtual.</span> · 2026</p>
-              </div>
-            </div>
-            -->
-            <div class="timeline-item">
-              <div class="dot"></div>
-              <div>
-                <h4 data-i18n="edu.1.title">Especialización en Gestión y Seguridad de Bases de Datos</h4>
-                <p><span data-i18n="edu.1.desc">Administración y seguridad de datos.</span> · 2020</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="dot"></div>
-              <div>
-                <h4 data-i18n="edu.2.title">Ingeniero de Sistemas</h4>
-                <p><span data-i18n="edu.2.desc">Desarrollo, arquitectura y gestión TI.</span> · 2024</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="dot"></div>
-              <div>
-                <h4 data-i18n="edu.3.title">Tecnólogo en Análisis y Desarrollo de Sistemas</h4>
-                <p><span data-i18n="edu.3.desc">Bases en programación y análisis.</span> · 2019</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="dot"></div>
-              <div>
-                <h4 data-i18n="edu.4.title">Técnico en Informática y Redes</h4>
-                <p><span data-i18n="edu.4.desc">Formación técnica en mantenimiento de equipos de cómputo, instalación de
-                    redes y soporte a usuarios.</span> · 2017</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel">
-            <h3 data-i18n="exp.title">Experiencia Laboral</h3>
-            <div class="timeline-item">
-              <div class="dot"></div>
-              <div>
-                <h4 data-i18n="exp.1.role">KONECTA — Analista de Desarrollo (2022 - 2025)</h4>
-
-                <p data-i18n="exp.1.desc">Construcción de aplicaciones y componentes, aseguramiento de calidad mediante
-                  pruebas y validaciones,
-                  y soporte técnico para garantizar la disponibilidad y correcto funcionamiento de los sistemas.</p>
-
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="dot"></div>
-              <div>
-                <h4 data-i18n="exp.2.role">AZULURBANO — Desarrollador Web (2020 - 2021)</h4>
-                <p data-i18n="exp.2.desc">Construcción de soluciones software enfocadas en usabilidad y rendimiento,
-                  enfocada en la
-                  inmobiliaria y sus necesidades.</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="dot"></div>
-              <div>
-                <h4 data-i18n="exp.3.role">Freelance — Desarrollo de Apps y Web (2016 - 2020)</h4>
-                <p data-i18n="exp.3.desc">Primeros pasos en desarrollo web con PHP y aplicaciones de escritorio con Lua.
-                  Desarrollo web para diversas empresas como el Colegio Militar Almirante Colón, Fundación Santa Isabel
-                  y Postes Camel, entre otras.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="panel" style="margin-top: 18px">
-          <h3 data-i18n="skills.title">Formación Complementaria & Certificaciones</h3>
-          <div class="cert-grid">
-            <div class="cert-item"><i class="fas fa-certificate"></i> Bootcamp Desarrollo Web Full Stack</div>
-            <div class="cert-item"><i class="fas fa-certificate"></i> Front-End Developer</div>
-            <div class="cert-item"><i class="fas fa-robot"></i> Diplomado Inteligencia Artificial</div>
-            <div class="cert-item"><i class="fas fa-shield-alt"></i> Diplomado Seguridad Informática</div>
-            <div class="cert-item"><i class="fas fa-code"></i> JavaScript Full</div>
-            <div class="cert-item"><i class="fas fa-code"></i> Desarrollo Web con PHP</div>
-            <div class="cert-item"><i class="fas fa-mobile-alt"></i> React Native Práctico & Game Dev</div>
-            <div class="cert-item"><i class="fab fa-google-play"></i> Desarrollo de Apps Android</div>
-            <div class="cert-item"><i class="fas fa-shield-alt"></i> Controles y Seguridad Informática</div>
-            <div class="cert-item"><i class="fas fa-search"></i> Auditoría Informática</div>
-            <div class="cert-item"><i class="fas fa-bullhorn"></i> Mercadeo Digital & Contenido</div>
-            <div class="cert-item"><i class="fas fa-user-graduate"></i> Desarrollo Personal</div>
-            <div class="cert-item"><i class="fas fa-keyboard"></i> Digitación de Textos</div>
-            <div class="cert-item"><i class="fas fa-laptop-code"></i> Programación Básica</div>
+            <article class="stack-card stack-card--wide reveal">
+              <header><span class="stack-icon"><i class="fas fa-tools" aria-hidden="true"></i></span>
+                <h3>Herramientas</h3>
+              </header>
+              <ul class="tag-list">
+                <li class="tag">Git</li>
+                <li class="tag">VS Code</li>
+                <li class="tag">Figma</li>
+                <li class="tag">Postman</li>
+                <li class="tag">JIRA</li>
+              </ul>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="content-grid">
-      <div class="main-column">
-        <!-- GLOBAL CONTROLS HEADER -->
-        <section class="portfolio-controls fade-in">
-          <div class="portfolio-head">
-            <h2 data-i18n="portfolio.title">Portafolio</h2>
-            <div class="search-container">
-              <i class="fas fa-search search-icon"></i>
-              <input type="text" id="projectSearch" class="search-input"
-                data-i18n-placeholder="projects.search.placeholder" placeholder="Buscar por título o característica...">
+    <!-- EXPERIENCE + EDUCATION -->
+    <section class="section journey" id="trayectoria" aria-labelledby="expTitle">
+      <div class="container journey-layout">
+        <div class="journey-col">
+          <header class="section-head reveal">
+            <span class="section-index" aria-hidden="true">02</span>
+            <h2 class="section-title" id="expTitle" data-i18n="exp.title">Experiencia Laboral</h2>
+          </header>
+
+          <ol class="timeline timeline--exp">
+            <li class="timeline-item reveal">
+              <h3 class="role" data-i18n="exp.1.role" data-split-role>KONECTA — Analista de Desarrollo (2022 - 2025)
+              </h3>
+              <p data-i18n="exp.1.desc">Construcción de aplicaciones y componentes, aseguramiento de calidad mediante
+                pruebas y validaciones,
+                y soporte técnico para garantizar la disponibilidad y correcto funcionamiento de los sistemas.</p>
+            </li>
+            <li class="timeline-item reveal">
+              <h3 class="role" data-i18n="exp.2.role" data-split-role>AZULURBANO — Desarrollador Web (2020 - 2021)</h3>
+              <p data-i18n="exp.2.desc">Construcción de soluciones software enfocadas en usabilidad y rendimiento,
+                enfocada en la
+                inmobiliaria y sus necesidades.</p>
+            </li>
+            <li class="timeline-item reveal">
+              <h3 class="role" data-i18n="exp.3.role" data-split-role>Freelance — Desarrollo de Apps y Web (2016 - 2020)
+              </h3>
+              <p data-i18n="exp.3.desc">Primeros pasos en desarrollo web con PHP y aplicaciones de escritorio con Lua.
+                Desarrollo web para diversas empresas como el Colegio Militar Almirante Colón, Fundación Santa Isabel
+                y Postes Camel, entre otras.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="journey-col">
+          <header class="section-head reveal">
+            <span class="section-index" aria-hidden="true">03</span>
+            <h2 class="section-title" data-i18n="edu.title">Formación Académica</h2>
+          </header>
+          <!--
+          <div class="timeline-item">
+            <div class="dot"></div>
+            <div>
+              <h4 data-i18n="edu.master.title">Maestría en Inteligencia Artificial y Computación</h4>
+              <p><span data-i18n="edu.master.desc">Estudio actualmente - Virtual.</span> · 2026</p>
             </div>
           </div>
+          -->
+          <ol class="edu-list">
+            <li class="edu-item reveal">
+              <span class="year-badge"><span class="sr-only"> · </span>2020</span>
+              <div>
+                <h3 data-i18n="edu.1.title">Especialización en Gestión y Seguridad de Bases de Datos</h3>
+                <p data-i18n="edu.1.desc">Administración y seguridad de datos.</p>
+              </div>
+            </li>
+            <li class="edu-item reveal">
+              <span class="year-badge"><span class="sr-only"> · </span>2024</span>
+              <div>
+                <h3 data-i18n="edu.2.title">Ingeniero de Sistemas</h3>
+                <p data-i18n="edu.2.desc">Desarrollo, arquitectura y gestión TI.</p>
+              </div>
+            </li>
+            <li class="edu-item reveal">
+              <span class="year-badge"><span class="sr-only"> · </span>2019</span>
+              <div>
+                <h3 data-i18n="edu.3.title">Tecnólogo en Análisis y Desarrollo de Sistemas</h3>
+                <p data-i18n="edu.3.desc">Bases en programación y análisis.</p>
+              </div>
+            </li>
+            <li class="edu-item reveal">
+              <span class="year-badge"><span class="sr-only"> · </span>2017</span>
+              <div>
+                <h3 data-i18n="edu.4.title">Técnico en Informática y Redes</h3>
+                <p data-i18n="edu.4.desc">Formación técnica en mantenimiento de equipos de cómputo, instalación de
+                  redes y soporte a usuarios.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
 
-          <div class="category-tabs">
-            <button class="tab-btn active" data-tab="tech" data-i18n="tabs.software">Software & Apps</button>
-            <button class="tab-btn" data-tab="av" data-i18n="tabs.audiovisual">Música & Audiovisual</button>
+    <!-- CERTIFICATIONS -->
+    <section class="section certs" id="certificaciones" aria-labelledby="certTitle">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="section-index" aria-hidden="true">04</span>
+          <h2 class="section-title" id="certTitle" data-i18n="skills.title">Formación Complementaria & Certificaciones
+          </h2>
+        </header>
+        <ul class="cert-grid">
+          <li class="cert-item reveal"><i class="fas fa-certificate" aria-hidden="true"></i> Bootcamp Desarrollo Web Full Stack</li>
+          <li class="cert-item reveal"><i class="fas fa-certificate" aria-hidden="true"></i> Front-End Developer</li>
+          <li class="cert-item reveal"><i class="fas fa-robot" aria-hidden="true"></i> Diplomado Inteligencia Artificial</li>
+          <li class="cert-item reveal"><i class="fas fa-shield-alt" aria-hidden="true"></i> Diplomado Seguridad Informática</li>
+          <li class="cert-item reveal"><i class="fas fa-code" aria-hidden="true"></i> JavaScript Full</li>
+          <li class="cert-item reveal"><i class="fas fa-code" aria-hidden="true"></i> Desarrollo Web con PHP</li>
+          <li class="cert-item reveal"><i class="fas fa-mobile-alt" aria-hidden="true"></i> React Native Práctico & Game Dev</li>
+          <li class="cert-item reveal"><i class="fab fa-google-play" aria-hidden="true"></i> Desarrollo de Apps Android</li>
+          <li class="cert-item reveal"><i class="fas fa-shield-alt" aria-hidden="true"></i> Controles y Seguridad Informática</li>
+          <li class="cert-item reveal"><i class="fas fa-search" aria-hidden="true"></i> Auditoría Informática</li>
+          <li class="cert-item reveal"><i class="fas fa-bullhorn" aria-hidden="true"></i> Mercadeo Digital & Contenido</li>
+          <li class="cert-item reveal"><i class="fas fa-user-graduate" aria-hidden="true"></i> Desarrollo Personal</li>
+          <li class="cert-item reveal"><i class="fas fa-keyboard" aria-hidden="true"></i> Digitación de Textos</li>
+          <li class="cert-item reveal"><i class="fas fa-laptop-code" aria-hidden="true"></i> Programación Básica</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section class="section work" id="trabajo" aria-labelledby="portfolioTitle">
+      <div class="container">
+        <header class="work-head">
+          <div class="section-head reveal">
+            <span class="section-index" aria-hidden="true">05</span>
+            <h2 class="section-title" id="portfolioTitle" data-i18n="portfolio.title">Portafolio</h2>
           </div>
-        </section>
+
+          <div class="work-controls reveal">
+            <div class="category-tabs" role="tablist">
+              <button class="tab-btn active" type="button" role="tab" aria-selected="true" aria-controls="techPanel"
+                data-tab="tech" data-i18n="tabs.software">Software & Apps</button>
+              <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="avPanel"
+                data-tab="av" data-i18n="tabs.audiovisual">Música & Audiovisual</button>
+            </div>
+
+            <label class="search-container">
+              <i class="fas fa-search search-icon" aria-hidden="true"></i>
+              <input type="search" id="projectSearch" class="search-input"
+                data-i18n-placeholder="projects.search.placeholder" placeholder="Buscar por título o característica..."
+                aria-label="Buscar por título o característica...">
+            </label>
+          </div>
+        </header>
 
         <!-- SOFTWARE PANEL -->
-        <div id="techPanel" class="tab-panel active">
+        <div id="techPanel" class="tab-panel active" role="tabpanel">
           <section class="portfolio-section" id="portafolio" aria-label="Proyectos">
             <div class="portfolio-grid" id="projectsGrid" aria-live="polite"></div>
           </section>
         </div>
 
         <!-- AUDIOVISUAL PANEL -->
-        <div id="avPanel" class="tab-panel">
+        <div id="avPanel" class="tab-panel" role="tabpanel">
           <section class="portfolio-section" id="audiovisual" aria-label="Audiovisual">
-            <p class="lead" data-i18n="audiovisual.desc"
-              style="max-width: 600px; margin: 0 auto 24px auto; text-align:center">Experto generando video e imágenes
+            <p class="lead av-lead" data-i18n="audiovisual.desc">Experto generando video e imágenes
               con IA.</p>
-            <div class="portfolio-grid" id="audiovisualGrid"></div>
+
+            <div class="av-toolkit">
+              <div class="av-toolkit-grid">
+                <article class="stack-card toolkit-card reveal">
+                  <header><span class="stack-icon"><i class="fas fa-film" aria-hidden="true"></i></span>
+                    <h3 data-i18n="av.tools.video.title">Video con IA y edición</h3>
+                  </header>
+                  <p class="toolkit-desc" data-i18n="av.tools.video.desc">Utilizo diversas herramientas de inteligencia
+                    artificial para la creación y edición de contenido audiovisual, incluyendo Runway, Kling AI, Google
+                    Veo, Luma Dream Machine, Adobe Firefly, CapCut, Adobe Premiere Pro y DaVinci Resolve para generar
+                    escenas cinematográficas, animar imágenes, editar videos musicales y crear contenido para YouTube y
+                    redes sociales.</p>
+                  <ul class="tag-list">
+                    <li class="tag">Runway</li>
+                    <li class="tag">Kling AI</li>
+                    <li class="tag">Google Veo</li>
+                    <li class="tag">Luma Dream Machine</li>
+                    <li class="tag">Adobe Firefly</li>
+                    <li class="tag">CapCut</li>
+                    <li class="tag">Adobe Premiere Pro</li>
+                    <li class="tag">DaVinci Resolve</li>
+                  </ul>
+                </article>
+
+                <article class="stack-card stack-card--ai toolkit-card reveal">
+                  <header><span class="stack-icon"><i class="fas fa-microphone-alt" aria-hidden="true"></i></span>
+                    <h3 data-i18n="av.tools.audio.title">Audio con IA y producción</h3>
+                  </header>
+                  <p class="toolkit-desc" data-i18n="av.tools.audio.desc">Para trabajar con audio, utilizo herramientas
+                    como ElevenLabs, Adobe Podcast, Descript, Audacity, iZotope RX, Moises, LALAL.AI y LANDR, que
+                    permiten generar voces, limpiar grabaciones, reducir ruido, separar voces e instrumentos, editar
+                    pistas, mejorar mezclas y masterizar canciones.</p>
+                  <ul class="tag-list">
+                    <li class="tag">ElevenLabs</li>
+                    <li class="tag">Adobe Podcast</li>
+                    <li class="tag">Descript</li>
+                    <li class="tag">Audacity</li>
+                    <li class="tag">iZotope RX</li>
+                    <li class="tag">Moises</li>
+                    <li class="tag">LALAL.AI</li>
+                    <li class="tag">LANDR</li>
+                  </ul>
+                </article>
+              </div>
+
+              <p class="toolkit-outro reveal">
+                <i class="fas fa-magic" aria-hidden="true"></i>
+                <span data-i18n="av.tools.intro">Integro estas tecnologías en mis procesos creativos para producir
+                  música, videoclips, narraciones y contenido digital, combinando generación con IA, edición profesional
+                  y automatización para optimizar tiempos y mejorar la calidad de los resultados.</span>
+              </p>
+            </div>
+
+            <div class="video-grid" id="audiovisualGrid"></div>
           </section>
         </div>
+      </div>
+    </section>
 
-        <!-- CONTACT -->
-        <section id="contacto" class="contact-section fade-in" style="animation-delay: 0.3s">
-          <div class="contact-card">
-            <h2 data-i18n="contact.title">Contacto</h2>
+    <!-- CONTACT -->
+    <section id="contacto" class="section contact-section" aria-labelledby="contactTitle">
+      <div class="container">
+        <div class="contact-card reveal">
+          <div class="contact-intro">
+            <span class="section-index" aria-hidden="true">06</span>
+            <h2 class="contact-title" id="contactTitle" data-i18n="contact.title">Contacto</h2>
             <p class="lead" data-i18n="contact.subtitle">¿Tienes un proyecto en mente? Escríbeme y lo construimos
               juntos.
             </p>
+            <div class="contact-links" aria-label="Redes sociales">
+              <a href="https://github.com/JeanOviedo" target="_blank" rel="noopener"><i class="fab fa-github"
+                  aria-hidden="true"></i> GitHub <i class="fas fa-arrow-right link-arrow" aria-hidden="true"></i></a>
+              <a href="https://www.linkedin.com/in/jean-oviedo/" target="_blank" rel="noopener"><i
+                  class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn <i class="fas fa-arrow-right link-arrow"
+                  aria-hidden="true"></i></a>
+              <a href="https://jeanoviedo.com" target="_blank" rel="noopener"><i class="fas fa-globe-americas"
+                  aria-hidden="true"></i> Web <i class="fas fa-arrow-right link-arrow" aria-hidden="true"></i></a>
+            </div>
+          </div>
 
-            <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" target="_blank"
-              method="POST" novalidate="">
-              <!-- Web3Forms Configuration -->
-              <input type="hidden" name="access_key" value="18fd45ab-0977-40bc-b808-21b806ba248f">
+          <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" target="_blank"
+            method="POST" novalidate="">
+            <!-- Web3Forms Configuration -->
+            <input type="hidden" name="access_key" value="18fd45ab-0977-40bc-b808-21b806ba248f">
 
-              <div class="form-row">
-                <div class="field">
-                  <label class="subtitle" data-i18n="form.name">Nombre</label>
-                  <input type="text" id="name" class="input" name="name" data-i18n-placeholder="form.name.placeholder"
-                    required placeholder="Tu nombre" />
-                </div>
-                <div class="field">
-                  <label class="subtitle" data-i18n="form.email">Correo</label>
-                  <input type="email" id="email" class="input" name="email"
-                    data-i18n-placeholder="form.email.placeholder" required placeholder="tunombre@mail.com" />
-                </div>
+            <div class="form-row">
+              <div class="field">
+                <label class="field-label" for="name" data-i18n="form.name">Nombre</label>
+                <input type="text" id="name" class="input" name="name" data-i18n-placeholder="form.name.placeholder"
+                  required placeholder="Tu nombre" autocomplete="name" />
               </div>
-              <div class="field" style="margin-bottom:12px">
-                <label class="subtitle" data-i18n="form.message">Mensaje</label>
-                <textarea id="message" class="input" style="height:120px; resize:vertical" name="message"
-                  data-i18n-placeholder="form.message.placeholder" required
-                  placeholder="Cuéntame sobre tu proyecto"></textarea>
+              <div class="field">
+                <label class="field-label" for="email" data-i18n="form.email">Correo</label>
+                <input type="email" id="email" class="input" name="email"
+                  data-i18n-placeholder="form.email.placeholder" required placeholder="tunombre@mail.com"
+                  autocomplete="email" />
               </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="message" data-i18n="form.message">Mensaje</label>
+              <textarea id="message" class="input" name="message" rows="5"
+                data-i18n-placeholder="form.message.placeholder" required
+                placeholder="Cuéntame sobre tu proyecto"></textarea>
+            </div>
 
-              <button type="submit" class="project-cta" style="width:auto">
-                <span data-i18n="form.send">Enviar mensaje</span> <i class="fas fa-paper-plane"
-                  style="margin-left:8px"></i>
+            <div class="form-footer">
+              <button type="submit" class="btn btn-primary">
+                <span data-i18n="form.send">Enviar mensaje</span> <i class="fas fa-paper-plane" aria-hidden="true"></i>
               </button>
-              <div id="formFeedback" style="margin-top:10px; font-size:14px; min-height:20px"></div>
-            </form>
-          </div>
-        </section>
-
-      </div>
-
-      <div id="projectModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
-        <div class="modal-content" role="document" aria-labelledby="modalTitle">
-          <button class="modal-close-icon" onclick="closeProjectModal()" aria-label="Cerrar modal">
-            <i class="fas fa-times"></i>
-          </button>
-          <div class="modal-header">
-            <h2 id="modalTitle">Título</h2>
-          </div>
-          <div class="modal-body">
-            <div><img id="modalImage" src="" alt="Imagen del proyecto" /></div>
-            <div>
-              <p id="modalDesc" class="modal-desc"></p>
-              <div class="modal-tech"><strong>Tecnologías:</strong> <span id="modalTech"></span></div>
-              <h4>Características:</h4>
-              <ul id="modalFeatures" class="modal-features"></ul>
+              <div id="formFeedback" class="form-feedback" role="status" aria-live="polite"></div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <div id="modalLinks" class="modal-links"></div>
-            <div>
-              <button class="modal-close" onclick="closeProjectModal()" aria-label="Cerrar modal">Cerrar</button>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
-
-      <footer class="footer">
-        <div class="footer-links" role="navigation" aria-label="Redes sociales">
-          <a href="https://github.com/JeanOviedo" target="_blank" rel="noopener"><i class="fab fa-github"></i>
-            GitHub</a>
-          <a href="https://www.linkedin.com/in/jean-oviedo/" target="_blank" rel="noopener"><i
-              class="fab fa-linkedin"></i> LinkedIn</a>
-          <a href="https://jeanoviedo.com" target="_blank" rel="noopener"><i class="fas fa-globe-americas"></i> Web</a>
-        </div>
-        <p>&copy; 2025 Jean Carlos Oviedo. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
-      </footer>
-
-
+    </section>
   </main>
+
+  <div id="projectModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalTitle">
+    <div class="modal-content" role="document">
+      <button class="modal-close-icon" type="button" onclick="closeProjectModal()" aria-label="Cerrar modal">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+      <div class="modal-body">
+        <div class="modal-media"><img id="modalImage" src="" alt="Imagen del proyecto" /></div>
+        <div class="modal-info">
+          <div class="modal-header">
+            <h2 id="modalTitle" tabindex="-1">Título</h2>
+          </div>
+          <p id="modalDesc" class="modal-desc"></p>
+          <div class="modal-tech"><strong>Tecnologías:</strong> <span id="modalTech"></span></div>
+          <h4>Características:</h4>
+          <ul id="modalFeatures" class="modal-features"></ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div id="modalLinks" class="modal-links"></div>
+        <div>
+          <button class="modal-close" type="button" onclick="closeProjectModal()" aria-label="Cerrar modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a class="footer-brand" href="#inicio"><img id="footerLogo" src="./img/logo.png" alt="logo" width="588"
+          height="131" loading="lazy" /></a>
+      <div class="footer-links" role="navigation" aria-label="Redes sociales">
+        <a href="https://github.com/JeanOviedo" target="_blank" rel="noopener"><i class="fab fa-github"
+            aria-hidden="true"></i>
+          GitHub</a>
+        <a href="https://www.linkedin.com/in/jean-oviedo/" target="_blank" rel="noopener"><i
+            class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+        <a href="https://jeanoviedo.com" target="_blank" rel="noopener"><i class="fas fa-globe-americas"
+            aria-hidden="true"></i> Web</a>
+      </div>
+      <p class="footer-copy">&copy; 2025 Jean Carlos Oviedo. <span data-i18n="footer.rights">Todos los derechos
+          reservados.</span></p>
+    </div>
+  </footer>
+
   <!-- SCRIPTS -->
   <script src="projects.js"></script>
   <script src="js/videos.js"></script>
