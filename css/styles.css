@@ -772,9 +772,18 @@ strong {
   align-items: start;
 }
 
-.bio {
+.bio-col {
   position: sticky;
   top: calc(var(--header-h) + 32px);
+}
+
+.bio--secondary {
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.bio {
   font-size: clamp(1.08rem, 1.5vw, 1.28rem);
   line-height: 1.75;
   color: var(--text-2);
@@ -2167,7 +2176,7 @@ textarea.input {
     grid-template-columns: 1fr;
   }
 
-  .bio {
+  .bio-col {
     position: static;
   }
 
