@@ -125,7 +125,7 @@ function createProjectCard(key, project, index, featured) {
     media.setAttribute('aria-hidden', 'true');
     const img = el('img');
     img.src = project.image;
-    img.alt = '';
+    img.alt = `Vista previa de ${langData.title}`;
     img.loading = index < 3 ? 'eager' : 'lazy';
     img.decoding = 'async';
     media.appendChild(img);

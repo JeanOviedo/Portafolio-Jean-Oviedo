@@ -1,7 +1,7 @@
 const projectData = {
 
   'n8n-telegram-automation': {
-    image: 'img/telgram.jpg',
+    image: 'img/projects/telgram.webp',
     technologies: 'n8n, Supabase, JavaScript, Node.js, Obsidian, Telegram API',
     links: [
       { url: 'https://www.youtube.com/watch?v=fHwFFslJ5pw', icon: 'fab fa-youtube', text: 'Video Demo' }
@@ -33,7 +33,7 @@ const projectData = {
   },
 
   'inmobiliaria-jo-backend': {
-    image: 'img/dash.png',
+    image: 'img/projects/dash.webp',
     technologies: 'NestJS, PostgreSQL, Prisma, JWT, Clean Architecture',
     links: [],
     es: {
@@ -64,7 +64,7 @@ const projectData = {
     }
   },
   'inmobiliaria-jo': {
-    image: 'img/inmofront.jpg',
+    image: 'img/projects/inmofront.webp',
     technologies: 'Next.js 15, Tailwind CSS, Framer Motion, Zustand, Lucide React',
     links: [
       { url: 'https://frontend-inmobiliaria-psi.vercel.app/', icon: 'fas fa-globe-americas', text: 'Demo' }
@@ -93,7 +93,7 @@ const projectData = {
     }
   },
   'meeduco': {
-    image: 'img/educo.jpg',
+    image: 'img/projects/educo.webp',
     technologies: 'HTML5, CSS3, JavaScript',
     links: [
       { url: 'https://github.com/JeanOviedo/meeduco', icon: 'fab fa-github', text: 'GitHub' },
@@ -123,7 +123,7 @@ const projectData = {
     }
   },
   'zinuplay': {
-    image: 'img/zinuplay.jpg',
+    image: 'img/projects/zinuplay.webp',
     technologies: 'HTML5, CSS3, JavaScript, React',
     links: [
       { url: 'https://github.com/JeanOviedo/Zinuplay', icon: 'fab fa-github', text: 'GitHub' },
@@ -155,7 +155,7 @@ const projectData = {
     }
   },
   'n8n-call-transcription': {
-    image: 'img/llamadas.jpg',
+    image: 'img/projects/llamadas.webp',
     technologies: 'n8n, OpenAI (Whisper & GPT-4), Speech-to-Text, Sentiment Analysis, Report Automation',
     links: [
       { url: 'https://www.youtube.com/watch?v=33WwGrzKPxc', icon: 'fab fa-youtube', text: 'Video Demo' }
@@ -186,7 +186,7 @@ const projectData = {
     }
   },
   'autoomated': {
-    image: 'img/autoomated.jpg',
+    image: 'img/projects/autoomated.webp',
     technologies: 'Next.js 16, React 19, Axios, Framer Motion, Lucide React, Tailwind CSS',
     links: [
       { url: 'https://www.autoomated.com/', icon: 'fas fa-globe-americas', text: 'Demo' }
@@ -215,7 +215,7 @@ const projectData = {
     }
   },
   'reveal-timer-jo': {
-    image: 'img/timerWP.png',
+    image: 'img/projects/timerWP.webp',
     technologies: 'PHP 7.4+, WordPress API, Vanilla JavaScript, CSS3, WordPress Security Standards',
     links: [
       { url: 'https://github.com/JeanOviedo/WP-Reveal-Timer-JO/tree/main', icon: 'fab fa-github', text: 'GitHub' }
@@ -246,7 +246,7 @@ const projectData = {
     }
   },
   'angulartienda': {
-    image: 'img/angulartienda.jpg',
+    image: 'img/projects/angulartienda.webp',
     technologies: 'Angular 15, TailwindCSS, RxJS, FakeStoreAPI, Heroicons',
     links: [
       { url: 'https://github.com/JeanOviedo/AngularTienda', icon: 'fab fa-github', text: 'GitHub' },
@@ -278,7 +278,7 @@ const projectData = {
     }
   },
   'dienteok': {
-    image: 'img/dientesok.jpg',
+    image: 'img/projects/dientesok.webp',
     technologies: 'Next.js 16 (App Router), TailwindCSS v4, Lucide React, TypeScript',
     links: [
       { url: 'https://github.com/JeanOviedo/DientesOk', icon: 'fab fa-github', text: 'GitHub' },
@@ -306,7 +306,7 @@ const projectData = {
     }
   },
   'medicalok': {
-    image: 'img/medical.jpg',
+    image: 'img/projects/medical.webp',
     technologies: 'Next.js 16, Tailwind CSS v4, TypeScript, Framer Motion, Radix UI',
     links: [
       { url: 'https://github.com/JeanOviedo/MedicalOk', icon: 'fab fa-github', text: 'GitHub' },
@@ -338,7 +338,7 @@ const projectData = {
     }
   },
   'cloudsales': {
-    image: 'img/agenteventas.jpg',
+    image: 'img/projects/agenteventas.webp',
     technologies: 'Python 3.10+, FastAPI, LangGraph, OpenRouter, FAISS, React 19, Vite, TailwindCSS, Framer Motion',
     links: [
       { url: 'https://github.com/JeanOviedo/AgenteVentas', icon: 'fab fa-github', text: 'GitHub' }
@@ -369,7 +369,7 @@ const projectData = {
     }
   },
   'lexgravity': {
-    image: 'img/lexgravity.jpg',
+    image: 'img/projects/lexgravity.webp',
     technologies: 'Next.js, Tailwind CSS, Framer Motion, PostgreSQL, OpenRouter, OpenAI, Anthropic',
     links: [
       { url: 'https://github.com/JeanOviedo/lex-gravity', icon: 'fab fa-github', text: 'GitHub' }
@@ -400,7 +400,7 @@ const projectData = {
     }
   },
   'peluqueria': {
-    image: 'img/peluqueria.jpg',
+    image: 'img/projects/peluqueria.webp',
     technologies: 'Next.js 16, TypeScript, MySQL, Prisma, Tailwind CSS 4',
     links: [
       { url: 'https://github.com/JeanOviedo/Peluqueria', icon: 'fab fa-github', text: 'GitHub' }
@@ -431,7 +431,7 @@ const projectData = {
     }
   },
   'rescue': {
-    image: 'img/rescupets.jpg',
+    image: 'img/projects/rescupets.webp',
     technologies: 'React, Node.js, Express, MongoDB, Firebase',
     links: [
       { url: 'https://github.com/andresguaita/frontend-rescue-pets', icon: 'fab fa-github', text: 'GitHub' },
@@ -465,7 +465,7 @@ const projectData = {
 
 
   'restaurante': {
-    image: 'img/restaurante.jpg',
+    image: 'img/projects/restaurante.webp',
     technologies: 'n8n, Node.js, APIs REST, Zapier',
     links: [
       { url: 'https://www.youtube.com/watch?v=61YLHIVcA7I', icon: 'fas fa-globe-americas', text: 'Ver Demo' }
@@ -496,7 +496,7 @@ const projectData = {
     }
   },
   'automatizado': {
-    image: 'img/zapier.jpg',
+    image: 'img/projects/zapier.webp',
     technologies: 'Zapier, Airtable, GoHighLevel, ClickUp, APIs',
     links: [
       { url: 'https://www.youtube.com/watch?v=61YLHIVcA7I', icon: 'fab fa-youtube', text: 'Video Demo' }
@@ -527,7 +527,7 @@ const projectData = {
     }
   },
   'onescript': {
-    image: 'img/konecta.jpg',
+    image: 'img/projects/konecta.webp',
     technologies: 'React, Form.io, OneScript, JavaScript',
     links: [
       { url: 'https://onescript.konecta.cloud', icon: 'fas fa-globe-americas', text: 'Ver Plataforma' }
@@ -558,7 +558,7 @@ const projectData = {
     }
   },
   'maq': {
-    image: 'img/maq.jpg',
+    image: 'img/projects/maq.webp',
     technologies: 'HTML5, Tailwind CSS, JavaScript',
     links: [
       { url: 'https://github.com/JeanOviedo/Frontend-Maquetacion', icon: 'fab fa-github', text: 'GitHub' },
@@ -590,7 +590,7 @@ const projectData = {
     }
   },
   'fifa': {
-    image: 'img/fifa.jpg',
+    image: 'img/projects/fifa.webp',
     technologies: 'JavaScript, HTML5, CSS3, FIFA API',
     links: [
       { url: 'https://github.com/JeanOviedo/Fifa', icon: 'fab fa-github', text: 'GitHub' }
@@ -621,7 +621,7 @@ const projectData = {
     }
   },
   'rece': {
-    image: 'img/rece.jpg',
+    image: 'img/projects/rece.webp',
     technologies: 'React, JavaScript, CSS3, Local Storage',
     links: [
       { url: 'https://github.com/JeanOviedo/Recetax', icon: 'fab fa-github', text: 'GitHub' }
@@ -652,7 +652,7 @@ const projectData = {
     }
   },
   'pokex': {
-    image: 'img/capturapokex.jpg',
+    image: 'img/projects/capturapokex.webp',
     technologies: 'React, Node.js, PokeAPI, CSS3',
     links: [
       { url: 'https://github.com/JeanOviedo/Pokex', icon: 'fab fa-github', text: 'GitHub' }
@@ -683,7 +683,7 @@ const projectData = {
     }
   },
   'ahorked': {
-    image: 'img/capturahorked.jpg',
+    image: 'img/projects/capturahorked.webp',
     technologies: 'JavaScript, HTML5, CSS3',
     links: [
       { url: 'https://github.com/JeanOviedo/Ahorked', icon: 'fab fa-github', text: 'GitHub' },
@@ -715,7 +715,7 @@ const projectData = {
     }
   },
   'progresuss': {
-    image: 'img/capturaprogresuss.jpg',
+    image: 'img/projects/capturaprogresuss.webp',
     technologies: 'HTML5, CSS3, JavaScript, PHP',
     links: [
       { url: 'https://www.legalprogresuss.com.co/', icon: 'fas fa-globe-americas', text: 'Ver Sitio' }
@@ -746,7 +746,7 @@ const projectData = {
     }
   },
   'encriptex': {
-    image: 'img/encriptex.jpg',
+    image: 'img/projects/encriptex.webp',
     technologies: 'JavaScript, HTML5, CSS3',
     links: [
       { url: 'https://github.com/JeanOviedo/Encriptex', icon: 'fab fa-github', text: 'GitHub' },
@@ -778,7 +778,7 @@ const projectData = {
     }
   },
   'cinex': {
-    image: 'img/capturacinex.jpg',
+    image: 'img/projects/capturacinex.webp',
     technologies: 'JavaScript, HTML5, CSS3, TMDB API',
     links: [
       { url: 'https://github.com/JeanOviedo/Cinex', icon: 'fab fa-github', text: 'GitHub' },
@@ -810,7 +810,7 @@ const projectData = {
     }
   },
   'azul': {
-    image: 'img/azulurbano.jpg',
+    image: 'img/projects/azulurbano.webp',
     technologies: 'HTML5, CSS3, JavaScript, WordPress',
     links: [
       { url: 'http://azulurbano.com/', icon: 'fas fa-globe-americas', text: 'Ver Sitio' }
@@ -842,7 +842,7 @@ const projectData = {
   },
 
   'mistareas': {
-    image: 'img/mistareas.png',
+    image: 'img/projects/mistareas.webp',
     technologies: 'React, JavaScript, CSS3, Local Storage',
     links: [
       { url: 'https://github.com/JeanOviedo/MisTareasReact', icon: 'fab fa-github', text: 'GitHub' }
@@ -875,7 +875,7 @@ const projectData = {
 
 
   'sinu': {
-    image: 'img/sinu.png',
+    image: 'img/projects/sinu.webp',
     technologies: 'JavaScript, HTML5, Canvas, CSS3, Construct 3',
     links: [
       { url: 'https://www.amazon.co.uk/jeankee-Sinu-From-Colombia/dp/B00JE2TCS6', icon: 'fab fa-amazon', text: 'Amazon' }

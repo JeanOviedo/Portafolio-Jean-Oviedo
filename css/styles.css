@@ -1922,7 +1922,7 @@ textarea.input {
   color: var(--cyan);
 }
 
-.modal-info h4 {
+.modal-info .modal-subtitle {
   font-family: var(--font-body);
   font-size: 11.5px;
   font-weight: 600;
